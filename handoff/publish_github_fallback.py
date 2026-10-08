@@ -91,7 +91,7 @@ def render_status(manifest: dict, snapshot: dict, url: str) -> str:
     counts = manifest["arm_counts"]
     lines = [
         "# Fleet-Mem AAMAS 2027 evidence status", "",
-        f"**{manifest['status']}**, collected {snapshot['collected_at_utc']}.", "",
+        f"**{'PROVISIONAL — ' if manifest.get('provisional') else ''}{manifest['status']}**, collected {snapshot['collected_at_utc']}.", "",
         f"Experiment code commit: `{manifest['experiment_commit']}`.",
         f"Evidence bundle: [{manifest['archive']['filename']}]({url}).",
         f"Bundle SHA-256: `{manifest['archive']['sha256']}`; size: {manifest['archive']['size_bytes']} bytes.",

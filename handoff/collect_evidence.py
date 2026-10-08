@@ -177,10 +177,12 @@ def inspect_summary(source: Path, issues: list[str]) -> str | None:
     return digest(summary_path) if summary_path.is_file() else None
 
 
-def inspect(source: Path, job_id: int, pinned: dict) -> dict:
+def inspect(source: Path, job_id: int, pinned: dict,
+            treatment_path: Path | None = None) -> dict:
     issues: list[str] = []
     signal = json.loads((source / SIGNAL).read_text(encoding="utf-8"))
-    treatment = rows(source / TREATMENTS)
+    treatment_path = treatment_path or source / TREATMENTS
+    treatment = rows(treatment_path)
     target_ids = inspect_signal(source, signal, issues)
     missing = inspect_treatments(source, treatment, target_ids, issues)
     summary_sha = inspect_summary(source, issues)
@@ -207,7 +209,7 @@ def inspect(source: Path, job_id: int, pinned: dict) -> dict:
         "target_ids": target_ids, "treatment_grade_count": len(treatment),
         "missing_target_arms": missing, "arm_counts": arm_counts,
         "baseline_signal_sha256": digest(source / SIGNAL),
-        "treatment_results_sha256": digest(source / TREATMENTS),
+        "treatment_results_sha256": digest(treatment_path),
         "treatment_summary_sha256": summary_sha,
     }
 
@@ -222,7 +224,9 @@ def files_under(root: Path):
             yield path
 
 
-def runtime_candidates(source: Path, issues: list[str]):
+def runtime_candidates(source: Path, issues: list[str],
+                       provisional_rows: list[dict] | None = None,
+                       treatment_snapshot: Path | None = None):
     for rel in FROZEN:
         path = source / rel
         if not path.is_file():
@@ -236,12 +240,28 @@ def runtime_candidates(source: Path, issues: list[str]):
         else:
             issues.append(f"archive input missing: {rel}")
     for rel in RAW_DIRS:
+        if provisional_rows is not None and rel.endswith("attempt-0003"):
+            continue
         root = source / rel
         if not root.is_dir():
             issues.append(f"archive input missing: {rel}")
             continue
         for path in files_under(root):
             yield path, f"runtime/{path.relative_to(source)}"
+    if provisional_rows is not None:
+        if treatment_snapshot is not None:
+            yield treatment_snapshot, f"runtime/{TREATMENTS}"
+        exposure_path = source / "results/development/paper-treatments-luna/attempt-0003/treatment_exposures.jsonl"
+        if exposure_path.is_file():
+            yield exposure_path, f"runtime/{exposure_path.relative_to(source)}"
+        for row in provisional_rows:
+            folder = (source / "results/development/paper-treatments-luna/attempt-0003/workers"
+                      / row["target_id"] / row["arm_id"])
+            if not folder.is_dir():
+                issues.append(f"completed worker output missing: {row['target_id']}/{row['arm_id']}")
+                continue
+            for path in files_under(folder):
+                yield path, f"runtime/{path.relative_to(source)}"
     for folder in ("artifacts/burned-pilot", "artifacts/development"):
         root = source / folder
         for entry in sorted(os.scandir(root), key=lambda value: value.name):
@@ -270,9 +290,11 @@ def source_candidates(repo: Path):
             yield path, f"source/{path.relative_to(repo)}"
 
 
-def archive_inputs(source: Path, repo: Path, issues: list[str]):
+def archive_inputs(source: Path, repo: Path, issues: list[str],
+                   provisional_rows: list[dict] | None = None,
+                   treatment_snapshot: Path | None = None):
     yielded: set[str] = set()
-    for path, name in runtime_candidates(source, issues):
+    for path, name in runtime_candidates(source, issues, provisional_rows, treatment_snapshot):
         if name not in yielded:
             yielded.add(name)
             yield path, name
@@ -329,9 +351,12 @@ def write_member(archive: zipfile.ZipFile, path: Path, name: str) -> dict:
 
 def readme(snapshot: dict, code_sha: str) -> str:
     issues = "\n".join(f"- {issue}" for issue in snapshot["issues"]) or "- None"
+    label = "PROVISIONAL — incomplete snapshot" if snapshot.get("provisional") else snapshot["status"]
+    timing = ("captured while the Slurm job was still running" if snapshot["slurm_state"] == "RUNNING"
+              else f"collected after Slurm job {snapshot['slurm_job_id']} ended")
     return f"""# Fleet-Mem evidence bundle
 
-Status: {snapshot['status']}. Collected after Slurm job {snapshot['slurm_job_id']} ({snapshot['slurm_state']}).
+Status: {label}. Snapshot {timing}; job state was {snapshot['slurm_state']}.
 Experiment code commit: {code_sha}.
 Core treatments: A_NO_MEMORY, B_SHARE_ALL, C_RANDOM_MATCHED, D_JEV_WRITE, E_JEV_WRITE_READ, F_ORACLE_RELATED_CEILING.
 The earlier G_LLM_WRITE arm is unrun and outside this amended A–F core handoff.
@@ -360,16 +385,30 @@ def next_version(root: Path, fingerprint: str) -> tuple[Path, bool]:
     return versions / f"v{max(numbers, default=0) + 1}-{fingerprint[:12]}", False
 
 
-def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str) -> Path:
+def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
+            provisional: bool = False) -> Path:
     output.mkdir(parents=True, exist_ok=True)
     with (output / ".collect.lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         pinned = json.loads((repo / "handoff/evidence-manifest.json").read_text())
-        snapshot = inspect(source, job_id, pinned)
+        temporary = tempfile.TemporaryDirectory(prefix=".provisional-", dir=output) if provisional else None
+        treatment_snapshot = None
+        treatment_rows = None
+        if provisional:
+            raw = (source / TREATMENTS).read_bytes()
+            last_newline = raw.rfind(b"\n")
+            stable = raw[:last_newline + 1] if last_newline >= 0 else b""
+            treatment_snapshot = Path(temporary.name) / "treatment_results.jsonl"
+            treatment_snapshot.write_bytes(stable)
+            treatment_rows = rows(treatment_snapshot)
+        snapshot = inspect(source, job_id, pinned, treatment_snapshot)
         if snapshot["slurm_state"] in {"RUNNING", "PENDING", "COMPLETING", "CONFIGURING"}:
-            raise RuntimeError(f"refusing to collect while job {job_id} is {snapshot['slurm_state']}")
-        archive_files = list(archive_inputs(source, repo, snapshot["issues"]))
+            if not provisional:
+                raise RuntimeError(f"refusing to collect while job {job_id} is {snapshot['slurm_state']}")
+        archive_files = list(archive_inputs(source, repo, snapshot["issues"],
+                                            treatment_rows, treatment_snapshot))
         snapshot["status"] = "COLLECTED_COMPLETE" if not snapshot["issues"] else "PARTIAL"
+        snapshot["provisional"] = snapshot["status"] != "COLLECTED_COMPLETE"
         fingerprint = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
         version, duplicate = next_version(output, fingerprint)
         if duplicate:
@@ -399,6 +438,7 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str) 
         (staging / "snapshot.json").write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
         manifest = {
             "schema_version": 1, "status": status, "publication_status": "LOCAL_VERIFIED",
+            "provisional": snapshot["provisional"],
             "experiment_commit": code_sha, "slurm_job_id": job_id,
             "slurm_state": snapshot["slurm_state"], "treatment_grades": snapshot["treatment_grade_count"],
             "required_treatment_grades": 40, "baseline_signal_sha256": snapshot["baseline_signal_sha256"],
@@ -415,6 +455,8 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str) 
         staging.rename(version)
         print(json.dumps({"status": status, "version_dir": str(version),
                           "zip_sha256": manifest["archive"]["sha256"]}))
+        if temporary is not None:
+            temporary.cleanup()
         return version
 
 
@@ -425,9 +467,12 @@ def main() -> int:
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--job-id", type=int, required=True)
     parser.add_argument("--experiment-commit", required=True)
+    parser.add_argument("--provisional", action="store_true",
+                        help="snapshot only finished grades while the Slurm job is still active")
     args = parser.parse_args()
     collect(args.source_root.resolve(), args.handoff_repo.resolve(),
-            args.output_root.resolve(), args.job_id, args.experiment_commit)
+            args.output_root.resolve(), args.job_id, args.experiment_commit,
+            provisional=args.provisional)
     return 0
 
 
