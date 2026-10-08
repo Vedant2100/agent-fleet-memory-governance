@@ -10,6 +10,8 @@ Drive evidence manifest: https://drive.google.com/file/d/1XCUuAz5kBbOBxRclRjFFea
 Bundle SHA-256: `6e5f6532500cb60edc4b1a8383dab6e8028e852fa66e88cb6d1c681e0eaa0ffa`; size: 4109251 bytes.
 Drive size verified: True; Drive SHA-256 verified: True.
 Slurm job 289898: `RUNNING`.
+Treatment coverage is 31/40; 9 grades remain. Newly completed: `sympy__sympy-16953 / E_JEV_WRITE_READ`—patch applied, unresolved, F2P 0/11 and P2P 443/443.
+Failed Slurm child steps `.5` and `.11` are retained in the archive and accounting record.
 
 | Arm | Canonical grades | Applied | Resolved |
 | --- | ---: | ---: | ---: |
@@ -22,6 +24,12 @@ Slurm job 289898: `RUNNING`.
 | G_LLM_WRITE | 0 | 0 | 0; outside amended A–F core |
 
 This is a development pilot, not a confirmatory effect estimate. The frozen A/F signal gate has 3/10 executable discordances. Original failed attempts and the supplemental test-file-filtered regrade are retained in the bundle. G was listed in the earlier protocol and remains unrun.
+
+## Outstanding treatment grades
+
+- `scikit-learn__scikit-learn-13771`: B_SHARE_ALL, C_RANDOM_MATCHED, D_JEV_WRITE, E_JEV_WRITE_READ
+- `sympy__sympy-16953`: D_JEV_WRITE
+- `sympy__sympy-9384`: B_SHARE_ALL, C_RANDOM_MATCHED, D_JEV_WRITE, E_JEV_WRITE_READ
 
 ## Validation issues
 
