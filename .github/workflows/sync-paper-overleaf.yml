@@ -1,11 +1,14 @@
-name: Publish AAMAS current paper to Overleaf
+name: Sync latest ready AAMAS paper round to Overleaf
+
 on:
   push:
     branches:
       - handoff/aamas-2027-evidence
     paths:
-      - 'paper/current/**'
+      - 'paper/round-*/**'
+      - 'paper/AGENTS.md'
       - '.github/workflows/sync-paper-overleaf.yml'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,29 +21,60 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout selected paper branch
+      - name: Checkout paper branch
         uses: actions/checkout@v4
 
-      - name: Publish paper/current to Overleaf master
+      - name: Find highest completed round
+        id: latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest=-1
+          selected=''
+          for dir in "$GITHUB_WORKSPACE"/paper/round-*; do
+            [[ -d "$dir" ]] || continue
+            name="${dir##*/}"
+            [[ "$name" =~ ^round-([0-9]+)$ ]] || continue
+            [[ -f "$dir/.overleaf-ready" ]] || continue
+            [[ -f "$dir/main.tex" && -f "$dir/references.bib" ]] || {
+              echo "::error::$name was marked ready but is missing main.tex or references.bib"
+              exit 1
+            }
+            id="$((10#${BASH_REMATCH[1]}))"
+            if (( id > latest )); then
+              latest="$id"
+              selected="$dir"
+            fi
+          done
+          if (( latest < 0 )); then
+            echo "No ready round yet; do not publish an unfinished draft."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Selected ${selected##*/} for Overleaf preview."
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "round_path=$selected" >> "$GITHUB_OUTPUT"
+            echo "round_name=${selected##*/}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish selected round to Overleaf master
+        if: steps.latest.outputs.ready == 'true'
         shell: bash
         env:
           OVERLEAF_PROJECT_ID: ${{ secrets.OVERLEAF_PROJECT_ID }}
           OVERLEAF_GIT_TOKEN: ${{ secrets.OVERLEAF_GIT_TOKEN }}
+          PAPER_SRC: ${{ steps.latest.outputs.round_path }}
+          PAPER_ROUND: ${{ steps.latest.outputs.round_name }}
         run: |
           set -euo pipefail
           if [[ -z "$OVERLEAF_PROJECT_ID" || -z "$OVERLEAF_GIT_TOKEN" ]]; then
-            echo "::error::Set repository Actions secrets OVERLEAF_PROJECT_ID and OVERLEAF_GIT_TOKEN."
+            echo "::error::Configure OVERLEAF_PROJECT_ID and OVERLEAF_GIT_TOKEN in Actions secrets, then rerun this workflow."
             exit 1
           fi
           if [[ ! "$OVERLEAF_PROJECT_ID" =~ ^[A-Za-z0-9]+$ ]]; then
-            echo "::error::OVERLEAF_PROJECT_ID is invalid."
+            echo "::error::Invalid OVERLEAF_PROJECT_ID."
             exit 1
           fi
-          src="$GITHUB_WORKSPACE/paper/current"
-          if [[ ! -f "$src/main.tex" || ! -f "$src/references.bib" ]]; then
-            echo "::error::paper/current requires main.tex and references.bib."
-            exit 1
-          fi
+
           askpass="$RUNNER_TEMP/overleaf-askpass"
           cat > "$askpass" <<'ASKPASS'
           #!/usr/bin/env bash
@@ -53,27 +87,41 @@ jobs:
           chmod 700 "$askpass"
           export GIT_ASKPASS="$askpass"
           export GIT_TERMINAL_PROMPT=0
-          export GIT_CONFIG_NOSYSTEM=1
+
           dest="$RUNNER_TEMP/overleaf-paper"
           git -c credential.helper= clone --quiet --branch master --single-branch "https://git.overleaf.com/$OVERLEAF_PROJECT_ID" "$dest"
-          # Copy only LaTeX inputs. Keep official template files already in Overleaf.
+
+          # Clean only previously managed paper assets, not Overleaf's template.
+          manifest="$dest/.github-overleaf-synced-files"
+          if [[ -f "$manifest" ]]; then
+            while IFS= read -r old_file; do
+              if [[ "$old_file" =~ ^[a-zA-Z0-9_./-]+$ && "$old_file" != /* && "$old_file" != ../* && "$old_file" != *"/../"* && "$old_file" != ".git"* ]]; then
+                rm -f -- "$dest/$old_file"
+              fi
+            done < "$manifest"
+          fi
+          : > "$manifest"
+
+          # Overleaf contains only the selected round's LaTeX sources and figures.
           while IFS= read -r -d '' file; do
             case "$file" in
-              *.tex|*.bib|*.sty|*.cls|*.png|*.jpg|*.jpeg|*.pdf|*.eps)
-                relative="$(realpath --relative-to="$src" "$file")"
+              *.tex|*.bib|*.sty|*.cls|*.bst|*.png|*.jpg|*.jpeg|*.pdf|*.eps|*/latexmkrc)
+                relative="${file#"$PAPER_SRC"/}"
                 mkdir -p "$dest/$(dirname "$relative")"
-                cp "$file" "$dest/$relative"
+                cp -- "$file" "$dest/$relative"
+                printf '%s\n' "$relative" >> "$manifest"
                 ;;
             esac
-          done < <(find "$src" -type f -print0)
+          done < <(find "$PAPER_SRC" -type f -print0)
+
           cd "$dest"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           if git diff --cached --quiet; then
-            echo "Overleaf manuscript already matches paper/current."
+            echo "Overleaf already matches $PAPER_ROUND."
             exit 0
           fi
-          git commit -m "Sync AAMAS paper from GitHub $GITHUB_SHA"
+          git commit -m "Sync AAMAS $PAPER_ROUND from GitHub $GITHUB_SHA"
           git -c credential.helper= push origin HEAD:master
-          echo "Overleaf updated from $GITHUB_SHA."
+          echo "Published $PAPER_ROUND to Overleaf."
