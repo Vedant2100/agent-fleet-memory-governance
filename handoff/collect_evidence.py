@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import fcntl
 import hashlib
+import importlib.metadata
 import json
 import os
 import platform
@@ -57,6 +58,7 @@ SOURCE_DEVELOPMENT_FILES = {
 }
 SKIP_DIRS = {"__pycache__", ".pytest_cache", ".git", "cache", "caches"}
 SKIP_SUFFIXES = {".sif", ".img", ".pt", ".safetensors", ".ckpt", ".pyc"}
+SENSITIVE_NAMES = {".env", "rclone.conf", "hosts.yml", "credentials.json", "token.json"}
 SECRET_PATTERNS = (
     re.compile(rb"sk-[A-Za-z0-9_-]{20,}"),
     re.compile(rb"gh[opusr]_[A-Za-z0-9]{20,}"),
@@ -215,7 +217,7 @@ def files_under(root: Path):
         dirs[:] = sorted(name for name in dirs if name not in SKIP_DIRS)
         for name in sorted(files):
             path = Path(current) / name
-            if path.is_symlink() or path.suffix in SKIP_SUFFIXES:
+            if path.is_symlink() or path.suffix in SKIP_SUFFIXES or path.name in SENSITIVE_NAMES:
                 continue
             yield path
 
@@ -290,6 +292,8 @@ def command_version(command: list[str]) -> str | None:
 
 
 def environment(source: Path, code_sha: str) -> dict:
+    packages = sorted((dist.metadata.get("Name", "unknown"), dist.version)
+                      for dist in importlib.metadata.distributions())
     return {
         "python": sys.version, "platform": platform.platform(),
         "experiment_code_commit": code_sha,
@@ -299,6 +303,7 @@ def environment(source: Path, code_sha: str) -> dict:
         "slurm": command_version(["srun", "--version"]),
         "worker_config": json.loads((source / "configs/sweedit_worker.json").read_text()),
         "governor_models": {"jev": "jev-1.13.0", "llm_write_G": "unrun"},
+        "collector_host_python_packages": packages,
     }
 
 
