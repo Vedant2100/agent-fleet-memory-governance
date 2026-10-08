@@ -1,0 +1,1 @@
+Verified references: SWE Context Bench (arXiv:2602.08316v3); Jev-Mem (2609.23986); MemGuard (2608.21867); ReasoningBank (2509.25140v2); ChainSWE (2607.02606).
