@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL_VERIFICATION_COMPLETE",
+  "verified_at": "2026-10-08T22:43:10Z",
+  "repository": "Vedant2100/agent-fleet-memory-governance",
+  "branch": "handoff/aamas-2027-evidence",
+  "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
+  "previous_evidence_commit": "0a76fd63e60eba40a87e745264278994d95cc830",
+  "slurm_job_id": 289898,
+  "slurm_state": "RUNNING",
+  "completed_treatment_grades": 30,
+  "required_treatment_grades": 40,
+  "treatment_results_sha256": "6f3b2edfc5b53f9423e682b3fe7039de2cb2ca3d4d5ed4d56c502d5c06bf903b",
+  "archive": {
+    "filename": "fleet-mem-aamas-2027-v4-a817e1f9a9b7.zip",
+    "drive_file_id": "1kGMY40jzenKGalEL0lRInd4Z-Kmgke_v",
+    "drive_url": "https://drive.google.com/file/d/1kGMY40jzenKGalEL0lRInd4Z-Kmgke_v/view?usp=drivesdk",
+    "size_bytes": 4057039,
+    "sha256": "34b2f6e39e2bc57894b8a587dcd34afca78ed775c7ac907965d81051507a7537",
+    "drive_size_verified": true,
+    "drive_sha256_verified": true
+  },
+  "drive_manifest": {
+    "filename": "evidence-manifest-v4-a817e1f9a9b7.json",
+    "drive_file_id": "11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK",
+    "drive_url": "https://drive.google.com/file/d/11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK/view?usp=drivesdk",
+    "size_bytes": 7173,
+    "sha256": "373dbf6d1b89bec9bdf9cb7b5e4aa6f72fb3cc034c34d5ee869f9e5296d8eb71",
+    "drive_size_verified": true,
+    "drive_sha256_verified": true
+  },
+  "verification_method": {
+    "source": "Google Drive connector raw-file download",
+    "operation": "Downloaded both Drive files, decoded their bytes, and compared byte counts and SHA-256 digests with the exact local versioned files.",
+    "archive_readback_matches": true,
+    "manifest_readback_matches": true
+  },
+  "frozen_evidence_preserved": true,
+  "ready_comment_posted": false
+}

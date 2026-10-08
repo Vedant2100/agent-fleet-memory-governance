@@ -8,7 +8,7 @@ Google Drive ZIP: https://drive.google.com/file/d/1kGMY40jzenKGalEL0lRInd4Z-Kmgk
 GitHub ZIP: https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v4-a817e1f9a9b7.zip
 Drive evidence manifest: https://drive.google.com/file/d/11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK/view?usp=drivesdk
 Bundle SHA-256: `34b2f6e39e2bc57894b8a587dcd34afca78ed775c7ac907965d81051507a7537`; size: 4057039 bytes.
-Drive size verified: True; Drive SHA-256 verified: False.
+Drive size verified: True; Drive SHA-256 verified: True. The ZIP bytes were downloaded from Drive and matched the local SHA-256 on 2026-10-08. The uploaded external manifest also matched its versioned local SHA-256. See the [Drive readback verification receipt](https://drive.google.com/file/d/1r0luoAGVdLe8HYyOgl-jbt3guusgOWLQ/view?usp=drivesdk).
 Slurm job 289898: `RUNNING`.
 
 | Arm | Canonical grades | Applied | Resolved |

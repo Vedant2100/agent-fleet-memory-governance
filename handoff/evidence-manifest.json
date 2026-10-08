@@ -3,9 +3,9 @@
     "luna_paper_treatments_289898"
   ],
   "archive": {
-    "drive_checksum_status": "PENDING_REMOTE_READBACK",
+    "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
     "drive_file_id": "1kGMY40jzenKGalEL0lRInd4Z-Kmgke_v",
-    "drive_sha256_verified": false,
+    "drive_sha256_verified": true,
     "drive_size_bytes": 4057039,
     "drive_size_verified": true,
     "drive_url": "https://drive.google.com/file/d/1kGMY40jzenKGalEL0lRInd4Z-Kmgke_v/view?usp=drivesdk",
@@ -93,16 +93,31 @@
   "branch": "handoff/aamas-2027-evidence",
   "bundle_commit": "80e83c08800c5e6125bccba90543d23c24c7777e",
   "drive_manifest": {
-    "checksum_status": "PENDING_REMOTE_READBACK",
+    "checksum_status": "VERIFIED_REMOTE_READBACK",
     "file_id": "11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK",
     "filename": "evidence-manifest-v4-a817e1f9a9b7.json",
-    "remote_sha256_verified": false,
+    "remote_sha256_verified": true,
     "remote_size_verified": true,
     "sha256": "373dbf6d1b89bec9bdf9cb7b5e4aa6f72fb3cc034c34d5ee869f9e5296d8eb71",
     "size_bytes": 7173,
     "url": "https://drive.google.com/file/d/11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK/view?usp=drivesdk"
   },
   "drive_manifest_url": "https://drive.google.com/file/d/11vTmsMSS07SWYIR-ez_L_qmelhWMaTsK/view?usp=drivesdk",
+  "drive_readback_verification": {
+    "drive_sha256_verified": true,
+    "drive_size_verified": true,
+    "file_id": "1r0luoAGVdLe8HYyOgl-jbt3guusgOWLQ",
+    "filename": "drive-readback-verification-v4-a817e1f9a9b7.json",
+    "sha256": "c0e84dfa47aab81f27929d38133e88ee0a64cb9f8950f194c31f759ea55a22ec",
+    "size_bytes": 1806,
+    "url": "https://drive.google.com/file/d/1r0luoAGVdLe8HYyOgl-jbt3guusgOWLQ/view?usp=drivesdk"
+  },
+  "drive_sha256_verification": {
+    "archive_verified": true,
+    "external_manifest_verified": true,
+    "method": "Google Drive raw-file download and SHA-256 comparison",
+    "verified_at": "2026-10-08T22:43:10Z"
+  },
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
   "issues": [
     "missing 10 treatment grades",
@@ -155,7 +170,7 @@
   "outside_core_unrun_arm": "G_LLM_WRITE",
   "provisional": true,
   "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-  "publication_status": "DUAL_DESTINATIONS_SIZE_VERIFIED_CHECKSUM_PENDING",
+  "publication_status": "DRIVE_AND_GITHUB_SHA256_VERIFIED_PARTIAL",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
