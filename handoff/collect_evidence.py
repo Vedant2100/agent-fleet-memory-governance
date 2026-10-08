@@ -428,6 +428,37 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
         treatment_snapshot.write_bytes(stable)
         treatment_rows = rows(treatment_snapshot)
     snapshot = inspect(source, job_id, pinned, treatment_snapshot)
+    current_rows = treatment_rows if treatment_rows is not None else rows(source / TREATMENTS)
+    previous_keys: set[tuple[str, str]] = set()
+    previous_archive = pinned.get("archive", {}).get("filename")
+    if previous_archive:
+        previous_path = repo / "handoff/bundles" / previous_archive
+        try:
+            with zipfile.ZipFile(previous_path) as archive:
+                previous_content = archive.read(f"runtime/{TREATMENTS}").decode("utf-8")
+            previous_keys = {
+                (item["target_id"], item["arm_id"])
+                for item in (json.loads(line) for line in previous_content.splitlines() if line.strip())
+            }
+        except (OSError, KeyError, zipfile.BadZipFile, UnicodeDecodeError, json.JSONDecodeError):
+            snapshot["issues"].append("previous evidence bundle unavailable; new-grade delta not computed")
+    previous_grade_count = pinned.get("treatment_grades", len(previous_keys))
+    newly_completed = []
+    for row in current_rows:
+        if (row["target_id"], row["arm_id"]) in previous_keys:
+            continue
+        grade = row["grade"]
+        newly_completed.append({
+            "target_id": row["target_id"], "arm_id": row["arm_id"],
+            "canonical_grade_available": grade.get("canonical_grade_available"),
+            "patch_applied": grade.get("patch_applied"), "resolved": grade.get("resolved"),
+            "fail_to_pass_passed": grade.get("fail_to_pass_passed"),
+            "fail_to_pass_total": grade.get("fail_to_pass_total"),
+            "pass_to_pass_passed": grade.get("pass_to_pass_passed"),
+            "pass_to_pass_total": grade.get("pass_to_pass_total"),
+            "canonical_result_sha256": row.get("canonical_result_sha256"),
+            "latency_seconds": grade.get("latency_seconds"),
+        })
     if snapshot["slurm_state"] in {"RUNNING", "PENDING", "COMPLETING", "CONFIGURING"}:
         if not provisional:
             raise RuntimeError(f"refusing to collect while job {job_id} is {snapshot['slurm_state']}")
@@ -475,6 +506,9 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
         "provisional": snapshot["provisional"],
         "experiment_commit": code_sha, "slurm_job_id": job_id,
         "slurm_state": snapshot["slurm_state"], "treatment_grades": snapshot["treatment_grade_count"],
+        "previous_treatment_grade_count": previous_grade_count,
+        "newly_completed_grades": newly_completed,
+        "previous_evidence_commit": pinned.get("bundle_commit"),
         "slurm_accounting": snapshot["slurm_accounting"],
         "required_treatment_grades": 40, "baseline_signal_sha256": snapshot["baseline_signal_sha256"],
         "treatment_results_sha256": snapshot["treatment_results_sha256"],
