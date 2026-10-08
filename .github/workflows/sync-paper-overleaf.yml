@@ -89,7 +89,20 @@ jobs:
           export GIT_TERMINAL_PROMPT=0
 
           dest="$RUNNER_TEMP/overleaf-paper"
-          git -c credential.helper= clone --quiet --branch master --single-branch "https://git.overleaf.com/$OVERLEAF_PROJECT_ID" "$dest"
+          git -c credential.helper= clone --quiet "https://git.overleaf.com/$OVERLEAF_PROJECT_ID" "$dest"
+          cd "$dest"
+          # Overleaf usually exposes master, but do not assume a branch name.
+          if git show-ref --verify --quiet refs/remotes/origin/master; then
+            target_branch=master
+          elif git show-ref --verify --quiet refs/remotes/origin/main; then
+            target_branch=main
+          else
+            echo "::error::Overleaf Git remote exposed neither master nor main. Verify that OVERLEAF_PROJECT_ID points to the existing project with Git integration. No files were changed."
+            git branch -r
+            exit 1
+          fi
+          git checkout -q -B "$target_branch" "origin/$target_branch"
+          echo "Using Overleaf remote branch: $target_branch"
 
           # Clean only previously managed paper assets, not Overleaf's template.
           manifest="$dest/.github-overleaf-synced-files"
@@ -123,5 +136,5 @@ jobs:
             exit 0
           fi
           git commit -m "Sync AAMAS $PAPER_ROUND from GitHub $GITHUB_SHA"
-          git -c credential.helper= push origin HEAD:master
+          git -c credential.helper= push origin "HEAD:$target_branch"
           echo "Published $PAPER_ROUND to Overleaf."
