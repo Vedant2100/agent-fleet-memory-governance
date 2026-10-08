@@ -97,6 +97,28 @@ def slurm_state(job_id: int) -> str:
     return "UNKNOWN"
 
 
+def slurm_accounting(job_id: int) -> dict:
+    command = ["sacct", "-j", str(job_id), "-n", "-P",
+               "--format=JobIDRaw,JobName,State,ExitCode,Elapsed,MaxRSS"]
+    result = subprocess.run(command, text=True, capture_output=True,
+                            check=False, timeout=30)
+    fields = ("job_id", "job_name", "state", "exit_code", "elapsed", "max_rss")
+    records = []
+    for line in result.stdout.splitlines():
+        values = line.split("|")
+        if len(values) == len(fields):
+            records.append(dict(zip(fields, values)))
+    failure_states = {"FAILED", "CANCELLED", "TIMEOUT", "OUT_OF_MEMORY",
+                      "NODE_FAIL", "PREEMPTED", "BOOT_FAIL", "DEADLINE"}
+    failed_steps = [record for record in records
+                    if record["job_id"].startswith(f"{job_id}.")
+                    and record["state"].split()[:1]
+                    and record["state"].split()[0].rstrip("+") in failure_states]
+    return {"command": command, "return_code": result.returncode,
+            "records": records, "failed_steps": failed_steps,
+            "stderr": result.stderr.strip()}
+
+
 def checked_grade(source: Path, grade: dict, result_path: str | None,
                   expected_sha: str | None, issues: list[str], label: str) -> None:
     if grade.get("canonical_grade_available") is not True:
@@ -188,8 +210,11 @@ def inspect(source: Path, job_id: int, pinned: dict,
     summary_sha = inspect_summary(source, issues)
 
     state = slurm_state(job_id)
+    accounting = slurm_accounting(job_id)
     if state != "COMPLETED":
         issues.append(f"Slurm job state is {state}")
+    if accounting["return_code"] != 0 or not accounting["records"]:
+        issues.append("Slurm step accounting is unavailable")
     for item in pinned.get("artifacts", []):
         path = source / item["source_path"]
         if not path.is_file() or digest(path) != item["sha256"]:
@@ -206,6 +231,7 @@ def inspect(source: Path, job_id: int, pinned: dict,
     return {
         "status": "COLLECTED_COMPLETE" if not issues else "PARTIAL",
         "issues": issues, "slurm_job_id": job_id, "slurm_state": state,
+        "slurm_accounting": accounting,
         "target_ids": target_ids, "treatment_grade_count": len(treatment),
         "missing_target_arms": missing, "arm_counts": arm_counts,
         "baseline_signal_sha256": digest(source / SIGNAL),
@@ -354,9 +380,12 @@ def readme(snapshot: dict, code_sha: str) -> str:
     label = "PROVISIONAL — incomplete snapshot" if snapshot.get("provisional") else snapshot["status"]
     timing = ("captured while the Slurm job was still running" if snapshot["slurm_state"] == "RUNNING"
               else f"collected after Slurm job {snapshot['slurm_job_id']} ended")
+    failed_steps = [step["job_id"] for step in snapshot["slurm_accounting"]["failed_steps"]]
+    failed_steps_text = ", ".join(failed_steps) if failed_steps else "None"
     return f"""# Fleet-Mem evidence bundle
 
 Status: {label}. Snapshot {timing}; job state was {snapshot['slurm_state']}.
+Slurm child steps marked failed at collection: {failed_steps_text}. See slurm-accounting.json for the complete accounting records.
 Experiment code commit: {code_sha}.
 Core treatments: A_NO_MEMORY, B_SHARE_ALL, C_RANDOM_MATCHED, D_JEV_WRITE, E_JEV_WRITE_READ, F_ORACLE_RELATED_CEILING.
 The earlier G_LLM_WRITE arm is unrun and outside this amended A–F core handoff.
@@ -428,6 +457,8 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
             archive.writestr("README.md", readme(snapshot, code_sha))
             archive.writestr("environment.json", json.dumps(environment(source, code_sha),
                                                            indent=2, sort_keys=True) + "\n")
+            archive.writestr("slurm-accounting.json",
+                             json.dumps(snapshot["slurm_accounting"], indent=2, sort_keys=True) + "\n")
             archive.writestr("archive-member-inventory.json",
                              json.dumps(inventory, indent=2, sort_keys=True) + "\n")
         with zipfile.ZipFile(zip_path) as archive:
@@ -441,6 +472,7 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
             "provisional": snapshot["provisional"],
             "experiment_commit": code_sha, "slurm_job_id": job_id,
             "slurm_state": snapshot["slurm_state"], "treatment_grades": snapshot["treatment_grade_count"],
+            "slurm_accounting": snapshot["slurm_accounting"],
             "required_treatment_grades": 40, "baseline_signal_sha256": snapshot["baseline_signal_sha256"],
             "treatment_results_sha256": snapshot["treatment_results_sha256"],
             "arm_counts": snapshot["arm_counts"], "missing_target_arms": snapshot["missing_target_arms"],
