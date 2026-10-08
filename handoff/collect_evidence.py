@@ -110,6 +110,13 @@ def checked_grade(source: Path, grade: dict, result_path: str | None,
         issues.append(f"{label}: canonical result file missing")
     elif expected_sha and digest(path) != expected_sha:
         issues.append(f"{label}: canonical result checksum mismatch")
+    elif path.is_file():
+        result = json.loads(path.read_text(encoding="utf-8"))
+        fields = ("canonical_grade_available", "patch_applied", "resolved",
+                  "fail_to_pass_passed", "fail_to_pass_total",
+                  "pass_to_pass_passed", "pass_to_pass_total")
+        if any(result.get(field) != grade.get(field) for field in fields):
+            issues.append(f"{label}: frozen grade disagrees with canonical result")
 
 
 def inspect_signal(source: Path, signal: dict, issues: list[str]) -> list[str]:
@@ -119,9 +126,14 @@ def inspect_signal(source: Path, signal: dict, issues: list[str]) -> list[str]:
     if signal.get("decision") != "ORACLE_SIGNAL_PRESENT":
         issues.append("A/F signal decision is not ORACLE_SIGNAL_PRESENT")
     for row in signal["records"]:
-        for key in ("no_memory", "oracle_related"):
+        for key, arm in (("no_memory", "A_NO_MEMORY"),
+                         ("oracle_related", "F_ORACLE_RELATED_CEILING")):
             grade = row[key]
-            checked_grade(source, grade, grade.get("canonical_result_path"),
+            result_path = grade.get("canonical_result_path")
+            if not result_path and grade.get("grade_source") == "frozen_raw_run_289648":
+                result_path = (f"results/development/oracle-signal-luna-289648/"
+                               f"{row['target_id']}/{arm}/evaluation/canonical_result.json")
+            checked_grade(source, grade, result_path,
                           grade.get("canonical_result_sha256"), issues,
                           f"{row['target_id']}/{key}")
     return target_ids
