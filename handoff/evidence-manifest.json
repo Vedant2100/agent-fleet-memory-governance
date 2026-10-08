@@ -4,23 +4,22 @@
   ],
   "archive": {
     "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
-    "drive_file_id": "1PE3mj3F3geMoUFpoCy1qUe3wAnW0mY60",
+    "drive_file_id": "19J62QpVb545nYBScZVVH9feIwsBjXvTs",
     "drive_sha256_verified": true,
-    "drive_size_bytes": 4247865,
+    "drive_size_bytes": 4289451,
     "drive_size_verified": true,
-    "drive_url": "https://drive.google.com/file/d/1PE3mj3F3geMoUFpoCy1qUe3wAnW0mY60/view?usp=drivesdk",
-    "filename": "fleet-mem-aamas-2027-v9-92f648089344.zip",
-    "github_blob_sha1": "eeca00390e1c1da9f666c671ee5d294c1bb35f2c",
-    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v9-92f648089344.zip",
-    "md5": "c071644905663ad0027320b49980c5c7",
+    "drive_url": "https://drive.google.com/file/d/19J62QpVb545nYBScZVVH9feIwsBjXvTs/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v10-c454c388cb24.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v10-c454c388cb24.zip",
+    "md5": "e00078dbd995ac3a7897940850151e5d",
     "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-    "sha256": "5f9c7ab36a4774ba3c5eea0266fa870ebf8b67a666e8686f10b1ed681adf35ae",
-    "size_bytes": 4247865
+    "sha256": "c59d3a210536f3b54a433de17996add69c29ca565890e9382dcc8e7cc18383a6",
+    "size_bytes": 4289451
   },
   "arm_counts": {
     "B_SHARE_ALL": {
-      "applied": 8,
-      "graded": 8,
+      "applied": 9,
+      "graded": 9,
       "resolved": 1
     },
     "C_RANDOM_MATCHED": {
@@ -91,37 +90,32 @@
   ],
   "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "bundle_commit": "67ecb95685fdbde2c0c4b20a0e5002a7b5e85f28",
   "drive_archive_verification": {
     "method": "Google Drive raw-file readback; SHA-256 matched the local versioned archive; byte count matched.",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "verified_at": "2026-10-08T23:44:53.844226+00:00"
+    "verified_at": "2026-10-08T23:52:40.876362+00:00"
   },
   "drive_manifest": {
     "checksum_status": "VERIFIED_REMOTE_READBACK",
-    "file_id": "1Mffn8TSljnfmcqw-w4kqspBBSNypRRdb",
-    "filename": "evidence-manifest-v9-92f648089344.json",
+    "file_id": "1odpX5D7qRkQFL_8LjIA_ToCZ3lN4rtnj",
+    "filename": "evidence-manifest-v10-c454c388cb24.json",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "sha256": "aa8874c6c06f69a571e3aff8792ce2f2cd08b047a701e4e9aadd4b06b8fdb4d4",
-    "size_bytes": 7828,
-    "url": "https://drive.google.com/file/d/1Mffn8TSljnfmcqw-w4kqspBBSNypRRdb/view?usp=drivesdk"
+    "sha256": "c96a953896246eb4df26fed479a214ec6ca2f6c6facfa17054ad6659dcb7f491",
+    "size_bytes": 7749,
+    "url": "https://drive.google.com/file/d/1odpX5D7qRkQFL_8LjIA_ToCZ3lN4rtnj/view?usp=drivesdk"
   },
-  "drive_manifest_url": "https://drive.google.com/file/d/1Mffn8TSljnfmcqw-w4kqspBBSNypRRdb/view?usp=drivesdk",
+  "drive_manifest_url": "https://drive.google.com/file/d/1odpX5D7qRkQFL_8LjIA_ToCZ3lN4rtnj/view?usp=drivesdk",
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
   "handoff_code_commit": "47538ea7c8402ab49b01cef68ea462ce864c64fe",
   "issues": [
-    "missing 6 treatment grades",
+    "missing 5 treatment grades",
     "final treatment summary is absent or not COMPLETE with 40 grades",
     "six-arm paper table is absent",
     "Slurm job state is RUNNING"
   ],
   "missing_target_arms": [
-    [
-      "scikit-learn__scikit-learn-13771",
-      "B_SHARE_ALL"
-    ],
     [
       "scikit-learn__scikit-learn-13771",
       "C_RANDOM_MATCHED"
@@ -145,12 +139,12 @@
   ],
   "newly_completed_grades": [
     {
-      "arm_id": "E_JEV_WRITE_READ",
+      "arm_id": "B_SHARE_ALL",
       "canonical_grade_available": true,
-      "canonical_result_sha256": "21a6ebbeda632c8d7379836eb2e97ce8ed25a394cc5cd8663201db3f0930257b",
+      "canonical_result_sha256": "46edf88efb051ec8246253d80a49a64c706aaef25417f7b03680a4f8a6d779d3",
       "fail_to_pass_passed": 2,
       "fail_to_pass_total": 5,
-      "latency_seconds": 340.0394247479271,
+      "latency_seconds": 330.2280374648981,
       "pass_to_pass_passed": 18,
       "pass_to_pass_total": 18,
       "patch_applied": true,
@@ -159,10 +153,10 @@
     }
   ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
-  "previous_evidence_commit": "04a5f607e49dc87df04b70b092918f477bc6256f",
-  "previous_treatment_grade_count": 33,
+  "previous_evidence_commit": "67ecb95685fdbde2c0c4b20a0e5002a7b5e85f28",
+  "previous_treatment_grade_count": 34,
   "provisional": true,
-  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
@@ -196,7 +190,7 @@
     ],
     "records": [
       {
-        "elapsed": "09:00:27",
+        "elapsed": "09:08:19",
         "exit_code": "0:0",
         "job_id": "289898",
         "job_name": "fmc-luna-treatments",
@@ -204,7 +198,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "09:00:27",
+        "elapsed": "09:08:19",
         "exit_code": "0:0",
         "job_id": "289898.batch",
         "job_name": "batch",
@@ -212,7 +206,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "09:00:27",
+        "elapsed": "09:08:19",
         "exit_code": "0:0",
         "job_id": "289898.extern",
         "job_name": "extern",
@@ -369,8 +363,8 @@
   },
   "slurm_job_id": 289898,
   "slurm_state": "RUNNING",
-  "snapshot_utc": "2026-10-08T23:45:31.963762+00:00",
+  "snapshot_utc": "2026-10-08T23:53:18.835007+00:00",
   "status": "PARTIAL",
-  "treatment_grades": 34,
-  "treatment_results_sha256": "0a1d55b5eba1fdaccacb2803510302013e13f61fc0a9bbecca22b5f91d087252"
+  "treatment_grades": 35,
+  "treatment_results_sha256": "5fec2b1456d7ddc2afbc94c7633529cd165164cf17f5fc24fadc6c4c225b2786"
 }
