@@ -90,6 +90,19 @@ def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tup
     if github_url:
         destinations += f"GitHub ZIP: {github_url}\n"
     drive_manifest_url = manifest.get("drive_manifest", {}).get("url")
+    new_grades = manifest.get("newly_completed_grades", [])
+    new_grade_text = ", ".join(
+        f"{item['target_id']}/{item['arm_id']}"
+        f" (resolved={item.get('resolved')}, F2P={item.get('fail_to_pass_passed')}/"
+        f"{item.get('fail_to_pass_total')}, P2P={item.get('pass_to_pass_passed')}/"
+        f"{item.get('pass_to_pass_total')})"
+        for item in new_grades
+    )
+    coverage_text = (
+        f"Treatment coverage: {manifest.get('previous_treatment_grade_count')} -> "
+        f"{manifest.get('treatment_grades')}/40 grades.\n"
+        if new_grades else ""
+    )
     body = (f"{marker}\n\nEvidence commit: `{commit}`\n"
             f"Experiment code commit: `{manifest['experiment_commit']}`\n"
             f"Bundle URL: {url}\n{destinations}Bundle SHA-256: `{manifest['archive']['sha256']}`\n"
@@ -97,7 +110,8 @@ def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tup
             f"Drive ZIP size verified: {archive.get('drive_size_verified', False)}; "
             f"remote SHA-256 verified: {archive.get('drive_sha256_verified', False)}.\n"
             f"Bundle size: {manifest['archive']['size_bytes']} bytes\n"
-            f"Affected experiments: Luna A–F core comparison; Slurm job {manifest['slurm_job_id']}.\n"
+            f"Newly completed grades: {new_grade_text or 'none listed'}.\n{coverage_text}"
+            f"Slurm job {manifest['slurm_job_id']}; affected study: Luna A–F core comparison.\n"
             f"Status: {manifest['status']}. G_LLM_WRITE is unrun and outside the amended core.\n")
     return marker, comment_once(repo, body, commit)
 
@@ -138,6 +152,19 @@ def render_status(manifest: dict, snapshot: dict, url: str) -> str:
     lines.extend(("| F_ORACLE_RELATED_CEILING | 10 | 10 | 1 |",
                   "| G_LLM_WRITE | 0 | 0 | 0; outside amended A–F core |", "",
                   "This is a development pilot, not a confirmatory effect estimate. The frozen A/F signal gate has 3/10 executable discordances. Original failed attempts and the supplemental test-file-filtered regrade are retained in the bundle. G was listed in the earlier protocol and remains unrun.", ""))
+    new_grades = manifest.get("newly_completed_grades", [])
+    if new_grades:
+        lines.extend(("## Latest evidence update", "",
+                      f"Treatment coverage increased from {manifest.get('previous_treatment_grade_count')} "
+                      f"to {manifest.get('treatment_grades')}/40 grades.", ""))
+        for item in new_grades:
+            lines.append(
+                f"- `{item['target_id']} / {item['arm_id']}`: "
+                f"patch applied={item.get('patch_applied')}, resolved={item.get('resolved')}, "
+                f"F2P {item.get('fail_to_pass_passed')}/{item.get('fail_to_pass_total')}, "
+                f"P2P {item.get('pass_to_pass_passed')}/{item.get('pass_to_pass_total')}."
+            )
+        lines.append("")
     if manifest["issues"]:
         lines += ["## Validation issues", ""] + [f"- {item}" for item in manifest["issues"]] + [""]
     return "\n".join(lines)
