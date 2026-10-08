@@ -1,0 +1,96 @@
+% AAMAS 2027 working draft, round 0. NOT SUBMISSION READY.
+% Evidence: experiment 1cedbc0035cb867cfebde398019e313c2a5b02cb
+% Snapshot: evidence 9b4120e4239a0f96353d0e459bb3e77c1ce24fa2
+% Official 2027 aamas.cls must be installed from the conference template.
+\documentclass[sigconf,anonymous]{aamas}
+\title{From Local Experience to Shared Knowledge in Coding-Agent Fleets}
+\author{Anonymous Author(s)}
+\affiliation{\institution{Anonymous}}
+\begin{document}
+\begin{abstract}
+Coding agents can reuse information from earlier work in the same repository, but exposing every earlier experience risks irrelevant or misleading context. We examine two decisions separately: whether a source-task record enters a shared pool, and whether an admitted record is shown to a later coding agent. We construct an exploratory paired evaluation from ten target tasks and 211 source-only experience cards drawn from a frozen SWE-ContextBench subset. A lightweight controller admits 123 cards, and its target-time filter exposes only one of 15 eligible retrieved cards. A prior no-memory versus known-related-memory check changes executable outcomes on three of ten targets, establishing behavioral sensitivity rather than a performance benefit. In the current seven-target, four-treatment snapshot, all four memory policies resolve one target, compared with two resolved by the separately executed no-memory baseline. The write-only policy passes more FAIL\_TO\_PASS tests on some tasks, but no policy improves resolution; all memory treatments exhibit a substantial PASS\_TO\_PASS regression on one task. Identical memory-free prompts also yield different outcomes across runs, limiting causal interpretation. These are development observations, not evidence that a memory governor improves coding reliability. The remaining three targets and repeatability controls are needed before stronger conclusions.
+\end{abstract}
+\keywords{coding agents, agent memory, selective experience sharing, evaluation, multi-agent systems}
+\maketitle
+
+\section{Introduction}
+A coding agent working on a repository encounters recurring conventions, APIs, failure modes, and testing practices. Some of that information may help a later agent; other observations are tied to a particular issue or become misleading when applied outside their original scope. A shared memory service therefore poses two different decisions: which source records should be available to other sessions, and which available records should be inserted into the context of a particular later task.
+
+Prior work establishes that selecting useful context matters for coding agents. SWE-ContextBench evaluates experience reuse on related software tasks and finds that irrelevant or incorrectly selected context can harm performance \cite{zhu2026swecontext}. ReasoningBank distills reusable strategies from agent interactions \cite{ouyang2025reasoningbank}; MemGuard attaches persistent verifier signals to memory records \cite{wang2026memguard}. Jev-Mem places bounded memory-management operations in a lightweight System-One controller \cite{jiang2026jevmem}. Our study does not introduce Jev-Mem or a new memory backend. It asks whether a separate source-time admission decision changes downstream executable outcomes when target-time retrieval and the coding worker are otherwise held fixed.
+
+The setting is deliberately narrower than a deployed fleet. We reset independent coding-agent sessions to the same target repository state and give them selected records derived from earlier same-repository tasks. This measures simulated cross-session transfer, not autonomous collaboration, continuous organizational learning, or the accumulation of verified worker experience. We report the current development pilot because it reveals both a functioning intervention on exposed memory and important limits on the inference that intervention permits.
+
+The present evidence supports three observations. First, source-time and target-time controls change the actual memory shown to workers. Second, observed task outcomes are mixed: a partial test gain under write-only governance coexists with loss of a previously resolved task and a large test regression common to memory treatments. Third, nominally identical memory-free task prompts do not always reproduce the same result across runs. None of these observations alone establishes a beneficial causal effect of governance.
+
+\section{Study Design}
+\subsection{Historical source records and later targets}
+We use the Lite task family in SWE-ContextBench \cite{zhu2026swecontext}. The frozen audit release contains eleven target histories; ten constitute the primary pilot. The eleventh, a Matplotlib target, was excluded before treatment because a semantic no-op control passed its designated failing test. The union of the eleven histories contains 211 distinct source records. Each target's candidate pool includes strictly earlier source tasks from the same repository, with distractors retained rather than selecting only annotated related pairs. The released task timestamps define a simulated ordering; they do not establish the actual completion times of hypothetical source agents.
+
+A record is a compact \emph{provided-experience} card constructed from a source task's issue text, timestamp, and paths touched by its reference change. It is not a summary of a newly executed source agent's trajectory, and its source outcome is unknown. The extraction process excludes later target patches and hidden relation labels. These distinctions matter: the study tests decisions over historical task descriptions, not governance of proven successful or failed agent memories.
+
+\subsection{Two decision points}
+At source time, a Jev/System-One adapter assigns each unique card either SHARE or DO\_NOT\_SHARE. The decision is made once, without access to later target tasks, and then reused across all targets. A deterministic random comparator admits the same number of unique cards. At target time, a fixed retrieval rule takes the three most recent records in the frozen target history, and each write policy retains only records it admitted. The write-plus-read arm then applies a second Jev decision, EXPOSE or WITHHOLD, to each admitted retrieved record. The read controller can see the target issue but cannot introduce a new candidate. Every ordinary arm has a maximum of three exposed records.
+
+The experimental arms are A, No Memory; B, Share-All with fixed retrieval; C, size-matched Random admission with fixed retrieval; D, Jev Write admission with fixed retrieval; and E, Jev Write followed by Jev Read. F is a diagnostic known-related-memory oracle using published relationship labels, not a deployable policy. A separately planned deliberative LLM write arm (G) has not run and is not analyzed.
+
+\subsection{A trace-level example}
+Consider target \texttt{sympy\_\_sympy-16946}, whose issue proposes replacing \texttt{is\_EmptySet} with a potentially indeterminate \texttt{is\_empty} property. The three most recent earlier cards retrieved for Share-All concern duplicate removal in \texttt{Intersection} (source \texttt{sympy-16988}), a \texttt{lambdify} matrix-expression problem (\texttt{sympy-17022}), and simplification of a complex trigonometric expression (\texttt{sympy-17139}). These are genuine source-task descriptions, not inferred fixes for the target. The Jev write decisions reject the first and admit the latter two. The read controller subsequently withholds both admitted cards for this target. Thus the worker sees three cards under Share-All, two under Jev Write, and none under Jev Write+Read. This is an observed difference in exposure, not proof that any particular card caused a patch.
+
+\subsection{Worker, grading, and outcome measures}
+Each treatment uses the SWE-Edit baseline coding scaffold at pinned revision \texttt{60ca673}, the requested \texttt{gpt-6-luna} model alias with \texttt{xhigh} reasoning effort, an upstream maximum of 100 iterations, and an 1,800-second task timeout. Each arm starts from a clean target state. The exact underlying model checkpoint identifier is not available in the captured API metadata. The evaluation uses the pinned SWE-ContextBench executable test harness through an Apptainer adapter. We report task resolution, the number of FAIL\_TO\_PASS tests passed, and preservation of PASS\_TO\_PASS tests. A patch that passes only some failing tests is \emph{not} a resolved task.
+
+The no-memory and oracle grades were obtained in an earlier paired run, including a documented supplemental regrade after excluding worker modifications to test files on affected tasks. The four governance treatments were run later and are stored separately. This output-boundary difference, along with the lack of repeated trials, limits comparability. All aggregates below are recomputed from the saved per-target grade records; they are descriptive counts, not confidence-bounded treatment effects.
+
+\section{Development Results}
+\subsection{Coverage and decision behavior}
+The frozen source-time Jev pass made 211 decisions, admitting 123 records (58.3\%) and rejecting 88. The random comparator also admitted 123 records globally. Across the ten targets, the write-exposure gate records different Share-All versus Jev Write exposures. The read controller made 15 decisions on admitted retrieved records: one EXPOSE and fourteen WITHHOLD. In the seven completed treatment targets, Share-All exposed 21 cards in total, Random exposed 15, Jev Write exposed nine, and Jev Write+Read exposed one. These are sums of per-target exposures, not unique-card counts.
+
+A separate no-memory versus known-related-memory diagnostic produced complete canonical grades for ten target pairs. Three pairs differed on executable test outcomes. This passes the prespecified \emph{discordance} threshold, but the differences include deterioration: the oracle resolves one of ten tasks versus two for No Memory. The diagnostic does not demonstrate that known-related memory improves task resolution.
+
+\subsection{Paired outcomes in the current snapshot}
+Table~\ref{tab:pilot} compares the seven targets for which all four governance treatments have canonical grades with the corresponding earlier No-Memory and Oracle grades. Three targets have no governance-treatment grades yet. The table must not be interpreted as a completed ten-target experiment.
+
+\begin{table}[t]
+\caption{Development outcomes on the same seven targets. F2P: failing tests passed; P2P: previously passing tests retained. A and F were executed separately and include documented regrades.}
+\label{tab:pilot}
+\centering
+\begin{tabular}{lrrr}
+\hline
+Policy & Resolved & F2P & P2P \\
+\hline
+A: No Memory & 2/7 & 7/30 & 1364/1364\\
+B: Share-All & 1/7 & 5/30 & 1244/1364\\
+C: Random & 1/7 & 6/30 & 1244/1364\\
+D: Jev Write & 1/7 & 11/30 & 1244/1364\\
+E: Jev Write+Read & 1/7 & 5/30 & 1244/1364\\
+F: Known-Related & 1/7 & 6/30 & 1244/1364\\
+\hline
+\end{tabular}
+\end{table}
+
+The apparent F2P advantage of D is concentrated in a few targets. On \texttt{sympy\_\_sympy-16946}, D passes four of six failing tests, whereas A, B, C, E, and F pass none. On \texttt{django\_\_django-34176}, D passes two failing tests versus one under A. Neither task is fully resolved under D. Conversely, \texttt{sympy\_\_sympy-21203} resolves under A but not under any memory treatment; D passes two of three failing tests there. All four treatments and the oracle also fail 120 previously passing tests on \texttt{sympy\_\_sympy-21309}, while A retains all 320 on that target. These regressions preclude describing the F2P count as a net improvement in reliability.
+
+\subsection{A repeatability warning}
+On six of the seven completed targets, E withholds every retrieved memory. For \texttt{sympy\_\_sympy-21203} and \texttt{sympy\_\_sympy-21309}, the saved E worker task prompt is byte-for-byte identical to the earlier A task prompt, yet their executable grades differ. The former loses resolution; the latter loses 120 P2P tests. The runs were performed separately, and the API worker configuration does not set an explicit temperature. This observation does not identify whether model sampling, tool execution, patch construction, grading, or another run-dependent factor produced the discrepancy. It does show that differences between A and a memory policy cannot yet be attributed cleanly to memory exposure. Repeatability controls and harmonized patch handling are essential.
+
+\subsection{Cost observations}
+The source-time Jev controller consumed 202,061 reported input tokens and 8,106 output tokens across its 211 decisions; the read controller consumed 19,166 input and 613 output tokens across 15 decisions. Monetary cost fields are unavailable and should not be interpreted as zero. In the seven treatment targets, aggregate worker input tokens are approximately 4.76 million (B), 4.83 million (C), 7.24 million (D), and 4.86 million (E). These totals include variable-length worker trajectories; they do not measure the isolated cost of exposing memory. There is no supported claim of an end-to-end efficiency gain.
+
+\section{Discussion}
+The intervention is mechanically meaningful: source-only admission changes the three-slot retrieval result, and target-time withholding can reduce the exposed set further. But the present data do not show that either operation improves task resolution. Jev Write's additional F2P passes are partial and coexist with regressions; Jev Write+Read nearly always abstains. The small task set, non-repeatability across memory-free prompts, and unequal output-boundary processing between baseline and treatments are stronger limitations than a missing significance test.
+
+The study's potential contribution is a controlled \emph{question}, not a new general-purpose memory architecture: when do source-time admission and target-time exposure have separable downstream effects under a common worker and fixed retrieval? SWE-ContextBench already studies selective context reuse \cite{zhu2026swecontext}; Jev-Mem already supplies a lightweight control plane \cite{jiang2026jevmem}; MemGuard already addresses admission reliability and lifecycle signals \cite{wang2026memguard}. To establish an additional contribution, a completed and repeatable experiment must show what source-time admission changes beyond matched random selection and what target-time withholding adds beyond the write-only condition. The current pilot does not establish either advantage.
+
+ChainSWE studies sequences of dependent bug fixes in persistent codebases \cite{jin2026chainswe}. We initially examined that setting but did not use it for the current pilot because repository changes themselves persist between tasks, complicating isolation of explicit memory transfer. Our reset-session design addresses that confound at the cost of realism. It is not evidence about a live multi-agent organization.
+
+\section{Threats to Validity and Next Evidence}
+The 211 source cards are task-derived proxies with unknown source-agent outcomes, not verified lessons. The chronology is simulated from released issue timestamps. A globally size-matched random admission set is not necessarily matched to Jev's \emph{per-target} exposed-card counts; context length and content differ between arms. A and F were run separately from B--E and sometimes regraded after filtering test-path edits; the governance treatments' captured worker diffs include test-file edits. The worker model is recorded by API alias, not an immutable checkpoint. Finally, seven tasks from a development-selected ten-target pilot cannot support generalization across repositories or workers.
+
+Before a confirmatory claim, the authors must complete the remaining twelve treatment grades, reconcile patch/test-file handling across arms, repeat identical-prompt no-memory controls, audit per-target memory exposure and input information, and report paired task-level changes with uncertainty appropriate to the final sample. No larger study or positive governance conclusion is authorized by the present snapshot alone.
+
+\section{Conclusion}
+This pilot separates source-time sharing from target-time exposure and verifies that the two controls alter what later coding-agent sessions see. On seven completed targets, however, the policies do not improve full task resolution and exhibit substantial regressions; identical memory-free prompts can also yield different grades. The evidence presently supports a reproducibility and experimental-design finding, not a claim that governed organizational memory makes coding agents more reliable.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+\end{document}
