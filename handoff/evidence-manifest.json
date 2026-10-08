@@ -51,6 +51,8 @@
     }
   ],
   "branch": "handoff/aamas-2027-evidence",
+  "completion_watcher_dependency": "afterany:289898",
+  "completion_watcher_job_id": 290106,
   "core_arms": [
     "A_NO_MEMORY",
     "B_SHARE_ALL",
@@ -64,6 +66,7 @@
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
   "frozen_baseline_oracle_grades": 20,
   "outside_core_unrun_arm": "G_LLM_WRITE",
+  "publication_fallback": "Verified ZIP in handoff PR branch if unattended Drive upload unavailable",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "ready_comment_posted": false,
   "repository": "https://github.com/Vedant2100/agent-fleet-memory-governance",
