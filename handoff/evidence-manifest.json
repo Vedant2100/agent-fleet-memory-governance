@@ -4,18 +4,17 @@
   ],
   "archive": {
     "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
-    "drive_file_id": "1SkUHfJteVDErPT7ejxk_7dRMuYVbps6x",
+    "drive_file_id": "1djiMZRkxokdpAqeVrG4Fm7bI6A4N8AXe",
     "drive_sha256_verified": true,
-    "drive_size_bytes": 4109251,
+    "drive_size_bytes": 4164168,
     "drive_size_verified": true,
-    "drive_url": "https://drive.google.com/file/d/1SkUHfJteVDErPT7ejxk_7dRMuYVbps6x/view?usp=drivesdk",
-    "filename": "fleet-mem-aamas-2027-v5-0e90bb7b8a47.zip",
-    "github_blob_sha1": "d09cf4b5ad6fc6e39a644fee2e8d6a4496b5c04c",
-    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v5-0e90bb7b8a47.zip",
-    "md5": "185b663bfaec2b0ad826f500ddd84b79",
+    "drive_url": "https://drive.google.com/file/d/1djiMZRkxokdpAqeVrG4Fm7bI6A4N8AXe/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v7-ce0e455b7213.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v7-ce0e455b7213.zip",
+    "md5": "67b1202cfd38b4b6de95d8b096ba0612",
     "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-    "sha256": "6e5f6532500cb60edc4b1a8383dab6e8028e852fa66e88cb6d1c681e0eaa0ffa",
-    "size_bytes": 4109251
+    "sha256": "b05ce5effdcf9025ffaef7e132f84f76e8d78e4829e728f0c94f32945dc88b54",
+    "size_bytes": 4164168
   },
   "arm_counts": {
     "B_SHARE_ALL": {
@@ -29,8 +28,8 @@
       "resolved": 1
     },
     "D_JEV_WRITE": {
-      "applied": 7,
-      "graded": 7,
+      "applied": 8,
+      "graded": 8,
       "resolved": 1
     },
     "E_JEV_WRITE_READ": {
@@ -91,27 +90,27 @@
   ],
   "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "bundle_commit": "6d12e1fb6d94ad7e360268af5d4da872251100d7",
   "drive_archive_verification": {
-    "archive_verified": true,
-    "manifest_verified": true,
-    "method": "Google Drive raw-file downloads; SHA-256 and byte counts matched the exact local v5 ZIP and versioned manifest.",
-    "verified_at": "2026-10-08T23:04:47Z"
+    "method": "Google Drive raw-file readback; SHA-256 matched the local versioned archive; Drive metadata size matched.",
+    "remote_sha256_verified": true,
+    "remote_size_verified": true,
+    "verified_at": "2026-10-08T23:33:00.751326+00:00"
   },
   "drive_manifest": {
     "checksum_status": "VERIFIED_REMOTE_READBACK",
-    "file_id": "1XCUuAz5kBbOBxRclRjFFeaXlIuC6AcHK",
-    "filename": "evidence-manifest-v5-0e90bb7b8a47.json",
+    "file_id": "18rYXm-EPP15fWyFeXdrXiRrRRQ2UWWlI",
+    "filename": "evidence-manifest-v7-ce0e455b7213.json",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "sha256": "22b0935e232251ba3685d742bda416096d6110e99d83b5ae04cd8e5f3e936850",
-    "size_bytes": 7313,
-    "url": "https://drive.google.com/file/d/1XCUuAz5kBbOBxRclRjFFeaXlIuC6AcHK/view?usp=drivesdk"
+    "sha256": "65db5306edc87b7b41836066cc0fe2f0bd163f37d0f3ad288724561392cdb417",
+    "size_bytes": 7903,
+    "url": "https://drive.google.com/file/d/18rYXm-EPP15fWyFeXdrXiRrRRQ2UWWlI/view?usp=drivesdk"
   },
-  "drive_manifest_url": "https://drive.google.com/file/d/1XCUuAz5kBbOBxRclRjFFeaXlIuC6AcHK/view?usp=drivesdk",
+  "drive_manifest_url": "https://drive.google.com/file/d/18rYXm-EPP15fWyFeXdrXiRrRRQ2UWWlI/view?usp=drivesdk",
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
+  "handoff_code_commit": "90ff4ba641d15d88a58af2f00fd9cb4a704c5401",
   "issues": [
-    "missing 9 treatment grades",
+    "missing 8 treatment grades",
     "final treatment summary is absent or not COMPLETE with 40 grades",
     "six-arm paper table is absent",
     "Slurm job state is RUNNING"
@@ -134,10 +133,6 @@
       "E_JEV_WRITE_READ"
     ],
     [
-      "sympy__sympy-16953",
-      "D_JEV_WRITE"
-    ],
-    [
       "sympy__sympy-9384",
       "B_SHARE_ALL"
     ],
@@ -156,10 +151,12 @@
   ],
   "newly_completed_grades": [
     {
-      "arm_id": "E_JEV_WRITE_READ",
+      "arm_id": "D_JEV_WRITE",
       "canonical_grade_available": true,
+      "canonical_result_sha256": "ce03b0cb6c8d15b4239637f55d68564e53cbddf5bd2156e007d42467d591d031",
       "fail_to_pass_passed": 0,
       "fail_to_pass_total": 11,
+      "latency_seconds": 1693.7482000249438,
       "pass_to_pass_passed": 443,
       "pass_to_pass_total": 443,
       "patch_applied": true,
@@ -168,9 +165,9 @@
     }
   ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
-  "previous_treatment_grade_count": 30,
+  "previous_treatment_grade_count": 31,
   "provisional": true,
-  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
@@ -204,7 +201,7 @@
     ],
     "records": [
       {
-        "elapsed": "08:14:41",
+        "elapsed": "08:44:25",
         "exit_code": "0:0",
         "job_id": "289898",
         "job_name": "fmc-luna-treatments",
@@ -212,7 +209,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "08:14:41",
+        "elapsed": "08:44:25",
         "exit_code": "0:0",
         "job_id": "289898.batch",
         "job_name": "batch",
@@ -220,7 +217,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "08:14:41",
+        "elapsed": "08:44:25",
         "exit_code": "0:0",
         "job_id": "289898.extern",
         "job_name": "extern",
@@ -377,8 +374,8 @@
   },
   "slurm_job_id": 289898,
   "slurm_state": "RUNNING",
-  "snapshot_utc": "2026-10-08T23:13:11.337804+00:00",
+  "snapshot_utc": "2026-10-08T23:34:16.956516+00:00",
   "status": "PARTIAL",
-  "treatment_grades": 31,
-  "treatment_results_sha256": "85d16a5c369d7ab673c59b80df139efab915b5f0860b49a8cda0e18a7986d5b2"
+  "treatment_grades": 32,
+  "treatment_results_sha256": "f12e0cb392583bc0afff6200b08719248cdcf64bbe560e56e2fe2397bb007ab7"
 }
