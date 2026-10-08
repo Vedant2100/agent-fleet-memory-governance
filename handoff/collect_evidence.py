@@ -7,7 +7,6 @@ This reads the experiment checkout. It writes only under --output-root.
 from __future__ import annotations
 
 import argparse
-import fcntl
 import hashlib
 import importlib.metadata
 import json
@@ -417,79 +416,77 @@ def next_version(root: Path, fingerprint: str) -> tuple[Path, bool]:
 def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
             provisional: bool = False) -> Path:
     output.mkdir(parents=True, exist_ok=True)
-    with (output / ".collect.lock").open("w") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX)
-        pinned = json.loads((repo / "handoff/evidence-manifest.json").read_text())
-        temporary = tempfile.TemporaryDirectory(prefix=".provisional-", dir=output) if provisional else None
-        treatment_snapshot = None
-        treatment_rows = None
-        if provisional:
-            raw = (source / TREATMENTS).read_bytes()
-            last_newline = raw.rfind(b"\n")
-            stable = raw[:last_newline + 1] if last_newline >= 0 else b""
-            treatment_snapshot = Path(temporary.name) / "treatment_results.jsonl"
-            treatment_snapshot.write_bytes(stable)
-            treatment_rows = rows(treatment_snapshot)
-        snapshot = inspect(source, job_id, pinned, treatment_snapshot)
-        if snapshot["slurm_state"] in {"RUNNING", "PENDING", "COMPLETING", "CONFIGURING"}:
-            if not provisional:
-                raise RuntimeError(f"refusing to collect while job {job_id} is {snapshot['slurm_state']}")
-        archive_files = list(archive_inputs(source, repo, snapshot["issues"],
-                                            treatment_rows, treatment_snapshot))
-        snapshot["status"] = "COLLECTED_COMPLETE" if not snapshot["issues"] else "PARTIAL"
-        snapshot["provisional"] = snapshot["status"] != "COLLECTED_COMPLETE"
-        fingerprint = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
-        version, duplicate = next_version(output, fingerprint)
-        if duplicate:
-            print(json.dumps({"status": "ALREADY_COLLECTED", "version_dir": str(version)}))
-            return version
-        staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=output))
-        snapshot["input_fingerprint"] = fingerprint
-        snapshot["collected_at_utc"] = datetime.now(timezone.utc).isoformat()
-        (staging / "snapshot.json").write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
-        zip_name = f"fleet-mem-aamas-2027-{version.name}.zip"
-        zip_path = staging / zip_name
-        inventory = []
-        with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED,
-                             compresslevel=6, allowZip64=True) as archive:
-            for path, name in archive_files:
-                inventory.append(write_member(archive, path, name))
-            archive.writestr("README.md", readme(snapshot, code_sha))
-            archive.writestr("environment.json", json.dumps(environment(source, code_sha),
-                                                           indent=2, sort_keys=True) + "\n")
-            archive.writestr("slurm-accounting.json",
-                             json.dumps(snapshot["slurm_accounting"], indent=2, sort_keys=True) + "\n")
-            archive.writestr("archive-member-inventory.json",
-                             json.dumps(inventory, indent=2, sort_keys=True) + "\n")
-        with zipfile.ZipFile(zip_path) as archive:
-            corrupt = archive.testzip()
-            if corrupt:
-                raise RuntimeError(f"ZIP checksum verification failed: {corrupt}")
-        status = snapshot["status"]
-        (staging / "snapshot.json").write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
-        manifest = {
-            "schema_version": 1, "status": status, "publication_status": "LOCAL_VERIFIED",
-            "provisional": snapshot["provisional"],
-            "experiment_commit": code_sha, "slurm_job_id": job_id,
-            "slurm_state": snapshot["slurm_state"], "treatment_grades": snapshot["treatment_grade_count"],
-            "slurm_accounting": snapshot["slurm_accounting"],
-            "required_treatment_grades": 40, "baseline_signal_sha256": snapshot["baseline_signal_sha256"],
-            "treatment_results_sha256": snapshot["treatment_results_sha256"],
-            "arm_counts": snapshot["arm_counts"], "missing_target_arms": snapshot["missing_target_arms"],
-            "issues": snapshot["issues"], "outside_core_unrun_arm": "G_LLM_WRITE",
-            "archive": {"filename": zip_name, "size_bytes": zip_path.stat().st_size,
-                        "sha256": digest(zip_path), "md5": digest(zip_path, "md5"),
-                        "drive_url": None},
-            "drive_manifest_url": None, "ready_comment_posted": False,
-            "affected_experiments": [f"luna_paper_treatments_{job_id}"],
-        }
-        (staging / "evidence-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
-        staging.rename(version)
-        print(json.dumps({"status": status, "version_dir": str(version),
-                          "zip_sha256": manifest["archive"]["sha256"]}))
-        if temporary is not None:
-            temporary.cleanup()
+    pinned = json.loads((repo / "handoff/evidence-manifest.json").read_text())
+    temporary = tempfile.TemporaryDirectory(prefix=".provisional-", dir=output) if provisional else None
+    treatment_snapshot = None
+    treatment_rows = None
+    if provisional:
+        raw = (source / TREATMENTS).read_bytes()
+        last_newline = raw.rfind(b"\n")
+        stable = raw[:last_newline + 1] if last_newline >= 0 else b""
+        treatment_snapshot = Path(temporary.name) / "treatment_results.jsonl"
+        treatment_snapshot.write_bytes(stable)
+        treatment_rows = rows(treatment_snapshot)
+    snapshot = inspect(source, job_id, pinned, treatment_snapshot)
+    if snapshot["slurm_state"] in {"RUNNING", "PENDING", "COMPLETING", "CONFIGURING"}:
+        if not provisional:
+            raise RuntimeError(f"refusing to collect while job {job_id} is {snapshot['slurm_state']}")
+    archive_files = list(archive_inputs(source, repo, snapshot["issues"],
+                                        treatment_rows, treatment_snapshot))
+    snapshot["status"] = "COLLECTED_COMPLETE" if not snapshot["issues"] else "PARTIAL"
+    snapshot["provisional"] = snapshot["status"] != "COLLECTED_COMPLETE"
+    fingerprint = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
+    version, duplicate = next_version(output, fingerprint)
+    if duplicate:
+        print(json.dumps({"status": "ALREADY_COLLECTED", "version_dir": str(version)}))
         return version
+    staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=output))
+    snapshot["input_fingerprint"] = fingerprint
+    snapshot["collected_at_utc"] = datetime.now(timezone.utc).isoformat()
+    (staging / "snapshot.json").write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
+    zip_name = f"fleet-mem-aamas-2027-{version.name}.zip"
+    zip_path = staging / zip_name
+    inventory = []
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED,
+                         compresslevel=6, allowZip64=True) as archive:
+        for path, name in archive_files:
+            inventory.append(write_member(archive, path, name))
+        archive.writestr("README.md", readme(snapshot, code_sha))
+        archive.writestr("environment.json", json.dumps(environment(source, code_sha),
+                                                       indent=2, sort_keys=True) + "\n")
+        archive.writestr("slurm-accounting.json",
+                         json.dumps(snapshot["slurm_accounting"], indent=2, sort_keys=True) + "\n")
+        archive.writestr("archive-member-inventory.json",
+                         json.dumps(inventory, indent=2, sort_keys=True) + "\n")
+    with zipfile.ZipFile(zip_path) as archive:
+        corrupt = archive.testzip()
+        if corrupt:
+            raise RuntimeError(f"ZIP checksum verification failed: {corrupt}")
+    status = snapshot["status"]
+    (staging / "snapshot.json").write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n")
+    manifest = {
+        "schema_version": 1, "status": status, "publication_status": "LOCAL_VERIFIED",
+        "provisional": snapshot["provisional"],
+        "experiment_commit": code_sha, "slurm_job_id": job_id,
+        "slurm_state": snapshot["slurm_state"], "treatment_grades": snapshot["treatment_grade_count"],
+        "slurm_accounting": snapshot["slurm_accounting"],
+        "required_treatment_grades": 40, "baseline_signal_sha256": snapshot["baseline_signal_sha256"],
+        "treatment_results_sha256": snapshot["treatment_results_sha256"],
+        "arm_counts": snapshot["arm_counts"], "missing_target_arms": snapshot["missing_target_arms"],
+        "issues": snapshot["issues"], "outside_core_unrun_arm": "G_LLM_WRITE",
+        "archive": {"filename": zip_name, "size_bytes": zip_path.stat().st_size,
+                    "sha256": digest(zip_path), "md5": digest(zip_path, "md5"),
+                    "drive_url": None},
+        "drive_manifest_url": None, "ready_comment_posted": False,
+        "affected_experiments": [f"luna_paper_treatments_{job_id}"],
+    }
+    (staging / "evidence-manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    staging.rename(version)
+    print(json.dumps({"status": status, "version_dir": str(version),
+                      "zip_sha256": manifest["archive"]["sha256"]}))
+    if temporary is not None:
+        temporary.cleanup()
+    return version
 
 
 def main() -> int:
