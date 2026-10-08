@@ -56,7 +56,7 @@ jobs:
             echo "round_name=${selected##*/}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Publish selected round to Overleaf master
+      - name: Publish selected round and official AAMAS template to Overleaf
         if: steps.latest.outputs.ready == 'true'
         shell: bash
         env:
@@ -126,6 +126,39 @@ jobs:
                 ;;
             esac
           done < <(find "$PAPER_SRC" -type f -print0)
+
+          # Install the official AAMAS 2027 style files on EVERY round sync.
+          # They live at the Overleaf project root, not in each paper/round-N/.
+          template_zip="$RUNNER_TEMP/aamas_2027_template.zip"
+          curl --fail --location --silent --show-error --retry 3 --connect-timeout 20 \
+            --output "$template_zip" \
+            "https://warwick.ac.uk/fac/sci/dcs/aamas2027/aamas_2027_template.zip"
+          python3 - "$template_zip" "$dest" "$manifest" <<'PY'
+          import pathlib, sys, zipfile, shutil
+          archive_path, destination, manifest_path = sys.argv[1:]
+          root = pathlib.Path(destination)
+          with zipfile.ZipFile(archive_path) as archive:
+              styles = {}
+              for entry in archive.infolist():
+                  if entry.is_dir():
+                      continue
+                  name = pathlib.PurePosixPath(entry.filename).name
+                  if not name.endswith((".cls", ".sty", ".bst")):
+                      continue
+                  data = archive.read(entry)
+                  if name in styles and styles[name] != data:
+                      raise RuntimeError("Multiple different official template files named " + name)
+                  styles[name] = data
+              if "aamas.cls" not in styles:
+                  raise RuntimeError("Official AAMAS 2027 ZIP did not contain aamas.cls")
+              if "ACM-Reference-Format.bst" not in styles:
+                  raise RuntimeError("Official AAMAS 2027 ZIP did not contain ACM-Reference-Format.bst")
+              with open(manifest_path, "a", encoding="utf-8") as manifest:
+                  for name, data in sorted(styles.items()):
+                      (root / name).write_bytes(data)
+                      manifest.write(name + "\n")
+              print("Installed official AAMAS 2027 styles: " + ", ".join(sorted(styles)))
+          PY
 
           cd "$dest"
           git config user.name "github-actions[bot]"
