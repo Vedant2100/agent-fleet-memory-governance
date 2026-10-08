@@ -1,0 +1,79 @@
+name: Publish AAMAS current paper to Overleaf
+on:
+  push:
+    branches:
+      - handoff/aamas-2027-evidence
+    paths:
+      - 'paper/current/**'
+      - '.github/workflows/sync-paper-overleaf.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aamas-overleaf-paper
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout selected paper branch
+        uses: actions/checkout@v4
+
+      - name: Publish paper/current to Overleaf master
+        shell: bash
+        env:
+          OVERLEAF_PROJECT_ID: ${{ secrets.OVERLEAF_PROJECT_ID }}
+          OVERLEAF_GIT_TOKEN: ${{ secrets.OVERLEAF_GIT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$OVERLEAF_PROJECT_ID" || -z "$OVERLEAF_GIT_TOKEN" ]]; then
+            echo "::error::Set repository Actions secrets OVERLEAF_PROJECT_ID and OVERLEAF_GIT_TOKEN."
+            exit 1
+          fi
+          if [[ ! "$OVERLEAF_PROJECT_ID" =~ ^[A-Za-z0-9]+$ ]]; then
+            echo "::error::OVERLEAF_PROJECT_ID is invalid."
+            exit 1
+          fi
+          src="$GITHUB_WORKSPACE/paper/current"
+          if [[ ! -f "$src/main.tex" || ! -f "$src/references.bib" ]]; then
+            echo "::error::paper/current requires main.tex and references.bib."
+            exit 1
+          fi
+          askpass="$RUNNER_TEMP/overleaf-askpass"
+          cat > "$askpass" <<'ASKPASS'
+          #!/usr/bin/env bash
+          case "$1" in
+            *Username*) printf '%s\n' git ;;
+            *Password*) printf '%s\n' "$OVERLEAF_GIT_TOKEN" ;;
+            *) exit 1 ;;
+          esac
+          ASKPASS
+          chmod 700 "$askpass"
+          export GIT_ASKPASS="$askpass"
+          export GIT_TERMINAL_PROMPT=0
+          export GIT_CONFIG_NOSYSTEM=1
+          dest="$RUNNER_TEMP/overleaf-paper"
+          git -c credential.helper= clone --quiet --branch master --single-branch "https://git.overleaf.com/$OVERLEAF_PROJECT_ID" "$dest"
+          # Copy only LaTeX inputs. Keep official template files already in Overleaf.
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              *.tex|*.bib|*.sty|*.cls|*.png|*.jpg|*.jpeg|*.pdf|*.eps)
+                relative="$(realpath --relative-to="$src" "$file")"
+                mkdir -p "$dest/$(dirname "$relative")"
+                cp "$file" "$dest/$relative"
+                ;;
+            esac
+          done < <(find "$src" -type f -print0)
+          cd "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Overleaf manuscript already matches paper/current."
+            exit 0
+          fi
+          git commit -m "Sync AAMAS paper from GitHub $GITHUB_SHA"
+          git -c credential.helper= push origin HEAD:master
+          echo "Overleaf updated from $GITHUB_SHA."
