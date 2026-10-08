@@ -63,12 +63,10 @@ def comment_once(repo: Path, body: str, evidence_commit: str) -> str:
     return posted[-1]["html_url"]
 
 
-def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tuple[str, str]:
-    prior_round_zero = any(item.get("body", "").startswith("PAPER_WRITER round=0")
-                           for item in previous_comments(repo))
+def drive_bundle_verified(manifest: dict) -> bool:
     archive = manifest.get("archive", {})
     drive_manifest = manifest.get("drive_manifest", {})
-    drive_verified = (
+    return (
         bool(archive.get("drive_url"))
         and archive.get("drive_sha256_verified") is True
         and archive.get("drive_size_bytes") == archive.get("size_bytes")
@@ -76,7 +74,13 @@ def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tup
         and drive_manifest.get("remote_sha256_verified") is True
         and drive_manifest.get("remote_size_verified") is True
     )
-    is_ready = manifest["status"] == "COLLECTED_COMPLETE" and drive_verified
+
+
+def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tuple[str, str]:
+    prior_round_zero = any(item.get("body", "").startswith("PAPER_WRITER round=0")
+                           for item in previous_comments(repo))
+    archive = manifest.get("archive", {})
+    is_ready = manifest["status"] == "COLLECTED_COMPLETE" and drive_bundle_verified(manifest)
     marker = "PAPER_WRITER round=0" if is_ready and not prior_round_zero else "PAPER_EVIDENCE_UPDATE"
     drive_url = manifest["archive"].get("drive_url")
     github_url = manifest["archive"].get("github_url")
@@ -90,6 +94,8 @@ def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tup
             f"Experiment code commit: `{manifest['experiment_commit']}`\n"
             f"Bundle URL: {url}\n{destinations}Bundle SHA-256: `{manifest['archive']['sha256']}`\n"
             f"Drive manifest: {drive_manifest_url or 'not uploaded'}\n"
+            f"Drive ZIP size verified: {archive.get('drive_size_verified', False)}; "
+            f"remote SHA-256 verified: {archive.get('drive_sha256_verified', False)}.\n"
             f"Bundle size: {manifest['archive']['size_bytes']} bytes\n"
             f"Affected experiments: Luna A–F core comparison; Slurm job {manifest['slurm_job_id']}.\n"
             f"Status: {manifest['status']}. G_LLM_WRITE is unrun and outside the amended core.\n")
@@ -120,6 +126,8 @@ def render_status(manifest: dict, snapshot: dict, url: str) -> str:
         *([f"Drive evidence manifest: {manifest['drive_manifest']['url']}"]
           if manifest.get('drive_manifest', {}).get('url') else []),
         f"Bundle SHA-256: `{manifest['archive']['sha256']}`; size: {manifest['archive']['size_bytes']} bytes.",
+        f"Drive size verified: {manifest['archive'].get('drive_size_verified', False)}; "
+        f"Drive SHA-256 verified: {manifest['archive'].get('drive_sha256_verified', False)}.",
         f"Slurm job {manifest['slurm_job_id']}: `{manifest['slurm_state']}`.", "",
         "| Arm | Canonical grades | Applied | Resolved |", "| --- | ---: | ---: | ---: |",
         "| A_NO_MEMORY | 10 | 10 | 2 |",
@@ -152,9 +160,19 @@ def publish(version: Path, repo: Path) -> None:
     if run("git", "status", "--porcelain", cwd=repo):
         raise RuntimeError("handoff worktree has uncommitted changes")
     existing_manifest = json.loads((repo / "handoff/evidence-manifest.json").read_text())
-    if (existing_manifest.get("archive", {}).get("sha256") == manifest["archive"]["sha256"]
-            and existing_manifest.get("publication_status") in
-            {"GITHUB_FALLBACK_VERIFIED", "DUAL_DESTINATIONS_VERIFIED"}):
+    existing_archive = existing_manifest.get("archive", {})
+    same_drive_metadata = (
+        existing_archive.get("drive_url") == manifest["archive"].get("drive_url")
+        and existing_archive.get("drive_size_verified") == manifest["archive"].get("drive_size_verified")
+        and existing_archive.get("drive_sha256_verified") == manifest["archive"].get("drive_sha256_verified")
+        and existing_manifest.get("drive_manifest") == manifest.get("drive_manifest")
+    )
+    if (existing_archive.get("sha256") == manifest["archive"]["sha256"]
+            and existing_manifest.get("publication_status") in {
+                "GITHUB_FALLBACK_VERIFIED", "DUAL_DESTINATIONS_VERIFIED",
+                "DUAL_DESTINATIONS_SIZE_VERIFIED_CHECKSUM_PENDING",
+            }
+            and same_drive_metadata):
         commit = run("git", "rev-parse", "HEAD", cwd=repo)
         url = existing_manifest["archive"].get("drive_url") or existing_manifest["archive"]["github_url"]
         matching = [item for item in previous_comments(repo)
@@ -201,9 +219,15 @@ def publish(version: Path, repo: Path) -> None:
     expected_blob = run("git", "hash-object", str(target), cwd=repo)
     if metadata.get("size") != archive.stat().st_size or metadata.get("sha") != expected_blob:
         raise RuntimeError("GitHub bundle metadata did not match local size and git blob checksum")
-    manifest["publication_status"] = (
-        "DUAL_DESTINATIONS_VERIFIED" if manifest["archive"].get("drive_url")
-        else "GITHUB_FALLBACK_VERIFIED")
+    if drive_bundle_verified(manifest):
+        manifest["publication_status"] = "DUAL_DESTINATIONS_VERIFIED"
+    elif manifest["archive"].get("drive_url"):
+        manifest["publication_status"] = (
+            "DUAL_DESTINATIONS_SIZE_VERIFIED_CHECKSUM_PENDING"
+            if manifest["archive"].get("drive_size_verified")
+            else "DUAL_DESTINATIONS_UNVERIFIED")
+    else:
+        manifest["publication_status"] = "GITHUB_FALLBACK_VERIFIED"
     manifest["bundle_commit"] = evidence_commit
     manifest["archive"]["github_blob_sha1"] = expected_blob
     url = metadata["download_url"]
@@ -222,6 +246,8 @@ def publish(version: Path, repo: Path) -> None:
                f"Drive evidence manifest: {manifest.get('drive_manifest', {}).get('url', 'not uploaded')}.\n"
                f"Google Drive ZIP: {manifest['archive'].get('drive_url', 'not uploaded')}.\n"
                f"GitHub ZIP: {url}.\n"
+               f"Drive size verified: {manifest['archive'].get('drive_size_verified', False)}; "
+               f"Drive SHA-256 verified: {manifest['archive'].get('drive_sha256_verified', False)}.\n"
                f"SHA-256: `{manifest['archive']['sha256']}`. G_LLM_WRITE remains unrun outside the amended A–F core.\n")
     run("gh", "pr", "edit", PR, "--body", pr_body, cwd=repo)
     marker, comment_url = publication_notice(repo, manifest, final_commit, primary_url)
