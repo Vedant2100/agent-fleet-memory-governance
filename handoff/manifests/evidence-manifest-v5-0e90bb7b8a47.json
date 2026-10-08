@@ -1,0 +1,303 @@
+{
+  "affected_experiments": [
+    "luna_paper_treatments_289898"
+  ],
+  "archive": {
+    "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
+    "drive_file_id": "1SkUHfJteVDErPT7ejxk_7dRMuYVbps6x",
+    "drive_sha256_verified": true,
+    "drive_size_bytes": 4109251,
+    "drive_size_verified": true,
+    "drive_url": "https://drive.google.com/file/d/1SkUHfJteVDErPT7ejxk_7dRMuYVbps6x/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v5-0e90bb7b8a47.zip",
+    "md5": "185b663bfaec2b0ad826f500ddd84b79",
+    "sha256": "6e5f6532500cb60edc4b1a8383dab6e8028e852fa66e88cb6d1c681e0eaa0ffa",
+    "size_bytes": 4109251
+  },
+  "arm_counts": {
+    "B_SHARE_ALL": {
+      "applied": 8,
+      "graded": 8,
+      "resolved": 1
+    },
+    "C_RANDOM_MATCHED": {
+      "applied": 8,
+      "graded": 8,
+      "resolved": 1
+    },
+    "D_JEV_WRITE": {
+      "applied": 7,
+      "graded": 7,
+      "resolved": 1
+    },
+    "E_JEV_WRITE_READ": {
+      "applied": 8,
+      "graded": 8,
+      "resolved": 1
+    }
+  },
+  "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
+  "drive_archive_verification": {
+    "method": "Google Drive raw-file download; SHA-256 and byte count matched the local versioned archive.",
+    "remote_sha256_verified": true,
+    "remote_size_verified": true,
+    "verified_at": "2026-10-08T23:04:47Z"
+  },
+  "drive_manifest_url": null,
+  "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
+  "issues": [
+    "missing 9 treatment grades",
+    "final treatment summary is absent or not COMPLETE with 40 grades",
+    "six-arm paper table is absent",
+    "Slurm job state is RUNNING"
+  ],
+  "missing_target_arms": [
+    [
+      "scikit-learn__scikit-learn-13771",
+      "B_SHARE_ALL"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "C_RANDOM_MATCHED"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "D_JEV_WRITE"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "E_JEV_WRITE_READ"
+    ],
+    [
+      "sympy__sympy-16953",
+      "D_JEV_WRITE"
+    ],
+    [
+      "sympy__sympy-9384",
+      "B_SHARE_ALL"
+    ],
+    [
+      "sympy__sympy-9384",
+      "C_RANDOM_MATCHED"
+    ],
+    [
+      "sympy__sympy-9384",
+      "D_JEV_WRITE"
+    ],
+    [
+      "sympy__sympy-9384",
+      "E_JEV_WRITE_READ"
+    ]
+  ],
+  "outside_core_unrun_arm": "G_LLM_WRITE",
+  "provisional": true,
+  "publication_status": "DRIVE_ZIP_SHA256_VERIFIED_PARTIAL",
+  "ready_comment_posted": false,
+  "required_treatment_grades": 40,
+  "schema_version": 1,
+  "slurm_accounting": {
+    "command": [
+      "sacct",
+      "-j",
+      "289898",
+      "-n",
+      "-P",
+      "--format=JobIDRaw,JobName,State,ExitCode,Elapsed,MaxRSS"
+    ],
+    "failed_steps": [
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      }
+    ],
+    "records": [
+      {
+        "elapsed": "08:14:41",
+        "exit_code": "0:0",
+        "job_id": "289898",
+        "job_name": "fmc-luna-treatments",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "08:14:41",
+        "exit_code": "0:0",
+        "job_id": "289898.batch",
+        "job_name": "batch",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "08:14:41",
+        "exit_code": "0:0",
+        "job_id": "289898.extern",
+        "job_name": "extern",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.0",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.1",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:18",
+        "exit_code": "0:0",
+        "job_id": "289898.2",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.3",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.4",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.6",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.7",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.8",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.9",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.10",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.12",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.13",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.14",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.15",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.16",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.17",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      }
+    ],
+    "return_code": 0,
+    "stderr": ""
+  },
+  "slurm_job_id": 289898,
+  "slurm_state": "RUNNING",
+  "status": "PARTIAL",
+  "treatment_grades": 31,
+  "treatment_results_sha256": "85d16a5c369d7ab673c59b80df139efab915b5f0860b49a8cda0e18a7986d5b2"
+}
