@@ -3,9 +3,9 @@
 **PROVISIONAL — PARTIAL**, collected 2026-10-08T21:22:35.288831+00:00.
 
 Experiment code commit: `1cedbc0035cb867cfebde398019e313c2a5b02cb`.
-Evidence bundle: [fleet-mem-aamas-2027-v1-1199076fdeab.zip](https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip).
+Evidence bundle: [fleet-mem-aamas-2027-v1-1199076fdeab.zip](https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip).
 Google Drive ZIP: https://drive.google.com/file/d/1wsXIOWIXDwK6SOmuKKvgtMl1NiHc_mzI/view?usp=drivesdk
-GitHub ZIP: https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip
+GitHub ZIP: https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip
 Drive evidence manifest: https://drive.google.com/file/d/1O_R3yubsms8CpiXWkyqDJ5hn5rGXl8zJ/view?usp=drivesdk
 Bundle SHA-256: `cbaf5e24c4bff990e7e331750305a18a4ca7928376a46454b038c847ee14c228`; size: 3946026 bytes.
 Slurm job 289898: `RUNNING`.
