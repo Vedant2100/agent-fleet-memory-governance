@@ -3,9 +3,9 @@
 **PROVISIONAL — PARTIAL**, collected 2026-10-08T23:27:56.310203+00:00.
 
 Experiment code commit: `1cedbc0035cb867cfebde398019e313c2a5b02cb`.
-Evidence bundle: [fleet-mem-aamas-2027-v7-ce0e455b7213.zip](https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v7-ce0e455b7213.zip).
+Evidence bundle: [fleet-mem-aamas-2027-v7-ce0e455b7213.zip](https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v7-ce0e455b7213.zip).
 Google Drive ZIP: https://drive.google.com/file/d/1djiMZRkxokdpAqeVrG4Fm7bI6A4N8AXe/view?usp=drivesdk
-GitHub ZIP: https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v7-ce0e455b7213.zip
+GitHub ZIP: https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v7-ce0e455b7213.zip
 Drive evidence manifest: https://drive.google.com/file/d/18rYXm-EPP15fWyFeXdrXiRrRRQ2UWWlI/view?usp=drivesdk
 Bundle SHA-256: `b05ce5effdcf9025ffaef7e132f84f76e8d78e4829e728f0c94f32945dc88b54`; size: 4164168 bytes.
 Drive size verified: True; Drive SHA-256 verified: True.
