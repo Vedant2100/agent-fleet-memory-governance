@@ -1,5 +1,41 @@
 {
-  "active_slurm_job_id": 289898,
+  "affected_experiments": [
+    "luna_paper_treatments_289898"
+  ],
+  "archive": {
+    "drive_file_id": "1wsXIOWIXDwK6SOmuKKvgtMl1NiHc_mzI",
+    "drive_sha256_verified": true,
+    "drive_size_bytes": 3946026,
+    "drive_url": "https://drive.google.com/file/d/1wsXIOWIXDwK6SOmuKKvgtMl1NiHc_mzI/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v1-1199076fdeab.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip",
+    "md5": "55029a3d36f2e4d9fc2bc7e281d39277",
+    "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
+    "sha256": "cbaf5e24c4bff990e7e331750305a18a4ca7928376a46454b038c847ee14c228",
+    "size_bytes": 3946026
+  },
+  "arm_counts": {
+    "B_SHARE_ALL": {
+      "applied": 7,
+      "graded": 7,
+      "resolved": 1
+    },
+    "C_RANDOM_MATCHED": {
+      "applied": 7,
+      "graded": 7,
+      "resolved": 1
+    },
+    "D_JEV_WRITE": {
+      "applied": 7,
+      "graded": 7,
+      "resolved": 1
+    },
+    "E_JEV_WRITE_READ": {
+      "applied": 7,
+      "graded": 7,
+      "resolved": 1
+    }
+  },
   "artifacts": [
     {
       "filename": "luna_oracle_signal_289648_test_filtered_regrade.json",
@@ -50,30 +86,86 @@
       "status": "FROZEN"
     }
   ],
+  "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "completion_watcher_dependency": "afterany:289898",
-  "completion_watcher_job_id": 290106,
-  "core_arms": [
-    "A_NO_MEMORY",
-    "B_SHARE_ALL",
-    "C_RANDOM_MATCHED",
-    "D_JEV_WRITE",
-    "E_JEV_WRITE_READ",
-    "F_ORACLE_RELATED_CEILING"
-  ],
-  "drive_folder_url": "https://drive.google.com/drive/folders/1EC9nyE5bNdtqBgem6H9YDlk1Ti6ZY_kF",
-  "evidence_archive": null,
+  "drive_manifest": {
+    "file_id": "1O_R3yubsms8CpiXWkyqDJ5hn5rGXl8zJ",
+    "filename": "evidence-manifest-v1-1199076fdeab.json",
+    "remote_sha256_verified": true,
+    "remote_size_verified": true,
+    "sha256": "560a993e48ad320f5350bac4e13484a6afab728df56845c761bec0e5cf36ccd7",
+    "size_bytes": 2562,
+    "url": "https://drive.google.com/file/d/1O_R3yubsms8CpiXWkyqDJ5hn5rGXl8zJ/view?usp=drivesdk"
+  },
+  "drive_manifest_url": null,
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
-  "frozen_baseline_oracle_grades": 20,
+  "issues": [
+    "missing 12 treatment grades",
+    "final treatment summary is absent or not COMPLETE with 40 grades",
+    "six-arm paper table is absent",
+    "Slurm job state is RUNNING"
+  ],
+  "missing_target_arms": [
+    [
+      "scikit-learn__scikit-learn-13771",
+      "B_SHARE_ALL"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "C_RANDOM_MATCHED"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "D_JEV_WRITE"
+    ],
+    [
+      "scikit-learn__scikit-learn-13771",
+      "E_JEV_WRITE_READ"
+    ],
+    [
+      "sympy__sympy-16953",
+      "B_SHARE_ALL"
+    ],
+    [
+      "sympy__sympy-16953",
+      "C_RANDOM_MATCHED"
+    ],
+    [
+      "sympy__sympy-16953",
+      "D_JEV_WRITE"
+    ],
+    [
+      "sympy__sympy-16953",
+      "E_JEV_WRITE_READ"
+    ],
+    [
+      "sympy__sympy-9384",
+      "B_SHARE_ALL"
+    ],
+    [
+      "sympy__sympy-9384",
+      "C_RANDOM_MATCHED"
+    ],
+    [
+      "sympy__sympy-9384",
+      "D_JEV_WRITE"
+    ],
+    [
+      "sympy__sympy-9384",
+      "E_JEV_WRITE_READ"
+    ]
+  ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
-  "publication_fallback": "Verified ZIP in handoff PR branch if unattended Drive upload unavailable",
+  "provisional": true,
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
-  "ready_comment_posted": false,
-  "repository": "https://github.com/Vedant2100/agent-fleet-memory-governance",
-  "required_primary_targets": 10,
+  "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
   "schema_version": 1,
-  "snapshot_utc": "2026-10-08 20:54:00 UTC",
-  "status": "PROVISIONAL",
-  "treatment_grades_at_snapshot": 23
+  "slurm_job_id": 289898,
+  "slurm_state": "RUNNING",
+  "snapshot_utc": "2026-10-08T21:26:17.402647+00:00",
+  "status": "PARTIAL",
+  "treatment_grades": 28,
+  "treatment_results_sha256": "63ba54d38033bbb64e4c8592c5abe1cfac068ddfdded41fa8c9c794269b9d028"
 }
