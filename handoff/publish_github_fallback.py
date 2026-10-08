@@ -66,7 +66,17 @@ def comment_once(repo: Path, body: str, evidence_commit: str) -> str:
 def publication_notice(repo: Path, manifest: dict, commit: str, url: str) -> tuple[str, str]:
     prior_round_zero = any(item.get("body", "").startswith("PAPER_WRITER round=0")
                            for item in previous_comments(repo))
-    is_ready = manifest["status"] == "COLLECTED_COMPLETE"
+    archive = manifest.get("archive", {})
+    drive_manifest = manifest.get("drive_manifest", {})
+    drive_verified = (
+        bool(archive.get("drive_url"))
+        and archive.get("drive_sha256_verified") is True
+        and archive.get("drive_size_bytes") == archive.get("size_bytes")
+        and bool(drive_manifest.get("url"))
+        and drive_manifest.get("remote_sha256_verified") is True
+        and drive_manifest.get("remote_size_verified") is True
+    )
+    is_ready = manifest["status"] == "COLLECTED_COMPLETE" and drive_verified
     marker = "PAPER_WRITER round=0" if is_ready and not prior_round_zero else "PAPER_EVIDENCE_UPDATE"
     drive_url = manifest["archive"].get("drive_url")
     github_url = manifest["archive"].get("github_url")
