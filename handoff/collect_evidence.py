@@ -46,6 +46,7 @@ RAW_DIRS = (
     "artifacts/smoke/pools",
     "artifacts/burned-pilot/worker_qualification_289222",
 )
+RAW_FILES = ("artifacts/smoke/summary.json",)
 SOURCE_DIRS = ("src", "scripts", "configs", "docs", "artifacts/development")
 SOURCE_FILES = ("README.md", "pyproject.toml", ".gitignore")
 SOURCE_DEVELOPMENT_FILES = {
@@ -226,6 +227,12 @@ def runtime_candidates(source: Path, issues: list[str]):
             issues.append(f"archive input missing: {rel}")
         else:
             yield path, f"runtime/{rel}"
+    for rel in RAW_FILES:
+        path = source / rel
+        if path.is_file():
+            yield path, f"runtime/{rel}"
+        else:
+            issues.append(f"archive input missing: {rel}")
     for rel in RAW_DIRS:
         root = source / rel
         if not root.is_dir():
@@ -240,6 +247,7 @@ def runtime_candidates(source: Path, issues: list[str]):
                 continue
             name = entry.name
             include = (folder.endswith("burned-pilot") and name.endswith((".json", ".jsonl")))
+            include |= (folder.endswith("development") and name.endswith(".json"))
             include |= (folder.endswith("development") and name.endswith((".out", ".err", ".log"))
                         and any(job in name for job in ("289648", "289879", "289894", "289897", "289898")))
             if include:
