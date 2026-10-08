@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scaffold": "Microsoft SWE-Edit baseline",
+  "scaffold_commit": "60ca6730714670a91bd6a48a53356be85e145248",
+  "agent_type": "baseline",
+  "agent_class": "SwebenchAgent",
+  "tool_budget": {
+    "max_iterations": 100,
+    "source": "upstream SWE-Edit SwebenchAgent default",
+    "task_timeout_seconds": 1800
+  },
+  "model": {
+    "provider": "OpenAI Responses API",
+    "requested_model": "gpt-6-luna",
+    "reasoning_effort": "xhigh"
+  },
+  "worker_interface": "SWE-Edit tools execute inside the frozen task SIF; the resulting git diff is submitted to the canonical evaluator",
+  "fresh_process_and_worktree_per_arm": true,
+  "temperature": "provider default; SWE-Edit Responses API request does not set temperature"
+}

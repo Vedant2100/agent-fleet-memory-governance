@@ -1,0 +1,469 @@
+{
+  "corrected_control_finding": {
+    "adapter_error_count": 0,
+    "designated_fail_to_pass_test": "lib/matplotlib/tests/test_pickle.py::test_axeswidget_interactive",
+    "designated_test_occurrences_in_before_after_summary": 2,
+    "interpretation": "The canonical evaluator collected all requested tests and marked the designated FAIL_TO_PASS test PASSED before and after the semantic no-op. The frozen target therefore violates the preregistered no-op control; keep it and stop without replacement.",
+    "no_op_canonical_grade_available": true,
+    "no_op_fail_to_pass": {
+      "passed": 1,
+      "total": 1
+    },
+    "no_op_pass_to_pass": {
+      "passed": 194,
+      "total": 194
+    },
+    "no_op_resolved": true,
+    "post_test_patch_reinstall_returncodes": [
+      0,
+      0
+    ],
+    "reference_canonical_grade_available": true,
+    "reference_resolved": true,
+    "sif_sha256": "9f9c2f24946c8dce9037ed19e141fdc39d18b8f6e5f111a1e6cab557b838a22b",
+    "target_id": "matplotlib__matplotlib-22482"
+  },
+  "downstream_execution": {
+    "candidate_pools_or_target_set_changed": false,
+    "main_study_started": false,
+    "old_sifs_deleted": false,
+    "qualification_runs": 0,
+    "read_governor_calls": 0,
+    "source_governor_calls": 0,
+    "treatment_runs": 0,
+    "worker_runs": 0
+  },
+  "execution": {
+    "adapter_fix_commit": "c1cf15b668cd06862d8daf804e75fc535de84101",
+    "corrected_control_job_id": "289186",
+    "corrected_control_stderr": "results/burned-pilot/controls-289186.err",
+    "corrected_control_stderr_sha256": "c55be7f729672642d8f9b524c05024c73e4daa7e049f894fba8cc71e7d35305d",
+    "corrected_control_stdout": "results/burned-pilot/controls-289186.out",
+    "corrected_control_stdout_sha256": "f6e8691dd94a9caf06392c693b7c7b591aa2f89dcdd94439f2a3b07e8c271140",
+    "corrected_controls_completed": 12,
+    "corrected_targets_started": 6,
+    "first_control_artifacts": [
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/django__django-35356/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "e2d60d5b6b3a79fc78e741d6f862f057abe0de651141eea75f3ad31475315d9b",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": null,
+        "resolved": false,
+        "target_id": "django__django-35356"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/django__django-35356/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "20a646039661b1ee7a50dbdbd0f2cfa0fac0db432ccd42cadce65d8dcbc21e3b",
+        "control_id": "REFERENCE_PATCH",
+        "error": null,
+        "resolved": true,
+        "target_id": "django__django-35356"
+      },
+      {
+        "canonical_grade_available": false,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/matplotlib__matplotlib-22482/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "934a89283c997382209fbb415bdfc302cdf5d19dc383719b6f3a9ee7e1c869ee",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": "Verifier setup failed: collected 0 tests before patch for matplotlib__matplotlib-22482; expected 195 requested tests",
+        "resolved": false,
+        "target_id": "matplotlib__matplotlib-22482"
+      },
+      {
+        "canonical_grade_available": false,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/matplotlib__matplotlib-22482/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "057e17b0b3c7b6952e12cf307a1157f2c32c02997a9bb91d9472c21d1265b14a",
+        "control_id": "REFERENCE_PATCH",
+        "error": "Verifier setup failed: collected 0 tests before patch for matplotlib__matplotlib-22482; expected 195 requested tests",
+        "resolved": false,
+        "target_id": "matplotlib__matplotlib-22482"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-16342/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "ee0439fd8a2f0d91f45e50e8bdc51ae6f77daabb1f834feb0da41bdfd91dbfc9",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": null,
+        "resolved": false,
+        "target_id": "sympy__sympy-16342"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-16342/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "57d585f64f160f323ecfc38fd16dbff03f5858c5a94dec52cd83b29422ead719",
+        "control_id": "REFERENCE_PATCH",
+        "error": null,
+        "resolved": true,
+        "target_id": "sympy__sympy-16342"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-16946/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "b91d15b4c3505db2f0aeca690c81c1f5fb943c658c744f27212ca2c6d35a5042",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": null,
+        "resolved": false,
+        "target_id": "sympy__sympy-16946"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-16946/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "b3214a52281407819b07e7e8d2f472e9831e325a2e6eab47b23e251669af321a",
+        "control_id": "REFERENCE_PATCH",
+        "error": null,
+        "resolved": true,
+        "target_id": "sympy__sympy-16946"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-19235/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "532bdbbf8ff793740340f8882361b47f4ba101add49125a57059a0cdc8dddb1a",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": null,
+        "resolved": false,
+        "target_id": "sympy__sympy-19235"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-19235/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "5d610e9b56f42a1f49f22ea1422752320bf8fbf37a0c485ce0d0f8216947f3ca",
+        "control_id": "REFERENCE_PATCH",
+        "error": null,
+        "resolved": true,
+        "target_id": "sympy__sympy-19235"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-21203/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+        "canonical_result_sha256": "b9bd78483ebec91c01565f8a76068bf8a1d8df31f40ae166d762b9a478268aa0",
+        "control_id": "NO_PATCH_SEMANTIC_NOOP",
+        "error": null,
+        "resolved": false,
+        "target_id": "sympy__sympy-21203"
+      },
+      {
+        "canonical_grade_available": true,
+        "canonical_result_path": "results/burned-pilot/controls-first-attempt/sympy__sympy-21203/REFERENCE_PATCH/canonical_result.json",
+        "canonical_result_sha256": "aa1d7e03532d103c973996c5ad5f30b8a0f64cf1fd1aa9329505bd0398ae9667",
+        "control_id": "REFERENCE_PATCH",
+        "error": null,
+        "resolved": true,
+        "target_id": "sympy__sympy-21203"
+      }
+    ],
+    "first_control_count": 12,
+    "first_control_job_id": "289176",
+    "first_control_run_path": "results/burned-pilot/controls-first-attempt",
+    "per_target": [
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-19235/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "0daf93db6314b5bf7035e4beca853101950e032ed5c6a9499d8f619baa201dc3",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-19235/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "f05c5c0066cd438b2edfca6ea346b74a1a1cfdbd7d0c4d9154037420b02820a3",
+            "error": null,
+            "fail_to_pass_passed": 0,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 144,
+            "pass_to_pass_total": 144,
+            "resolved": false,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-19235/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "9824fa3be117ed2c8e2e3e4143383c5dca76ecc3eb0271d06e74172011fc556a",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-19235/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "5f91a7a3f0f6f1cc497fa8d5d3773956a65c5cc36c47d64edf1b17a4249bb6d1",
+            "error": null,
+            "fail_to_pass_passed": 1,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 144,
+            "pass_to_pass_total": 144,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "PAIR_PASSED",
+        "target_id": "sympy__sympy-19235"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-21203/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "b2b9bfb731630c5019994b8fdb978bf8badb25421eee765a0eb486962943e08a",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-21203/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "36b04d6c897162fa74d9be96c64541115a02020e3b8f40df78ccfdb7d9c1d155",
+            "error": null,
+            "fail_to_pass_passed": 0,
+            "fail_to_pass_total": 3,
+            "failure_type": null,
+            "pass_to_pass_passed": 124,
+            "pass_to_pass_total": 124,
+            "resolved": false,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-21203/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "56ee130c6d1dcf79fc38c4a4704a3833a17cc92bd6dc1ce0a00b11312fe0ec33",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-21203/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "676bf29f89276fbf59c7e4899a6749757ff38566f7bad88d726ddf6f104e2e55",
+            "error": null,
+            "fail_to_pass_passed": 3,
+            "fail_to_pass_total": 3,
+            "failure_type": null,
+            "pass_to_pass_passed": 124,
+            "pass_to_pass_total": 124,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "PAIR_PASSED",
+        "target_id": "sympy__sympy-21203"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/django__django-35356/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "a2eb8e0c301878493defe960ef50fdd8cd5d6e7e9b7a7edf72798825f3d5f287",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/django__django-35356/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "bd13f6ca9a80d87e968025d18cadceefd4326a86475ec7358dfa38a725c5a832",
+            "error": null,
+            "fail_to_pass_passed": 0,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 17,
+            "pass_to_pass_total": 17,
+            "resolved": false,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/django__django-35356/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "859bdc24ebd85b70922d9093a72fde452131dadf992f89d838d8774526559f7d",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/django__django-35356/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "efdaa23dbab80935fcb2465f3920fe8ed847fd4b001f78d6a3146f1bc554c145",
+            "error": null,
+            "fail_to_pass_passed": 1,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 17,
+            "pass_to_pass_total": 17,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "PAIR_PASSED",
+        "target_id": "django__django-35356"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-16342/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "ebe277373402783106a31caa32c9e61775698cb371ff85132022d0e612f3303f",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-16342/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "2e48d60936dcebd0783e320016452689d6aff665e8dc7975bfc5a7fe97ee72b4",
+            "error": null,
+            "fail_to_pass_passed": 0,
+            "fail_to_pass_total": 11,
+            "failure_type": null,
+            "pass_to_pass_passed": 443,
+            "pass_to_pass_total": 443,
+            "resolved": false,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-16342/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "ba85fa2257e06a70812c87b6791188046edf594ef829b51206beaa1f4fd72043",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-16342/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "6e7e3c50933e67103b735353e63ecb3c850014c892707a97f9880222902434a1",
+            "error": null,
+            "fail_to_pass_passed": 11,
+            "fail_to_pass_total": 11,
+            "failure_type": null,
+            "pass_to_pass_passed": 443,
+            "pass_to_pass_total": 443,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "PAIR_PASSED",
+        "target_id": "sympy__sympy-16342"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-16946/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "bc4dfb5ce2a447c0251fdaae6fdb10a12d7a1f1ca1bcb070f024cf929dd67d08",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-16946/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "0446d1bac47517bdbc29f8a0a38e2f179688f3a3eb7fa8d1ed4263857b56bd52",
+            "error": null,
+            "fail_to_pass_passed": 0,
+            "fail_to_pass_total": 6,
+            "failure_type": null,
+            "pass_to_pass_passed": 150,
+            "pass_to_pass_total": 150,
+            "resolved": false,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/sympy__sympy-16946/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "e4a2ef34dd2074ec8090197ec0ed47026eea624596e66a56a61569ee644c2ce6",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/sympy__sympy-16946/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "ca7875c44f190dd816153368b1f48b46746963cf292a43476b8fb300fa7ebe82",
+            "error": null,
+            "fail_to_pass_passed": 6,
+            "fail_to_pass_total": 6,
+            "failure_type": null,
+            "pass_to_pass_passed": 150,
+            "pass_to_pass_total": 150,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "PAIR_PASSED",
+        "target_id": "sympy__sympy-16946"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "adapter_events_path": "results/burned-pilot/controls/matplotlib__matplotlib-22482/NO_PATCH_SEMANTIC_NOOP/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "4d3b89820cdc008da1671f34ed46478f73a4c6206ceb48eeec9b7c2467fc8172",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/matplotlib__matplotlib-22482/NO_PATCH_SEMANTIC_NOOP/canonical_result.json",
+            "canonical_result_sha256": "253fb4506080229ac80b760a3f777b3b55e955ebcd6aeee77257ad6d93c50939",
+            "error": null,
+            "fail_to_pass_passed": 1,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 194,
+            "pass_to_pass_total": 194,
+            "resolved": true,
+            "status": "COMPLETE"
+          },
+          "REFERENCE_PATCH": {
+            "adapter_events_path": "results/burned-pilot/controls/matplotlib__matplotlib-22482/REFERENCE_PATCH/apptainer_docker_events.jsonl",
+            "adapter_events_sha256": "e0da3d3faea098fa8a770114b745878e1628b5888df569a954f4a3fa236c6891",
+            "canonical_grade_available": true,
+            "canonical_result_path": "results/burned-pilot/controls/matplotlib__matplotlib-22482/REFERENCE_PATCH/canonical_result.json",
+            "canonical_result_sha256": "5c27a22923759b9eb7de51909ddf40e127d7de653a2792f9dd659790b9feb396",
+            "error": null,
+            "fail_to_pass_passed": 1,
+            "fail_to_pass_total": 1,
+            "failure_type": null,
+            "pass_to_pass_passed": 194,
+            "pass_to_pass_total": 194,
+            "resolved": true,
+            "status": "COMPLETE"
+          }
+        },
+        "control_state": "STOP_NOOP_RESOLVED",
+        "target_id": "matplotlib__matplotlib-22482"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "status": "NOT_RUN"
+          },
+          "REFERENCE_PATCH": {
+            "status": "NOT_RUN"
+          }
+        },
+        "control_state": "NOT_RUN_AFTER_STOP",
+        "target_id": "sympy__sympy-21309"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "status": "NOT_RUN"
+          },
+          "REFERENCE_PATCH": {
+            "status": "NOT_RUN"
+          }
+        },
+        "control_state": "NOT_RUN_AFTER_STOP",
+        "target_id": "django__django-34176"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "status": "NOT_RUN"
+          },
+          "REFERENCE_PATCH": {
+            "status": "NOT_RUN"
+          }
+        },
+        "control_state": "NOT_RUN_AFTER_STOP",
+        "target_id": "sympy__sympy-16953"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "status": "NOT_RUN"
+          },
+          "REFERENCE_PATCH": {
+            "status": "NOT_RUN"
+          }
+        },
+        "control_state": "NOT_RUN_AFTER_STOP",
+        "target_id": "scikit-learn__scikit-learn-13771"
+      },
+      {
+        "arms": {
+          "NO_PATCH_SEMANTIC_NOOP": {
+            "status": "NOT_RUN"
+          },
+          "REFERENCE_PATCH": {
+            "status": "NOT_RUN"
+          }
+        },
+        "control_state": "NOT_RUN_AFTER_STOP",
+        "target_id": "sympy__sympy-9384"
+      }
+    ],
+    "submission_command": "sbatch --partition=vcggpu --time=48:00:00 --export=FMC_PROJECT_ROOT=/home/csgrad/vbork001/fleet-mem-contextbench,FMC_PYTHON=/home/csgrad/vbork001/miniconda3/bin/python,FMC_CONTEXTBENCH_ROOT=/home/csgrad/vbork001/.cache/fleet-mem-contextbench/SWEContextBench,FMC_TARGETS_PARQUET=/home/csgrad/vbork001/.cache/fleet-mem-contextbench/data/SWEContextBench_Related_Lite.parquet,FMC_STAGE=controls -o /home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/controls-%j.out -e /home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/controls-%j.err scripts/run_burned_pilot.sbatch",
+    "targets_not_run_after_stop": [
+      "sympy__sympy-21309",
+      "django__django-34176",
+      "sympy__sympy-16953",
+      "scikit-learn__scikit-learn-13771",
+      "sympy__sympy-9384"
+    ]
+  },
+  "initial_failure": {
+    "arms_invalid": [
+      "NO_PATCH_SEMANTIC_NOOP",
+      "REFERENCE_PATCH"
+    ],
+    "reason": "the Apptainer adapter skipped the first docker run argument when --name was the first flag, so the canonical Matplotlib post-test-patch reinstall did not run; pytest imported the stale installed package and collected zero of 195 tests",
+    "target_id": "matplotlib__matplotlib-22482",
+    "traceback_path": "results/burned-pilot/controls-first-attempt/matplotlib__matplotlib-22482/REFERENCE_PATCH/canonical_logs/test_output.txt"
+  },
+  "pilot_plan": {
+    "benchmark_manifest_sha256": "a321ca12c606cbdbc08d2ae520dfbc1eddcd22115d2e18ea2557222410eaee51",
+    "contextbench_commit": "12ad6ab14e18e9378e1e293c9edbc3f7ce43d27b",
+    "frozen_source_memory_count": 211,
+    "frozen_target_count": 11,
+    "generation_commit_at_freeze": "4264c50a27f671c37c1287758482ad0988d81bbf",
+    "hidden_relation_annotations_sha256": "2baac13f29c8149eed91593ebb6b37112d74a7556b34cb7ad9f0b8232fb6dfb7",
+    "huggingface_revision": "12c65bd15e2559bc808065565e941ee7bbbd008f",
+    "path": "artifacts/burned-pilot/plan.json",
+    "plan_version": "burned-pilot-v2",
+    "sha256": "008a9a08d5f418d953de4a080d4d84f97120a2a5e9e2b86496cf813c11a66e06"
+  },
+  "schema_version": 1,
+  "status": "STOP_BEFORE_QUALIFICATION_OR_TREATMENTS",
+  "stop_reason": "SEMANTIC_NOOP_CONTROL_RESOLVED"
+}

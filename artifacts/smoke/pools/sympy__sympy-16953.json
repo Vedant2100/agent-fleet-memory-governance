@@ -1,0 +1,1831 @@
+{
+  "candidate_count": 39,
+  "candidate_pool": [
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: ccode(sinc(x)) doesn't work ``` In [30]: ccode(sinc(x)) Out[30]: '// Not supported in C:\\n// sinc\\nsinc(x)' ``` I don't think `math.h` has `sinc`, but it could print ``` In [38]: ccode(Piecewise((sin(theta)/theta, Ne(theta, 0)), (1, True))) Out[38]: '((Ne(theta, 0)) ? (\\n sin(theta)/theta\\n)\\n: (\\n 1\\n))' ```. Its reference change touched: sympy/printing/ccode.py.",
+        "created_at": "2016-07-15T21:40:49Z",
+        "evidence": [
+          "ccode(sinc(x)) doesn't work ``` In [30]: ccode(sinc(x)) Out[30]: '// Not supported in C:\\n// sinc\\nsinc(x)' ``` I don't think `math.h` has `sinc`, but it could print ``` In [38]: ccode(Piecewise((sin(theta)/theta, Ne(theta, 0)), (1, True))) Out[38]: '((Ne(theta, 0)) ? (\\n sin(theta)/theta\\n)\\n: (\\n 1\\n))' ```"
+        ],
+        "evidence_locations": [
+          "sympy/printing/ccode.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/ccode.py"
+        ],
+        "generality": null,
+        "memory_id": "1fcc60cf20f9678dff008714",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "47de72199670674ff2e701194214aea14aba78adc44a4f5953cf708a28934cdc",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/ccode.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-11400",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 1137.832
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: simplifying exponential -> trig identities ``` f = 1 / 2 * (-I*exp(I*k) + I*exp(-I*k)) trigsimp(f) ``` Ideally, this would yield `sin(k)`. Is there a way to do this? As a corollary, it would be awesome if ``` f = 1 / 2 / k* (-I*exp(I*k) + I*exp(-I*k)) trigsimp(f) ``` could yield `sinc(k)`. Thank you for your…. Its reference change touched: sympy/functions/elementary/trigonometric.py.",
+        "created_at": "2016-11-17T21:36:03Z",
+        "evidence": [
+          "simplifying exponential -> trig identities ``` f = 1 / 2 * (-I*exp(I*k) + I*exp(-I*k)) trigsimp(f) ``` Ideally, this would yield `sin(k)`. Is there a way to do this? As a corollary, it would be awesome if ``` f = 1 / 2 / k* (-I*exp(I*k) + I*exp(-I*k)) trigsimp(f) ``` could yield `sinc(k)`. Thank you for your…"
+        ],
+        "evidence_locations": [
+          "sympy/functions/elementary/trigonometric.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/functions/elementary/trigonometric.py"
+        ],
+        "generality": null,
+        "memory_id": "e8c774b6b83aece548462e9a",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "d9132c0d2875adc1574fe305ae88aec1ebeb9b5cab0ccc8fd865b165da835f84",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/functions/elementary/trigonometric.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-11870",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 1012.836
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: LaTeX printer inconsistent with pretty printer The LaTeX printer should always give the same output as the pretty printer, unless better output is possible from LaTeX. In some cases it is inconsistent. For instance: ``` py In [9]: var('x', positive=True) Out[9]: x In [10]: latex(exp(-x)*log(x)) Out[10]:…. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2016-12-03T14:40:51Z",
+        "evidence": [
+          "LaTeX printer inconsistent with pretty printer The LaTeX printer should always give the same output as the pretty printer, unless better output is possible from LaTeX. In some cases it is inconsistent. For instance: ``` py In [9]: var('x', positive=True) Out[9]: x In [10]: latex(exp(-x)*log(x)) Out[10]:…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "5d7dc4296e585fcb57f2db91",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "72399c809fb4000f0d7329073bbe9212474519f4deb3987dd209d30933f92f8b",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-11897",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 997.124
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: matematica code printer does not handle floats and derivatives correctly In its current state the mathematica code printer does not handle Derivative(func(vars), deriver) e.g. Derivative(f(t), t) yields Derivative(f(t), t) instead of D[f[t],t] Also floats with exponents are not handled correctly e.g. 1.0e-4 is not…. Its reference change touched: sympy/printing/mathematica.py.",
+        "created_at": "2017-02-13T18:20:56Z",
+        "evidence": [
+          "matematica code printer does not handle floats and derivatives correctly In its current state the mathematica code printer does not handle Derivative(func(vars), deriver) e.g. Derivative(f(t), t) yields Derivative(f(t), t) instead of D[f[t],t] Also floats with exponents are not handled correctly e.g. 1.0e-4 is not…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/mathematica.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/mathematica.py"
+        ],
+        "generality": null,
+        "memory_id": "a8f1c380cdd35b4b004f5d79",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "19e9d1989ba520af5c6c7717350d52afda477d533d1afaaa458c979f54450fcd",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/mathematica.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-12171",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 924.971
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Wrong result with apart ``` Python 3.6.0 |Continuum Analytics, Inc.| (default, Dec 23 2016, 12:22:00) Type \"copyright\", \"credits\" or \"license\" for more information. IPython 5.1.0 -- An enhanced Interactive Python. ? -> Introduction and overview of IPython's features. %quickref -> Quick reference. help -> Python's own…. Its reference change touched: sympy/polys/domains/polynomialring.py.",
+        "created_at": "2017-03-01T14:52:16Z",
+        "evidence": [
+          "Wrong result with apart ``` Python 3.6.0 |Continuum Analytics, Inc.| (default, Dec 23 2016, 12:22:00) Type \"copyright\", \"credits\" or \"license\" for more information. IPython 5.1.0 -- An enhanced Interactive Python. ? -> Introduction and overview of IPython's features. %quickref -> Quick reference. help -> Python's own…"
+        ],
+        "evidence_locations": [
+          "sympy/polys/domains/polynomialring.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/polys/domains/polynomialring.py"
+        ],
+        "generality": null,
+        "memory_id": "ca65320f4dc203246bb1bc7c",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "a6eb888a1877224d8bd0ea42d6e751b9d8766cf74babeeedc8b17689e4e7a346",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/polys/domains/polynomialring.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-12236",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 909.116
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Sum of the elements of an identity matrix is zero I think this is a bug. I created a matrix by M.T * M under an assumption that M is orthogonal. SymPy successfully recognized that the result is an identity matrix. I tested its identity-ness by element-wise, queries, and sum of the diagonal elements and received…. Its reference change touched: sympy/matrices/expressions/matexpr.py.",
+        "created_at": "2017-03-25T15:02:26Z",
+        "evidence": [
+          "Sum of the elements of an identity matrix is zero I think this is a bug. I created a matrix by M.T * M under an assumption that M is orthogonal. SymPy successfully recognized that the result is an identity matrix. I tested its identity-ness by element-wise, queries, and sum of the diagonal elements and received…"
+        ],
+        "evidence_locations": [
+          "sympy/matrices/expressions/matexpr.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/matrices/expressions/matexpr.py"
+        ],
+        "generality": null,
+        "memory_id": "8a35006979d0d05fcbdeeb68",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "ce0c88e2d2e38ddba84f187d1ba72ea6a7a8cccd339310926546f77dbf82514a",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/matrices/expressions/matexpr.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-12419",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "correct",
+          "elements"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 885.109
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: is_upper() raises IndexError for tall matrices The function Matrix.is_upper raises an IndexError for a 4x2 matrix of zeros. ``` >>> sympy.zeros(4,2).is_upper Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"sympy/matrices/matrices.py\", line 1112, in is_upper for i in range(1, self.rows)…. Its reference change touched: sympy/matrices/matrices.py.",
+        "created_at": "2017-03-29T20:40:49Z",
+        "evidence": [
+          "is_upper() raises IndexError for tall matrices The function Matrix.is_upper raises an IndexError for a 4x2 matrix of zeros. ``` >>> sympy.zeros(4,2).is_upper Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"sympy/matrices/matrices.py\", line 1112, in is_upper for i in range(1, self.rows)…"
+        ],
+        "evidence_locations": [
+          "sympy/matrices/matrices.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/matrices/matrices.py"
+        ],
+        "generality": null,
+        "memory_id": "e25b0fb542c837bc8ca0da1c",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "023b3633b8f35c6d21c95ddc3eee8a6326cfe39a0ce7b9d819a8df043135c79e",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/matrices/matrices.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-12454",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 880.874
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: `Permutation` constructor fails with non-disjoint cycles Calling `Permutation([[0,1],[0,1]])` raises a `ValueError` instead of constructing the identity permutation. If the cycles passed in are non-disjoint, they should be applied in left-to-right order and the resulting permutation should be returned. This should be…. Its reference change touched: sympy/combinatorics/permutations.py.",
+        "created_at": "2017-04-03T01:52:33Z",
+        "evidence": [
+          "`Permutation` constructor fails with non-disjoint cycles Calling `Permutation([[0,1],[0,1]])` raises a `ValueError` instead of constructing the identity permutation. If the cycles passed in are non-disjoint, they should be applied in left-to-right order and the resulting permutation should be returned. This should be…"
+        ],
+        "evidence_locations": [
+          "sympy/combinatorics/permutations.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/combinatorics/permutations.py"
+        ],
+        "generality": null,
+        "memory_id": "6847f14cf1dd28eef08c9e49",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "f796099de0745bfa636c40b59f46d954fca87d98a0873963cab6006777eb3da3",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/combinatorics/permutations.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-12481",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 876.657
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Behavior of Matrix hstack and vstack changed in sympy 1.1 In sympy 1.0: ``` import sympy as sy M1 = sy.Matrix.zeros(0, 0) M2 = sy.Matrix.zeros(0, 1) M3 = sy.Matrix.zeros(0, 2) M4 = sy.Matrix.zeros(0, 3) sy.Matrix.hstack(M1, M2, M3, M4).shape ``` returns `(0, 6)` Now, same in sympy 1.1: ``` import sympy as sy M1 =…. Its reference change touched: sympy/matrices/sparse.py.",
+        "created_at": "2017-07-23T15:48:13Z",
+        "evidence": [
+          "Behavior of Matrix hstack and vstack changed in sympy 1.1 In sympy 1.0: ``` import sympy as sy M1 = sy.Matrix.zeros(0, 0) M2 = sy.Matrix.zeros(0, 1) M3 = sy.Matrix.zeros(0, 2) M4 = sy.Matrix.zeros(0, 3) sy.Matrix.hstack(M1, M2, M3, M4).shape ``` returns `(0, 6)` Now, same in sympy 1.1: ``` import sympy as sy M1 =…"
+        ],
+        "evidence_locations": [
+          "sympy/matrices/sparse.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/matrices/sparse.py"
+        ],
+        "generality": null,
+        "memory_id": "913926b8c83e443d26d1d36b",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "ab5da50fd5606b2a3b43aecd8d246ec6ba39915de71c31891e18346f809dee4c",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/matrices/sparse.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13031",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 765.077
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: decompose() function in intpoly returns a list of arbitrary order The decompose() function, with separate=True, returns `list(poly_dict.values())`, which is ordered arbitrarily. What is this used for? It should be sorted somehow, or returning a set (in which case, why not just use the returned dictionary and have the…. Its reference change touched: sympy/integrals/intpoly.py.",
+        "created_at": "2017-07-26T00:29:45Z",
+        "evidence": [
+          "decompose() function in intpoly returns a list of arbitrary order The decompose() function, with separate=True, returns `list(poly_dict.values())`, which is ordered arbitrarily. What is this used for? It should be sorted somehow, or returning a set (in which case, why not just use the returned dictionary and have the…"
+        ],
+        "evidence_locations": [
+          "sympy/integrals/intpoly.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/integrals/intpoly.py"
+        ],
+        "generality": null,
+        "memory_id": "ee2502f72a6e10a43efc9a0a",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "c08f713e04318496c695ec0770074fea7d2bd048ce7daf2ce227cb546422336c",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/integrals/intpoly.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13043",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 762.715
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Exponent doesn't fully simplify Say I have code like this: ``` import sympy from sympy import * x=Symbol('x') expr1 = S(1)/2*x**2.5 expr2 = S(1)*x**(S(5)/2)/2 res = expr1-expr2 res= simplify(res.evalf(5)) print res ``` The output is `-0.5*x**2.5 + 0.5*x**2.5` How do I simplify it to 0?. Its reference change touched: sympy/core/operations.py.",
+        "created_at": "2017-08-18T05:51:45Z",
+        "evidence": [
+          "Exponent doesn't fully simplify Say I have code like this: ``` import sympy from sympy import * x=Symbol('x') expr1 = S(1)/2*x**2.5 expr2 = S(1)*x**(S(5)/2)/2 res = expr1-expr2 res= simplify(res.evalf(5)) print res ``` The output is `-0.5*x**2.5 + 0.5*x**2.5` How do I simplify it to 0?"
+        ],
+        "evidence_locations": [
+          "sympy/core/operations.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/operations.py"
+        ],
+        "generality": null,
+        "memory_id": "353a0f36d918baed6e1fc795",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "2c9f50e49172f67b8757b81d76181e7bc5e80b7a43dbf91999ccebeef98188af",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/operations.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13146",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 739.491
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Mod(x**2, x) is not (always) 0 When the base is not an integer, `x**2 % x` is not 0. The base is not tested to be an integer in Mod's eval logic: ``` if (p == q or p == -q or p.is_Pow and p.exp.is_Integer and p.base == q or p.is_integer and q == 1): return S.Zero ``` so ``` >>> Mod(x**2, x) 0 ``` but ``` >>> x =…. Its reference change touched: sympy/core/mod.py.",
+        "created_at": "2017-08-22T20:28:20Z",
+        "evidence": [
+          "Mod(x**2, x) is not (always) 0 When the base is not an integer, `x**2 % x` is not 0. The base is not tested to be an integer in Mod's eval logic: ``` if (p == q or p == -q or p.is_Pow and p.exp.is_Integer and p.base == q or p.is_integer and q == 1): return S.Zero ``` so ``` >>> Mod(x**2, x) 0 ``` but ``` >>> x =…"
+        ],
+        "evidence_locations": [
+          "sympy/core/mod.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/mod.py"
+        ],
+        "generality": null,
+        "memory_id": "0735163b0872b8a797b0de0a",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "518ef9adcef746fa566f5ca4ce5df2effb0b98c284bd08b9c04a3b4f05b7ebc2",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/mod.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13177",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 734.883
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: bell(n).limit(n, oo) should be oo rather than bell(oo) `bell(n).limit(n,oo)` should take the value infinity, but the current output is `bell(oo)`. As the Bell numbers represent the number of partitions of a set, it seems natural that `bell(oo)` should be able to be evaluated rather than be returned unevaluated. This…. Its reference change touched: sympy/functions/combinatorial/numbers.py.",
+        "created_at": "2017-10-12T18:21:19Z",
+        "evidence": [
+          "bell(n).limit(n, oo) should be oo rather than bell(oo) `bell(n).limit(n,oo)` should take the value infinity, but the current output is `bell(oo)`. As the Bell numbers represent the number of partitions of a set, it seems natural that `bell(oo)` should be able to be evaluated rather than be returned unevaluated. This…"
+        ],
+        "evidence_locations": [
+          "sympy/functions/combinatorial/numbers.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/functions/combinatorial/numbers.py"
+        ],
+        "generality": null,
+        "memory_id": "8b26c5ea6a01899214f2ab48",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "8b3d247b7852e9e503a189b1caf5b686f4950b39f9dcc972a6b4b731ab1e1e5d",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/functions/combinatorial/numbers.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13437",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 683.971
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Python 2->3 pickle fails with float-containing expressions Dumping a pickled sympy expression containing a float in Python 2, then loading it in Python 3 generates an error. Here is a minimum working example, verified with sympy git commit 3546ac7 (master at time of writing), Python 2.7 and Python 3.6: ```python…. Its reference change touched: sympy/core/numbers.py.",
+        "created_at": "2017-10-17T22:52:35Z",
+        "evidence": [
+          "Python 2->3 pickle fails with float-containing expressions Dumping a pickled sympy expression containing a float in Python 2, then loading it in Python 3 generates an error. Here is a minimum working example, verified with sympy git commit 3546ac7 (master at time of writing), Python 2.7 and Python 3.6: ```python…"
+        ],
+        "evidence_locations": [
+          "sympy/core/numbers.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/numbers.py"
+        ],
+        "generality": null,
+        "memory_id": "8ac92a93a55b2ac6a62f9c85",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "d7de741d8b9ad3fad4a7e7993c6738e76c0501f6319032dc349e7df756f42d70",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/numbers.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13471",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "expressions"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 678.782
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: .subs on coth(log(tan(x))) errors for certain integral values >>> from sympy import * >>> x = Symbol('x') >>> e = coth(log(tan(x))) >>> print(e.subs(x, 2)) ... File \"C:\\Users\\E\\Desktop\\sympy-master\\sympy\\functions\\elementary\\hyperbolic.py\", line 590, in eval if cotm is S.ComplexInfinity: NameError: name 'cotm' is not…. Its reference change touched: sympy/functions/elementary/hyperbolic.py.",
+        "created_at": "2017-10-18T17:27:03Z",
+        "evidence": [
+          ".subs on coth(log(tan(x))) errors for certain integral values >>> from sympy import * >>> x = Symbol('x') >>> e = coth(log(tan(x))) >>> print(e.subs(x, 2)) ... File \"C:\\Users\\E\\Desktop\\sympy-master\\sympy\\functions\\elementary\\hyperbolic.py\", line 590, in eval if cotm is S.ComplexInfinity: NameError: name 'cotm' is not…"
+        ],
+        "evidence_locations": [
+          "sympy/functions/elementary/hyperbolic.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/functions/elementary/hyperbolic.py"
+        ],
+        "generality": null,
+        "memory_id": "7572325601dbedb26f99582f",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "0bf47e55b05892a48ced3c42f9b66d917f75142d53500dde97715f8516405e12",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/functions/elementary/hyperbolic.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13480",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 678.008
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Matrix.col_insert() no longer seems to work correctly. Example: ``` In [28]: import sympy as sm In [29]: M = sm.eye(6) In [30]: M Out[30]: ⎡1 0 0 0 0 0⎤ ⎢ ⎥ ⎢0 1 0 0 0 0⎥ ⎢ ⎥ ⎢0 0 1 0 0 0⎥ ⎢ ⎥ ⎢0 0 0 1 0 0⎥ ⎢ ⎥ ⎢0 0 0 0 1 0⎥ ⎢ ⎥ ⎣0 0 0 0 0 1⎦ In [31]: V = 2 * sm.ones(6, 2) In [32]: V Out[32]: ⎡2 2⎤ ⎢ ⎥ ⎢2 2⎥ ⎢ ⎥ ⎢2…. Its reference change touched: sympy/matrices/common.py.",
+        "created_at": "2017-11-28T21:22:51Z",
+        "evidence": [
+          "Matrix.col_insert() no longer seems to work correctly. Example: ``` In [28]: import sympy as sm In [29]: M = sm.eye(6) In [30]: M Out[30]: ⎡1 0 0 0 0 0⎤ ⎢ ⎥ ⎢0 1 0 0 0 0⎥ ⎢ ⎥ ⎢0 0 1 0 0 0⎥ ⎢ ⎥ ⎢0 0 0 1 0 0⎥ ⎢ ⎥ ⎢0 0 0 0 1 0⎥ ⎢ ⎥ ⎣0 0 0 0 0 1⎦ In [31]: V = 2 * sm.ones(6, 2) In [32]: V Out[32]: ⎡2 2⎤ ⎢ ⎥ ⎢2 2⎥ ⎢ ⎥ ⎢2…"
+        ],
+        "evidence_locations": [
+          "sympy/matrices/common.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/matrices/common.py"
+        ],
+        "generality": null,
+        "memory_id": "3c73723dd330134212bd3242",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "8d21c345d75bb0dca5f707ac1bf5a6a5d6e21f75d62f54d0d48b5a09ce74839d",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/matrices/common.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13647",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 636.845
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: @ (__matmul__) should fail if one argument is not a matrix ``` >>> A = Matrix([[1, 2], [3, 4]]) >>> B = Matrix([[2, 3], [1, 2]]) >>> A@B Matrix([ [ 4, 7], [10, 17]]) >>> 2@B Matrix([ [4, 6], [2, 4]]) ``` Right now `@` (`__matmul__`) just copies `__mul__`, but it should actually only work if the multiplication is…. Its reference change touched: sympy/matrices/common.py.",
+        "created_at": "2017-12-19T10:44:38Z",
+        "evidence": [
+          "@ (__matmul__) should fail if one argument is not a matrix ``` >>> A = Matrix([[1, 2], [3, 4]]) >>> B = Matrix([[2, 3], [1, 2]]) >>> A@B Matrix([ [ 4, 7], [10, 17]]) >>> 2@B Matrix([ [4, 6], [2, 4]]) ``` Right now `@` (`__matmul__`) just copies `__mul__`, but it should actually only work if the multiplication is…"
+        ],
+        "evidence_locations": [
+          "sympy/matrices/common.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/matrices/common.py"
+        ],
+        "generality": null,
+        "memory_id": "9fcd26c18dd9f29cfdc76902",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "0725ae14d5f82e3e68f66df1ef1404619b6adc6f61ef0baa352c8063fe2ebf25",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/matrices/common.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13773",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 616.288
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: (-x/4 - S(1)/12)**x - 1 simplifies to an inequivalent expression >>> from sympy import * >>> x = Symbol('x') >>> e = (-x/4 - S(1)/12)**x - 1 >>> e (-x/4 - 1/12)**x - 1 >>> f = simplify(e) >>> f 12**(-x)*(-12**x + (-3*x - 1)**x) >>> a = S(9)/5 >>> simplify(e.subs(x,a)) -1 - 32*15**(1/5)*2**(2/5)/225 >>>…. Its reference change touched: sympy/core/numbers.py.",
+        "created_at": "2018-01-11T19:43:54Z",
+        "evidence": [
+          "(-x/4 - S(1)/12)**x - 1 simplifies to an inequivalent expression >>> from sympy import * >>> x = Symbol('x') >>> e = (-x/4 - S(1)/12)**x - 1 >>> e (-x/4 - 1/12)**x - 1 >>> f = simplify(e) >>> f 12**(-x)*(-12**x + (-3*x - 1)**x) >>> a = S(9)/5 >>> simplify(e.subs(x,a)) -1 - 32*15**(1/5)*2**(2/5)/225 >>>…"
+        ],
+        "evidence_locations": [
+          "sympy/core/numbers.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/numbers.py"
+        ],
+        "generality": null,
+        "memory_id": "da38373d93e36904d1ff201e",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "b159433b1edc73431033a8bb3641d6d7cf2d90466d03946104cbe68ff555612f",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/numbers.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13895",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 592.913
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Issue with a substitution that leads to an undefined expression ``` Python 3.6.4 |Anaconda custom (64-bit)| (default, Dec 21 2017, 15:39:08) Type 'copyright', 'credits' or 'license' for more information IPython 6.2.1 -- An enhanced Interactive Python. Type '?' for help. In [1]: from sympy import * In [2]: a,b =…. Its reference change touched: sympy/core/mul.py.",
+        "created_at": "2018-01-13T20:41:07Z",
+        "evidence": [
+          "Issue with a substitution that leads to an undefined expression ``` Python 3.6.4 |Anaconda custom (64-bit)| (default, Dec 21 2017, 15:39:08) Type 'copyright', 'credits' or 'license' for more information IPython 6.2.1 -- An enhanced Interactive Python. Type '?' for help. In [1]: from sympy import * In [2]: a,b =…"
+        ],
+        "evidence_locations": [
+          "sympy/core/mul.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/mul.py"
+        ],
+        "generality": null,
+        "memory_id": "ea35517e7f6cffcc72f2c533",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "2dcb0e965dae0e18dac9f7682f0120ae6f0b73c97ffdc50228ee43bec9b4f07b",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/mul.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13915",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out",
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 590.874
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Display of SeqFormula() ``` import sympy as sp k, m, n = sp.symbols('k m n', integer=True) sp.init_printing() sp.SeqFormula(n**2, (n,0,sp.oo)) ``` The Jupyter rendering of this command backslash-escapes the brackets producing: `\\left\\[0, 1, 4, 9, \\ldots\\right\\]` Copying this output to a markdown cell this does not…. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2018-01-20T10:03:44Z",
+        "evidence": [
+          "Display of SeqFormula() ``` import sympy as sp k, m, n = sp.symbols('k m n', integer=True) sp.init_printing() sp.SeqFormula(n**2, (n,0,sp.oo)) ``` The Jupyter rendering of this command backslash-escapes the brackets producing: `\\left\\[0, 1, 4, 9, \\ldots\\right\\]` Copying this output to a markdown cell this does not…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "e2b41cdfc5344a9ba8d56675",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "1f0c174ccf2f6bcbaa719b91854478fabf8ec0a993fcd24d679b3362ddd11f6e",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-13971",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 584.316
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Inconsistency when simplifying (-a)**x * a**(-x), a a positive integer Compare: ``` >>> a = Symbol('a', integer=True, positive=True) >>> e = (-a)**x * a**(-x) >>> f = simplify(e) >>> print(e) a**(-x)*(-a)**x >>> print(f) (-1)**x >>> t = -S(10)/3 >>> n1 = e.subs(x,t) >>> n2 = f.subs(x,t) >>> print(N(n1)) -0.5 +…. Its reference change touched: sympy/core/numbers.py.",
+        "created_at": "2018-01-27T05:55:11Z",
+        "evidence": [
+          "Inconsistency when simplifying (-a)**x * a**(-x), a a positive integer Compare: ``` >>> a = Symbol('a', integer=True, positive=True) >>> e = (-a)**x * a**(-x) >>> f = simplify(e) >>> print(e) a**(-x)*(-a)**x >>> print(f) (-1)**x >>> t = -S(10)/3 >>> n1 = e.subs(x,t) >>> n2 = f.subs(x,t) >>> print(N(n1)) -0.5 +…"
+        ],
+        "evidence_locations": [
+          "sympy/core/numbers.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/core/numbers.py"
+        ],
+        "generality": null,
+        "memory_id": "1bdf91c511b5d0b12fe0fb8a",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "6ea68edab0cf290c204dbc9e3aca148f105669f5fb75b160fed931e8e3b5c5a1",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/core/numbers.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14024",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 577.489
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: vectors break pretty printing ```py In [1]: from sympy.vector import * In [2]: e = CoordSysCartesian('e') In [3]: (x/y)**t*e.j Out[3]: ⎛ t⎞ e_j ⎜⎛x⎞ e_j ⎟ ⎜⎜─⎟ ⎟ ⎝⎝y⎠ ⎠ ``` Also, when it does print correctly, the baseline is wrong (it should be centered).. Its reference change touched: sympy/printing/pretty/pretty.py.",
+        "created_at": "2018-02-22T16:54:06Z",
+        "evidence": [
+          "vectors break pretty printing ```py In [1]: from sympy.vector import * In [2]: e = CoordSysCartesian('e') In [3]: (x/y)**t*e.j Out[3]: ⎛ t⎞ e_j ⎜⎛x⎞ e_j ⎟ ⎜⎜─⎟ ⎟ ⎝⎝y⎠ ⎠ ``` Also, when it does print correctly, the baseline is wrong (it should be centered)."
+        ],
+        "evidence_locations": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "generality": null,
+        "memory_id": "b50a5dbaa314940c3a997850",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "ac668b00a7e70e8cc2121b8a16323ff0c1ad447b6feac99f3fc78b58564373e0",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/pretty/pretty.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14308",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 551.031
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: LaTeX printer does not use the same order of monomials as pretty and str When printing a Poly, the str and pretty printers use the logical order of monomials, from highest to lowest degrees. But latex printer does not. ``` >>> var('a b c x') >>> p = Poly([a, 1, b, 2, c, 3], x) >>> p Poly(a*x**5 + x**4 + b*x**3 +…. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2018-02-24T10:05:10Z",
+        "evidence": [
+          "LaTeX printer does not use the same order of monomials as pretty and str When printing a Poly, the str and pretty printers use the logical order of monomials, from highest to lowest degrees. But latex printer does not. ``` >>> var('a b c x') >>> p = Poly([a, 1, b, 2, c, 3], x) >>> p Poly(a*x**5 + x**4 + b*x**3 +…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "d32d1b9a09d0d65624fc60f4",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "4715f3fe750751d7d1c8635e5abc7289bd500cc350e6f12945cc86229492091d",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14317",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 549.315
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Poly(domain='RR[y,z]') doesn't work ``` py In [14]: Poly(1.2*x*y*z, x) Out[14]: Poly(1.2*y*z*x, x, domain='RR[y,z]') In [15]: Poly(1.2*x*y*z, x, domain='RR[y,z]') --------------------------------------------------------------------------- OptionError Traceback (most recent call last) <ipython-input-15-d83389519ae1>…. Its reference change touched: sympy/polys/polyoptions.py.",
+        "created_at": "2018-03-05T19:18:01Z",
+        "evidence": [
+          "Poly(domain='RR[y,z]') doesn't work ``` py In [14]: Poly(1.2*x*y*z, x) Out[14]: Poly(1.2*y*z*x, x, domain='RR[y,z]') In [15]: Poly(1.2*x*y*z, x, domain='RR[y,z]') --------------------------------------------------------------------------- OptionError Traceback (most recent call last) <ipython-input-15-d83389519ae1>…"
+        ],
+        "evidence_locations": [
+          "sympy/polys/polyoptions.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/polys/polyoptions.py"
+        ],
+        "generality": null,
+        "memory_id": "f405be2def53dac64400088d",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "fae038ca24a99d3dc50ef1469a511be9decfd5acb371ea81f9589d4363377b26",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/polys/polyoptions.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14396",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 539.931
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Latex printer does not support full inverse trig function names for acsc and asec For example `latex(asin(x), inv_trig_style=\"full\")` works as expected returning `'\\\\arcsin{\\\\left (x \\\\right )}'` But `latex(acsc(x), inv_trig_style=\"full\")` gives `'\\\\operatorname{acsc}{\\\\left (x \\\\right )}'` instead of…. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2018-06-05T08:03:47Z",
+        "evidence": [
+          "Latex printer does not support full inverse trig function names for acsc and asec For example `latex(asin(x), inv_trig_style=\"full\")` works as expected returning `'\\\\arcsin{\\\\left (x \\\\right )}'` But `latex(acsc(x), inv_trig_style=\"full\")` gives `'\\\\operatorname{acsc}{\\\\left (x \\\\right )}'` instead of…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "028c1e7de989dd3ecd48a8aa",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "f57d041d6cab3037c9b5e591b09729eb89f71411a4f62e85f49133d70203c3db",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14774",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 448.4
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Error pretty printing MatAdd ```py >>> pprint(MatrixSymbol('x', n, n) + MatrixSymbol('y*', n, n)) Traceback (most recent call last): File \"./sympy/core/sympify.py\", line 368, in sympify expr = parse_expr(a, local_dict=locals, transformations=transformations, evaluate=evaluate) File \"./sympy/parsing/sympy_parser.py\",…. Its reference change touched: sympy/printing/pretty/pretty.py.",
+        "created_at": "2018-06-21T08:34:37Z",
+        "evidence": [
+          "Error pretty printing MatAdd ```py >>> pprint(MatrixSymbol('x', n, n) + MatrixSymbol('y*', n, n)) Traceback (most recent call last): File \"./sympy/core/sympify.py\", line 368, in sympify expr = parse_expr(a, local_dict=locals, transformations=transformations, evaluate=evaluate) File \"./sympy/parsing/sympy_parser.py\",…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "generality": null,
+        "memory_id": "f8446117ba20cf8b0d93c754",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "d572759b198de0f363a735ca922413cdcef5a196e91f63ca495f080179655d0a",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/pretty/pretty.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-14817",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 432.378
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: lambdify does not work with certain MatrixSymbol names even with dummify=True `lambdify` is happy with curly braces in a symbol name and with `MatrixSymbol`s, but not with both at the same time, even if `dummify` is `True`. Here is some basic code that gives the error. ``` import sympy as sy curlyx =…. Its reference change touched: sympy/utilities/lambdify.py.",
+        "created_at": "2018-08-02T12:54:02Z",
+        "evidence": [
+          "lambdify does not work with certain MatrixSymbol names even with dummify=True `lambdify` is happy with curly braces in a symbol name and with `MatrixSymbol`s, but not with both at the same time, even if `dummify` is `True`. Here is some basic code that gives the error. ``` import sympy as sy curlyx =…"
+        ],
+        "evidence_locations": [
+          "sympy/utilities/lambdify.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/utilities/lambdify.py"
+        ],
+        "generality": null,
+        "memory_id": "1d4a78a039bd35424a4f1393",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "523f250c5667f11d80087bae2bb3790f2e2cce8369a05843c282bc115c55cee0",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/utilities/lambdify.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15011",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 390.198
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: LaTeX printing for Matrix Expression ```py >>> A = MatrixSymbol(\"A\", n, n) >>> latex(trace(A**2)) 'Trace(A**2)' ``` The bad part is not only is Trace not recognized, but whatever printer is being used doesn't fallback to the LaTeX printer for the inner expression (it should be `A^2`).. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2018-09-28T16:42:11Z",
+        "evidence": [
+          "LaTeX printing for Matrix Expression ```py >>> A = MatrixSymbol(\"A\", n, n) >>> latex(trace(A**2)) 'Trace(A**2)' ``` The bad part is not only is Trace not recognized, but whatever printer is being used doesn't fallback to the LaTeX printer for the inner expression (it should be `A^2`)."
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "a5688bd02494d3e166a8fee9",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "64a485f1d90d371587b8a5fcad1090605082173e2bd7f61733cd9f733d009faa",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15308",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 333.04
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: mathematica_code gives wrong output with Max If I run the code ``` x = symbols('x') mathematica_code(Max(x,2)) ``` then I would expect the output `'Max[x,2]'` which is valid Mathematica code but instead I get `'Max(2, x)'` which is not valid Mathematica code.. Its reference change touched: sympy/printing/mathematica.py.",
+        "created_at": "2018-10-05T06:00:31Z",
+        "evidence": [
+          "mathematica_code gives wrong output with Max If I run the code ``` x = symbols('x') mathematica_code(Max(x,2)) ``` then I would expect the output `'Max[x,2]'` which is valid Mathematica code but instead I get `'Max(2, x)'` which is not valid Mathematica code."
+        ],
+        "evidence_locations": [
+          "sympy/printing/mathematica.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/mathematica.py"
+        ],
+        "generality": null,
+        "memory_id": "a557398ebb01918068126fbc",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "626735e17920d39e5717225ecb371074d714f44bf502f80985d5350fd433a0d8",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/mathematica.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15345",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 326.485
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: can't simplify sin/cos with Rational? latest cloned sympy, python 3 on windows firstly, cos, sin with symbols can be simplified; rational number can be simplified ```python from sympy import * x, y = symbols('x, y', real=True) r = sin(x)*sin(y) + cos(x)*cos(y) print(r) print(r.simplify()) print() r = Rational(1, 50)…. Its reference change touched: sympy/simplify/trigsimp.py.",
+        "created_at": "2018-10-05T17:25:21Z",
+        "evidence": [
+          "can't simplify sin/cos with Rational? latest cloned sympy, python 3 on windows firstly, cos, sin with symbols can be simplified; rational number can be simplified ```python from sympy import * x, y = symbols('x, y', real=True) r = sin(x)*sin(y) + cos(x)*cos(y) print(r) print(r.simplify()) print() r = Rational(1, 50)…"
+        ],
+        "evidence_locations": [
+          "sympy/simplify/trigsimp.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/simplify/trigsimp.py"
+        ],
+        "generality": null,
+        "memory_id": "20064ecf70377875de801eea",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "8577e5f04d609d2728977f2bcc7d66c02ca5b53224335bdebd70522760aa4ed6",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/simplify/trigsimp.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15346",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 326.01
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Indexed matrix-expression LaTeX printer is not compilable ```python i, j, k = symbols(\"i j k\") M = MatrixSymbol(\"M\", k, k) N = MatrixSymbol(\"N\", k, k) latex((M*N)[i, j]) ``` The LaTeX string produced by the last command is: ``` \\sum_{i_{1}=0}^{k - 1} M_{i, _i_1} N_{_i_1, j} ``` LaTeX complains about a double…. Its reference change touched: sympy/printing/latex.py.",
+        "created_at": "2018-12-09T12:27:08Z",
+        "evidence": [
+          "Indexed matrix-expression LaTeX printer is not compilable ```python i, j, k = symbols(\"i j k\") M = MatrixSymbol(\"M\", k, k) N = MatrixSymbol(\"N\", k, k) latex((M*N)[i, j]) ``` The LaTeX string produced by the last command is: ``` \\sum_{i_{1}=0}^{k - 1} M_{i, _i_1} N_{_i_1, j} ``` LaTeX complains about a double…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/latex.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/latex.py"
+        ],
+        "generality": null,
+        "memory_id": "ddd58d5789a9171b6c06a998",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "cfd006045f81d11e60897cd9179830a732bf5c43de1c7b9edf66a2ddb84f76e9",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/latex.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15609",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 261.217
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Some issues with idiff idiff doesn't support Eq, and it also doesn't support f(x) instead of y. Both should be easy to correct. ``` >>> idiff(Eq(y*exp(y), x*exp(x)), y, x) Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"./sympy/geometry/util.py\", line 582, in idiff yp = solve(eq.diff(x),…. Its reference change touched: sympy/geometry/util.py.",
+        "created_at": "2018-12-20T18:11:56Z",
+        "evidence": [
+          "Some issues with idiff idiff doesn't support Eq, and it also doesn't support f(x) instead of y. Both should be easy to correct. ``` >>> idiff(Eq(y*exp(y), x*exp(x)), y, x) Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"./sympy/geometry/util.py\", line 582, in idiff yp = solve(eq.diff(x),…"
+        ],
+        "evidence_locations": [
+          "sympy/geometry/util.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/geometry/util.py"
+        ],
+        "generality": null,
+        "memory_id": "b0f98bbaab6095a4e9d4d5f4",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "efc22cb9c4bde87cef6fc42f2302da6ae03d96b1e58b97d692c077494b524f73",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/geometry/util.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-15678",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "correct",
+          "out",
+          "subs"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 249.977
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: mathml printer for IndexedBase required Writing an `Indexed` object to MathML fails with a `TypeError` exception: `TypeError: 'Indexed' object is not iterable`: ``` In [340]: sympy.__version__ Out[340]: '1.0.1.dev' In [341]: from sympy.abc import (a, b) In [342]: sympy.printing.mathml(sympy.IndexedBase(a)[b])…. Its reference change touched: sympy/printing/mathml.py.",
+        "created_at": "2019-02-28T17:21:46Z",
+        "evidence": [
+          "mathml printer for IndexedBase required Writing an `Indexed` object to MathML fails with a `TypeError` exception: `TypeError: 'Indexed' object is not iterable`: ``` In [340]: sympy.__version__ Out[340]: '1.0.1.dev' In [341]: from sympy.abc import (a, b) In [342]: sympy.printing.mathml(sympy.IndexedBase(a)[b])…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/mathml.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/mathml.py"
+        ],
+        "generality": null,
+        "memory_id": "6309b2527394ecce3265c00e",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "29bda2f85610a530719e8192c30bc4c0b62bf375b3641bf592b282fa5c41f937",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/mathml.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-16106",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "expressions",
+          "out"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 180.012
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Product pretty print could be improved This is what the pretty printing for `Product` looks like: ``` >>> pprint(Product(1, (n, 1, oo))) ∞ ┬───┬ │ │ 1 │ │ n = 1 >>> pprint(Product(1/n, (n, 1, oo))) ∞ ┬──────┬ │ │ 1 │ │ ─ │ │ n │ │ n = 1 >>> pprint(Product(1/n**2, (n, 1, oo))) ∞ ┬────────┬ │ │ 1 │ │ ── │ │ 2 │ │ n │ │…. Its reference change touched: sympy/printing/pretty/pretty.py.",
+        "created_at": "2019-03-16T19:37:33Z",
+        "evidence": [
+          "Product pretty print could be improved This is what the pretty printing for `Product` looks like: ``` >>> pprint(Product(1, (n, 1, oo))) ∞ ┬───┬ │ │ 1 │ │ n = 1 >>> pprint(Product(1/n, (n, 1, oo))) ∞ ┬──────┬ │ │ 1 │ │ ─ │ │ n │ │ n = 1 >>> pprint(Product(1/n**2, (n, 1, oo))) ∞ ┬────────┬ │ │ 1 │ │ ── │ │ 2 │ │ n │ │…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "generality": null,
+        "memory_id": "62805162245a9c024e74988e",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "694dd455c49dc2dfde432c4eca1749bec0c15862c758462a479c7bab6a7a452e",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/pretty/pretty.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-16281",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "empty"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 163.918
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Bad centering for Sum pretty print ``` >>> pprint(Sum(x, (x, 1, oo)) + 3) ∞ ___ ╲ ╲ x ╱ + 3 ╱ ‾‾‾ x = 1 ``` The `x` and the `+ 3` should be aligned. I'm not sure if the `x` should be lower of if the `+ 3` should be higher.. Its reference change touched: sympy/printing/pretty/pretty.py.",
+        "created_at": "2019-03-30T19:21:15Z",
+        "evidence": [
+          "Bad centering for Sum pretty print ``` >>> pprint(Sum(x, (x, 1, oo)) + 3) ∞ ___ ╲ ╲ x ╱ + 3 ╱ ‾‾‾ x = 1 ``` The `x` and the `+ 3` should be aligned. I'm not sure if the `x` should be lower of if the `+ 3` should be higher."
+        ],
+        "evidence_locations": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/pretty/pretty.py"
+        ],
+        "generality": null,
+        "memory_id": "7ee16aff43461562a0026549",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "6b57a7ef721e52d73b586b6d5fba17fa3a57e13d6bf812ba182424eb48d6f0bc",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/pretty/pretty.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-16503",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 149.929
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: autowrap with cython backend fails when array arguments do not appear in wrapped expr When using the cython backend for autowrap, it appears that the code is not correctly generated when the function in question has array arguments that do not appear in the final expression. A minimal counterexample is: ```python…. Its reference change touched: sympy/utilities/codegen.py.",
+        "created_at": "2019-05-09T03:40:54Z",
+        "evidence": [
+          "autowrap with cython backend fails when array arguments do not appear in wrapped expr When using the cython backend for autowrap, it appears that the code is not correctly generated when the function in question has array arguments that do not appear in the final expression. A minimal counterexample is: ```python…"
+        ],
+        "evidence_locations": [
+          "sympy/utilities/codegen.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/utilities/codegen.py"
+        ],
+        "generality": null,
+        "memory_id": "e0689760c785d0eef1cb3c3e",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "4458e441c3de43446b6fb60e688cbace483cc50d3ec7a59e66926da73df2443e",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/utilities/codegen.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-16792",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 110.582
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_SYMBOL_MATCH",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Intersection should remove duplicates ```python >>> Intersection({1},{1},{x}) EmptySet() >>> Intersection({1},{x}) {1} ``` The answer should be `Piecewise(({1}, Eq(x, 1)), (S.EmptySet, True))` or remain unevaluated. The routine should give the same answer if duplicates are present; my initial guess is that duplicates…. Its reference change touched: sympy/sets/sets.py.",
+        "created_at": "2019-06-07T12:00:00Z",
+        "evidence": [
+          "Intersection should remove duplicates ```python >>> Intersection({1},{1},{x}) EmptySet() >>> Intersection({1},{x}) {1} ``` The answer should be `Piecewise(({1}, Eq(x, 1)), (S.EmptySet, True))` or remain unevaluated. The routine should give the same answer if duplicates are present; my initial guess is that duplicates…"
+        ],
+        "evidence_locations": [
+          "sympy/sets/sets.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/sets/sets.py"
+        ],
+        "generality": null,
+        "memory_id": "d9b25acbae7f637020220787",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "4db2001d1606e786be2e652437ebcbeda7931810a35b160f71061d67dcd942f0",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/sets/sets.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-16988",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "intersection"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "Intersection"
+        ],
+        "temporal_distance_days": 81.236
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Lambdify misinterprets some matrix expressions Using lambdify on an expression containing an identity matrix gives us an unexpected result: ```python >>> import numpy as np >>> n = symbols('n', integer=True) >>> A = MatrixSymbol(\"A\", n, n) >>> a = np.array([[1, 2], [3, 4]]) >>> f = lambdify(A, A + Identity(n)) >>>…. Its reference change touched: sympy/printing/pycode.py.",
+        "created_at": "2019-06-12T21:54:57Z",
+        "evidence": [
+          "Lambdify misinterprets some matrix expressions Using lambdify on an expression containing an identity matrix gives us an unexpected result: ```python >>> import numpy as np >>> n = symbols('n', integer=True) >>> A = MatrixSymbol(\"A\", n, n) >>> a = np.array([[1, 2], [3, 4]]) >>> f = lambdify(A, A + Identity(n)) >>>…"
+        ],
+        "evidence_locations": [
+          "sympy/printing/pycode.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/printing/pycode.py"
+        ],
+        "generality": null,
+        "memory_id": "cf6d4f05786a3fd588023c7a",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "e5944628f480c5fd6999e38a4fc1772cf7b7f5f880e69b6c7fe5af8529682c9c",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/printing/pycode.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-17022",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "expressions",
+          "since"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 75.822
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: simplify(cos(x)**I): Invalid comparison of complex I (fu.py) ``` >>> from sympy import * >>> x = Symbol('x') >>> print(simplify(cos(x)**I)) Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"/home/e/se/sympy/simplify/simplify.py\", line 587, in simplify expr = trigsimp(expr, deep=True) File…. Its reference change touched: sympy/simplify/fu.py.",
+        "created_at": "2019-07-01T19:17:18Z",
+        "evidence": [
+          "simplify(cos(x)**I): Invalid comparison of complex I (fu.py) ``` >>> from sympy import * >>> x = Symbol('x') >>> print(simplify(cos(x)**I)) Traceback (most recent call last): File \"<stdin>\", line 1, in <module> File \"/home/e/se/sympy/simplify/simplify.py\", line 587, in simplify expr = trigsimp(expr, deep=True) File…"
+        ],
+        "evidence_locations": [
+          "sympy/simplify/fu.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sympy/simplify/fu.py"
+        ],
+        "generality": null,
+        "memory_id": "4905257c81afab98062b85d6",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "c75950f1413ff66d0963ac41ce03911636c828dbeac60f46a17739348367ac3b",
+        "repository": "sympy/sympy",
+        "scope": {
+          "paths": [
+            "sympy/simplify/fu.py"
+          ],
+          "repository": "sympy/sympy"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "sympy__sympy-17139",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 56.932
+      }
+    }
+  ],
+  "pool_hash": "37dbbf0e5d99ce01c143079e47cab904182bc00f33b16e0f3658d10ee6218c53",
+  "target": {
+    "base_commit": "215b9ee31f3aa5eb31826c904674cb2ff37617ff",
+    "environment_setup_commit": "215b9ee31f3aa5eb31826c904674cb2ff37617ff",
+    "problem_statement": "Intersection of sets with symbolic elements could be empty\nWe have\r\n```julia\r\nIn [4]: FiniteSet(1+x-y) & FiniteSet(1)\r\nOut[4]: {1} ∩ {x - y + 1}\r\n\r\nIn [5]: FiniteSet(1) & FiniteSet(1+x-y)\r\nOut[5]: {1}\r\n```\r\nClearly the two expressions should give the same result. The first result is correct since if x!=y then the result is the empty set:\r\n```julia\r\nIn [6]: FiniteSet(1) & FiniteSet(1+x-y).subs(x, y+1)\r\nOut[6]: ∅\r\n```\n",
+    "repository": "sympy/sympy",
+    "target_created_at": "2019-08-27T17:39:12Z",
+    "target_id": "sympy__sympy-16953"
+  }
+}

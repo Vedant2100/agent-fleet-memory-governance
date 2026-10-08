@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paired executable treatment run record",
+  "type": "object",
+  "required": ["target_id", "arm_id", "governor", "candidate_pool_size", "shared_memory_ids", "exposed_memory_ids", "write_actions", "read_actions", "grade"],
+  "properties": {
+    "target_id": {"type": "string"},
+    "arm_id": {"enum": ["A_NO_MEMORY", "B_SHARE_ALL_FIXED_READ", "C_GOVERNED_WRITE_FIXED_READ", "D_SHARE_ALL_GOVERNED_READ", "E_GOVERNED_WRITE_GOVERNED_READ", "F_ORACLE_RELATED_MEMORY_CEILING"]},
+    "governor": {"type": "string"},
+    "candidate_pool_size": {"type": "integer"},
+    "shared_memory_ids": {"type": "array", "items": {"type": "string"}},
+    "exposed_memory_ids": {"type": "array", "items": {"type": "string"}},
+    "write_actions": {"type": "object"},
+    "read_actions": {"type": "object"},
+    "read_abstention_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "write_admission_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "memory_tokens_exposed": {"type": "integer", "minimum": 0},
+    "solver_metrics": {"type": "object"},
+    "grade": {"type": "object"}
+  },
+  "additionalProperties": true
+}

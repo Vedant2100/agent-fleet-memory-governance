@@ -1,0 +1,17 @@
+{
+  "audit": "mini-swe-agent upstream submission contract",
+  "mini_swe_agent_version": "2.4.6",
+  "environment_class": "minisweagent.environments.singularity.SingularityEnvironment",
+  "parser_method": "SingularityEnvironment._check_finished",
+  "patch_file": "patch.txt",
+  "patch_sha256": "996f447283a48aaef1e27e9c17357ef1f1340e702ad166ffc3dfb09d966e29d8",
+  "patch_bytes": 132,
+  "inspection_matched_fixture": true,
+  "submission_command": "echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT && cat patch.txt",
+  "stdout_returncode": 0,
+  "stdout_first_line": "COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT",
+  "captured_submission_sha256": "996f447283a48aaef1e27e9c17357ef1f1340e702ad166ffc3dfb09d966e29d8",
+  "captured_submission_matches_fixture": true,
+  "model_calls": 0,
+  "completed_at_utc": "2026-10-06T17:13:52.482396+00:00"
+}

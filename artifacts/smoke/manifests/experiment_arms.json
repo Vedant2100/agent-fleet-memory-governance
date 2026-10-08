@@ -1,0 +1,36 @@
+{
+  "arms": [
+    {
+      "arm_id": "A_NO_MEMORY",
+      "read_policy": "NONE",
+      "write_policy": "NONE"
+    },
+    {
+      "arm_id": "B_SHARE_ALL_FIXED_READ",
+      "read_policy": "FIXED_DETERMINISTIC",
+      "write_policy": "SHARE_ALL"
+    },
+    {
+      "arm_id": "C_GOVERNED_WRITE_FIXED_READ",
+      "read_policy": "FIXED_DETERMINISTIC",
+      "write_policy": "GOVERNED"
+    },
+    {
+      "arm_id": "D_SHARE_ALL_GOVERNED_READ",
+      "read_policy": "GOVERNED",
+      "write_policy": "SHARE_ALL"
+    },
+    {
+      "arm_id": "E_GOVERNED_WRITE_GOVERNED_READ",
+      "read_policy": "GOVERNED",
+      "write_policy": "GOVERNED"
+    },
+    {
+      "arm_id": "F_ORACLE_RELATED_MEMORY_CEILING",
+      "read_policy": "ORACLE_KNOWN_RELATED",
+      "write_policy": "ORACLE"
+    }
+  ],
+  "protocol_version": "fleet-mem-contextbench-smoke-v1",
+  "stress_track_status": "NOT_POPULATED: smoke release has no adjudicated stale/conflict/failed-source cases; no synthetic cases added"
+}

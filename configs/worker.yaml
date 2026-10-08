@@ -1,0 +1,49 @@
+agent:
+  system_template: |
+    You are an autonomous coding agent working in a repository. Work only from visible repository files and the task statement. Inspect before editing, make the smallest correct change, run relevant tests when feasible, and submit a patch when finished. Follow the task's stated requirements. Do not claim tests passed unless command output shows that they passed.
+
+    You control the repository through a command-only interface. On every turn, output exactly one fenced block tagged `mswea_bash_command` containing one bash command and no prose. Your first command must inspect the repository. Continue with commands that implement and test the requested change. Never invent command output or claim unperformed work.
+
+    A successful command whose first output line is `COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT` immediately ends this run and submits the current patch. Do not run that command until after the requested code change exists and relevant tests have actually been run. It must be the final command.
+  instance_template: |
+    Solve the following SWE-ContextBench coding task in /testbed. The completion command below is terminal; do not use it as an initial action.
+
+    {{task}}
+
+    Inspect the repository, implement the requested fix, and run relevant tests. Only after this work is complete, run `echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT` as the final standalone command. An empty patch is a failed task unless repository inspection proves that no change is needed.
+  step_limit: 12
+  wall_time_limit_seconds: 900
+  cost_limit: 0.0
+  max_consecutive_format_errors: 2
+  mode: yolo
+  confirm_exit: false
+
+environment:
+  environment_class: singularity
+  executable: /usr/bin/apptainer
+  cwd: /testbed
+  timeout: 120
+  sandbox_build_retries: 1
+  env:
+    PYTHONDONTWRITEBYTECODE: "1"
+  global_args:
+    - --quiet
+  exec_args:
+    - --containall
+    - --cleanenv
+    - --no-mount
+    - /etc/localtime
+    - --fakeroot
+
+model:
+  model_class: litellm_textbased
+  action_regex: '```(?:mswea_bash_command\s*\n|\s*mswea_bash_command\s*\n)(.*?)\n```'
+  format_error_template: |
+    Your previous response was not executed because it did not match the command interface. Return exactly one fenced code block tagged mswea_bash_command, containing one bash command and no surrounding prose. Choose a command that advances repository inspection, implementation, or testing. Do not run the terminal completion command until the requested work and tests are complete.
+  cost_tracking: ignore_errors
+  model_kwargs:
+    temperature: 0.0
+    seed: 42
+    max_tokens: 1024
+    num_ctx: 16384
+    drop_params: true

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fleet-mem-contextbench.local/schemas/memory_candidate.schema.json",
+  "title": "Source memory candidate",
+  "type": "object",
+  "required": ["memory_id", "source_task_id", "repository", "source_outcome", "created_at", "claim", "memory_type", "scope", "preconditions", "evidence", "evidence_locations", "files_or_symbols", "generality", "negative_transfer_risk", "provenance_hash", "source_mode"],
+  "properties": {
+    "memory_id": {"type": "string", "minLength": 1},
+    "source_task_id": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "minLength": 1},
+    "source_worker_id": {"type": ["string", "null"]},
+    "source_outcome": {"type": "object", "required": ["status"], "properties": {"status": {"enum": ["unknown", "verified_pass", "verified_fail", "mixed"]}}, "additionalProperties": true},
+    "created_at": {"type": ["string", "null"], "format": "date-time"},
+    "claim": {"type": "string", "minLength": 1},
+    "memory_type": {"enum": ["REPOSITORY_CONVENTION", "PROCEDURE", "ARCHITECTURE", "FAILURE_AVOIDANCE", "DEBUGGING_HEURISTIC", "TESTING_WORKFLOW", "ENVIRONMENT_SETUP", "EPISODIC_EXAMPLE"]},
+    "scope": {"type": "object"},
+    "preconditions": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "evidence_locations": {"type": "array", "items": {"type": "string"}},
+    "files_or_symbols": {"type": "array", "items": {"type": "string"}},
+    "generality": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "negative_transfer_risk": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "provenance_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_mode": {"enum": ["PROVIDED_EXPERIENCE_SMOKE", "FRESH_WORKER_TRAJECTORY"]},
+    "extractor_version": {"type": "string"}
+  },
+  "additionalProperties": false
+}

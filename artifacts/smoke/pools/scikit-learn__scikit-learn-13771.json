@@ -1,0 +1,636 @@
+{
+  "candidate_count": 13,
+  "candidate_pool": [
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: linear_model.RidgeClassifierCV's Parameter store_cv_values issue #### Description Parameter store_cv_values error on sklearn.linear_model.RidgeClassifierCV #### Steps/Code to Reproduce import numpy as np from sklearn import linear_model as lm #test database n = 100 x = np.random.randn(n, 30) y = np.random.normal(size…. Its reference change touched: sklearn/linear_model/ridge.py.",
+        "created_at": "2017-12-12T22:07:47Z",
+        "evidence": [
+          "linear_model.RidgeClassifierCV's Parameter store_cv_values issue #### Description Parameter store_cv_values error on sklearn.linear_model.RidgeClassifierCV #### Steps/Code to Reproduce import numpy as np from sklearn import linear_model as lm #test database n = 100 x = np.random.randn(n, 30) y = np.random.normal(size…"
+        ],
+        "evidence_locations": [
+          "sklearn/linear_model/ridge.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/linear_model/ridge.py"
+        ],
+        "generality": null,
+        "memory_id": "d93545dcba001bdd475cc1cc",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "33e13a59d0db90c62b4644d71ba77fdc9ff948ea3cc98d438275a2b262361ba0",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/linear_model/ridge.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-10297",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "learn",
+          "none"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 506.679
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: LabelEncoder transform fails for empty lists (for certain inputs) Python 3.6.3, scikit_learn 0.19.1 Depending on which datatypes were used to fit the LabelEncoder, transforming empty lists works or not. Expected behavior would be that empty arrays are returned in both cases. ```python >>> from sklearn.preprocessing…. Its reference change touched: sklearn/preprocessing/label.py.",
+        "created_at": "2018-01-19T18:00:29Z",
+        "evidence": [
+          "LabelEncoder transform fails for empty lists (for certain inputs) Python 3.6.3, scikit_learn 0.19.1 Depending on which datatypes were used to fit the LabelEncoder, transforming empty lists works or not. Expected behavior would be that empty arrays are returned in both cases. ```python >>> from sklearn.preprocessing…"
+        ],
+        "evidence_locations": [
+          "sklearn/preprocessing/label.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/preprocessing/label.py"
+        ],
+        "generality": null,
+        "memory_id": "c8312239e45ec0ae0a712534",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "52569d16d6de5954fa1706efbd65a0ff568e627bc21f49d085980adfceeeb469",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/preprocessing/label.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-10508",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 468.851
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: warn_on_dtype with DataFrame #### Description ``warn_on_dtype`` has no effect when input is a pandas ``DataFrame`` #### Steps/Code to Reproduce ```python from sklearn.utils.validation import check_array import pandas as pd df = pd.DataFrame([[1, 2, 3], [2, 3, 4]], dtype=object) checked = check_array(df,…. Its reference change touched: sklearn/utils/validation.py.",
+        "created_at": "2018-04-10T15:30:56Z",
+        "evidence": [
+          "warn_on_dtype with DataFrame #### Description ``warn_on_dtype`` has no effect when input is a pandas ``DataFrame`` #### Steps/Code to Reproduce ```python from sklearn.utils.validation import check_array import pandas as pd df = pd.DataFrame([[1, 2, 3], [2, 3, 4]], dtype=object) checked = check_array(df,…"
+        ],
+        "evidence_locations": [
+          "sklearn/utils/validation.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/utils/validation.py"
+        ],
+        "generality": null,
+        "memory_id": "29e4b31510f7a123d5be7018",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "a18d2004799f377a86da95fbebdce0b41280d7ca38da625ba796099215006fc2",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/utils/validation.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-10949",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "learn"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 387.954
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Missing parameter validation in Neighbors estimator for float n_neighbors ```python from sklearn.neighbors import NearestNeighbors from sklearn.datasets import make_blobs X, y = make_blobs() neighbors = NearestNeighbors(n_neighbors=3.) neighbors.fit(X) neighbors.kneighbors(X) ``` ```…. Its reference change touched: sklearn/neighbors/base.py.",
+        "created_at": "2018-04-28T07:18:33Z",
+        "evidence": [
+          "Missing parameter validation in Neighbors estimator for float n_neighbors ```python from sklearn.neighbors import NearestNeighbors from sklearn.datasets import make_blobs X, y = make_blobs() neighbors = NearestNeighbors(n_neighbors=3.) neighbors.fit(X) neighbors.kneighbors(X) ``` ```…"
+        ],
+        "evidence_locations": [
+          "sklearn/neighbors/base.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/neighbors/base.py"
+        ],
+        "generality": null,
+        "memory_id": "94da49bf06d7921323906f0c",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "c8a279aa289cf2068029235fae10b3a706089e6642cdfcc7341fe4f084459cf0",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/neighbors/base.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-11040",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "estimator",
+          "learn"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 370.296
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Should mixture models have a clusterer-compatible interface Mixture models are currently a bit different. They are basically clusterers, except they are probabilistic, and are applied to inductive problems unlike many clusterers. But they are unlike clusterers in API: * they have an `n_components` parameter, with…. Its reference change touched: sklearn/mixture/base.py.",
+        "created_at": "2018-06-15T17:15:25Z",
+        "evidence": [
+          "Should mixture models have a clusterer-compatible interface Mixture models are currently a bit different. They are basically clusterers, except they are probabilistic, and are applied to inductive problems unlike many clusterers. But they are unlike clusterers in API: * they have an `n_components` parameter, with…"
+        ],
+        "evidence_locations": [
+          "sklearn/mixture/base.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/mixture/base.py"
+        ],
+        "generality": null,
+        "memory_id": "8c4c51e8c459ccc26349cbc4",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "43c9502def1273d0506c45d080d8647062f8ce6709acda023ff5f9bac1e0b5f1",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/mixture/base.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-11281",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 321.882
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: OneHotEncoder ignore unknown error when categories are strings #### Description This bug is very specific, but it happens when you set OneHotEncoder to ignore unknown entries. and your labels are strings. The memory of the arrays is not handled safely and it can lead to a ValueError Basically, when you call the…. Its reference change touched: sklearn/preprocessing/_encoders.py.",
+        "created_at": "2018-10-27T10:43:48Z",
+        "evidence": [
+          "OneHotEncoder ignore unknown error when categories are strings #### Description This bug is very specific, but it happens when you set OneHotEncoder to ignore unknown entries. and your labels are strings. The memory of the arrays is not handled safely and it can lead to a ValueError Basically, when you call the…"
+        ],
+        "evidence_locations": [
+          "sklearn/preprocessing/_encoders.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/preprocessing/_encoders.py"
+        ],
+        "generality": null,
+        "memory_id": "14739b46fda1f6f2d4eea605",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "158a22bcddfa1bd7cde99a33fcf98ab265959ecb70ffd6df4cb28fe1de6ee77f",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/preprocessing/_encoders.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-12471",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "none"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 188.154
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: GaussianMixture predict and fit_predict disagree when n_init>1 #### Description When `n_init` is specified in GaussianMixture, the results of fit_predict(X) and predict(X) are often different. The `test_gaussian_mixture_fit_predict` unit test doesn't catch this because it does not set `n_init`. #### Steps/Code to…. Its reference change touched: sklearn/mixture/base.py.",
+        "created_at": "2019-02-12T14:32:37Z",
+        "evidence": [
+          "GaussianMixture predict and fit_predict disagree when n_init>1 #### Description When `n_init` is specified in GaussianMixture, the results of fit_predict(X) and predict(X) are often different. The `test_gaussian_mixture_fit_predict` unit test doesn't catch this because it does not set `n_init`. #### Steps/Code to…"
+        ],
+        "evidence_locations": [
+          "sklearn/mixture/base.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/mixture/base.py"
+        ],
+        "generality": null,
+        "memory_id": "37cde4dae756796f80745b5c",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "8310cf5813ed4edc00048e69229fca576f05612ba3f14bf194771a79b7a1e291",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/mixture/base.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13142",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "none"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 79.995
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Differences among the results of KernelPCA with rbf kernel Hi there, I met with a problem: #### Description When I run KernelPCA for dimension reduction for the same datasets, the results are different in signs. #### Steps/Code to Reproduce Just to reduce the dimension to 7 with rbf kernel: pca =…. Its reference change touched: sklearn/decomposition/kernel_pca.py.",
+        "created_at": "2019-02-25T11:27:41Z",
+        "evidence": [
+          "Differences among the results of KernelPCA with rbf kernel Hi there, I met with a problem: #### Description When I run KernelPCA for dimension reduction for the same datasets, the results are different in signs. #### Steps/Code to Reproduce Just to reduce the dimension to 7 with rbf kernel: pca =…"
+        ],
+        "evidence_locations": [
+          "sklearn/decomposition/kernel_pca.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/decomposition/kernel_pca.py"
+        ],
+        "generality": null,
+        "memory_id": "6219b592897f48f98a47fe3f",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "ff40665db9df0b3042c65e0b12b4d17af5c6b89cdf164abf29d6f8618ccff6ef",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/decomposition/kernel_pca.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13241",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 67.123
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Pipeline should implement __len__ #### Description With the new indexing support `pipe[:len(pipe)]` raises an error. #### Steps/Code to Reproduce ```python from sklearn import svm from sklearn.datasets import samples_generator from sklearn.feature_selection import SelectKBest from sklearn.feature_selection import…. Its reference change touched: sklearn/pipeline.py.",
+        "created_at": "2019-03-12T20:32:50Z",
+        "evidence": [
+          "Pipeline should implement __len__ #### Description With the new indexing support `pipe[:len(pipe)]` raises an error. #### Steps/Code to Reproduce ```python from sklearn import svm from sklearn.datasets import samples_generator from sklearn.feature_selection import SelectKBest from sklearn.feature_selection import…"
+        ],
+        "evidence_locations": [
+          "sklearn/pipeline.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/pipeline.py"
+        ],
+        "generality": null,
+        "memory_id": "0e0bd454fc3f07eb4f1e7d52",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "51806f22d70cdb46ed2ec4f3ec9c52319d1b14122a0e29f2acd95383e54a7e56",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/pipeline.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13439",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "none"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 51.745
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Expose warm_start in Isolation forest It seems to me that `sklearn.ensemble.IsolationForest` supports incremental addition of new trees with the `warm_start` parameter of its parent class, `sklearn.ensemble.BaseBagging`. Even though this parameter is not exposed in `__init__()` , it gets inherited from `BaseBagging`…. Its reference change touched: sklearn/ensemble/iforest.py.",
+        "created_at": "2019-03-23T09:46:59Z",
+        "evidence": [
+          "Expose warm_start in Isolation forest It seems to me that `sklearn.ensemble.IsolationForest` supports incremental addition of new trees with the `warm_start` parameter of its parent class, `sklearn.ensemble.BaseBagging`. Even though this parameter is not exposed in `__init__()` , it gets inherited from `BaseBagging`…"
+        ],
+        "evidence_locations": [
+          "sklearn/ensemble/iforest.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/ensemble/iforest.py"
+        ],
+        "generality": null,
+        "memory_id": "4580c7696ba0bc1ef94af12b",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "02d2845d1661ac8a12752483f610acb5e82dd85f12abdd252854368a2d88846b",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/ensemble/iforest.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13496",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "ensemble",
+          "way"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 41.193
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Comparing string to array in _estimate_mi In ``_estimate_mi`` there is ``discrete_features == 'auto'`` but discrete features can be an array of indices or a boolean mask. This will error in future versions of numpy. Also this means we never test this function with discrete features != 'auto', it seems?. Its reference change touched: sklearn/feature_selection/mutual_info_.py.",
+        "created_at": "2019-03-23T14:28:08Z",
+        "evidence": [
+          "Comparing string to array in _estimate_mi In ``_estimate_mi`` there is ``discrete_features == 'auto'`` but discrete features can be an array of indices or a boolean mask. This will error in future versions of numpy. Also this means we never test this function with discrete features != 'auto', it seems?"
+        ],
+        "evidence_locations": [
+          "sklearn/feature_selection/mutual_info_.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/feature_selection/mutual_info_.py"
+        ],
+        "generality": null,
+        "memory_id": "2060a9e0d99f64f3a7ca1c78",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "0360ba4856b7e0a9b82974babcb37c2bcf1607bffece2b65565f67c2c3804fbd",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/feature_selection/mutual_info_.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13497",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 40.998
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: bug in print_changed_only in new repr: vector values ```python import sklearn import numpy as np from sklearn.linear_model import LogisticRegressionCV sklearn.set_config(print_changed_only=True) print(LogisticRegressionCV(Cs=np.array([0.1, 1]))) ``` > ValueError: The truth value of an array with more than one element…. Its reference change touched: sklearn/utils/_pprint.py.",
+        "created_at": "2019-04-05T23:09:48Z",
+        "evidence": [
+          "bug in print_changed_only in new repr: vector values ```python import sklearn import numpy as np from sklearn.linear_model import LogisticRegressionCV sklearn.set_config(print_changed_only=True) print(LogisticRegressionCV(Cs=np.array([0.1, 1]))) ``` > ValueError: The truth value of an array with more than one element…"
+        ],
+        "evidence_locations": [
+          "sklearn/utils/_pprint.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/utils/_pprint.py"
+        ],
+        "generality": null,
+        "memory_id": "bd2585ce4418318f59b88cf6",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "7db51fcf551e8be370faf96b464efaff051e085b20b891bc35ee884035031df8",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/utils/_pprint.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13584",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 27.636
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH",
+        "WITHIN_ONE_YEAR_OF_TARGET"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Voting estimator will fail at fit if weights are passed and an estimator is None Because we don't check for an estimator to be `None` in `sample_weight` support, `fit` is failing`. ```python X, y = load_iris(return_X_y=True) voter = VotingClassifier( estimators=[('lr', LogisticRegression()), ('rf',…. Its reference change touched: sklearn/ensemble/voting.py.",
+        "created_at": "2019-05-03T13:24:57Z",
+        "evidence": [
+          "Voting estimator will fail at fit if weights are passed and an estimator is None Because we don't check for an estimator to be `None` in `sample_weight` support, `fit` is failing`. ```python X, y = load_iris(return_X_y=True) voter = VotingClassifier( estimators=[('lr', LogisticRegression()), ('rf',…"
+        ],
+        "evidence_locations": [
+          "sklearn/ensemble/voting.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "sklearn/ensemble/voting.py"
+        ],
+        "generality": null,
+        "memory_id": "2fe4ea6751ee9bdcb856e1a9",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "d705baf77379134a8fccce2dc57847c8e24af7fef38b01867a38362eefe838cb",
+        "repository": "scikit-learn/scikit-learn",
+        "scope": {
+          "paths": [
+            "sklearn/ensemble/voting.py"
+          ],
+          "repository": "scikit-learn/scikit-learn"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "scikit-learn__scikit-learn-13779",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "estimator",
+          "none",
+          "votingclassifier"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "VotingClassifier"
+        ],
+        "temporal_distance_days": 0.042
+      }
+    }
+  ],
+  "pool_hash": "26409c0b4160292806fbc1d966469a952a55a4199b3f754afe58241e33d59227",
+  "target": {
+    "base_commit": "8d3b4ff3eec890396a3d7a806bbe944f55a89cb4",
+    "environment_setup_commit": "8d3b4ff3eec890396a3d7a806bbe944f55a89cb4",
+    "problem_statement": "Handle 'drop' together with None to drop estimator in VotingClassifier/VotingRegressor\nAs mentioned in the following https://github.com/scikit-learn/scikit-learn/pull/11047#discussion_r264114338, the `VotingClassifier` and `VotingRegressor` should accept `'drop'` to drop an estimator from the ensemble is the same way that `None` is doing now.\n",
+    "repository": "scikit-learn/scikit-learn",
+    "target_created_at": "2019-05-03T14:25:22Z",
+    "target_id": "scikit-learn__scikit-learn-13771"
+  }
+}

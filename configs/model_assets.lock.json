@@ -1,0 +1,16 @@
+{
+  "asset_identity": "Ollama manifest and model blob content digests",
+  "models": {
+    "qwen2.5-coder:32b": {
+      "manifest_sha256": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+      "model_blob_digest": "sha256:ac3d1ba8aa77755dab3806d9024e9c385ea0d5b412d6bdf9157f8a4a7e9fc0d9",
+      "model_blob_size_bytes": 19851336384
+    },
+    "qwen2.5:32b": {
+      "manifest_sha256": "9f13ba1299afea09d9a956fc6a85becc99115a6d596fae201a5487a03bdc4368",
+      "model_blob_digest": "sha256:eabc98a9bcbfce7fd70f3e07de599f8fda98120fefed5881934161ede8bd1a41",
+      "model_blob_size_bytes": 19851336288
+    }
+  },
+  "ollama_version": "0.34.4"
+}

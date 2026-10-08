@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hidden target/source chronology and leakage audit row",
+  "type": "object",
+  "required": ["source_id", "target_id", "repository", "source_created_at", "target_created_at", "source_before_target", "same_pr", "same_commit", "source_in_target_git_ancestry", "target_mentions_source_issue_or_pr", "target_describes_source_failure", "target_contains_solution_hint", "file_overlap", "symbol_overlap", "patch_overlap", "relationship_type", "source_count_for_target", "environment_valid", "leakage_risk", "primary_stratum"],
+  "properties": {
+    "source_id": {"type": "string"},
+    "target_id": {"type": "string"},
+    "repository": {"type": "string"},
+    "source_created_at": {"type": ["string", "null"]},
+    "target_created_at": {"type": ["string", "null"]},
+    "source_before_target": {"type": ["boolean", "null"]},
+    "same_pr": {"type": ["boolean", "null"]},
+    "same_commit": {"type": ["boolean", "null"]},
+    "source_in_target_git_ancestry": {"type": ["boolean", "null"]},
+    "target_mentions_source_issue_or_pr": {"type": ["boolean", "null"]},
+    "target_describes_source_failure": {"type": ["boolean", "null"]},
+    "target_contains_solution_hint": {"type": ["boolean", "null"]},
+    "file_overlap": {"type": "array", "items": {"type": "string"}},
+    "symbol_overlap": {"type": "array", "items": {"type": "string"}},
+    "patch_overlap": {"type": "number", "minimum": 0, "maximum": 1},
+    "relationship_type": {"type": ["string", "null"]},
+    "source_count_for_target": {"type": "integer"},
+    "environment_valid": {"type": ["boolean", "null"]},
+    "leakage_risk": {"enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"]},
+    "primary_stratum": {"enum": ["CLEAN_TEMPORAL", "EXPLICIT_PRIOR_REFERENCE", "HIGH_HINT_LEAKAGE", "SAME_PR_OR_CORESOLUTION", "AMBIGUOUS_CHRONOLOGY", "ENVIRONMENT_INVALID"]},
+    "in_candidate_pool": {"type": "boolean"},
+    "exclusion_reason": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

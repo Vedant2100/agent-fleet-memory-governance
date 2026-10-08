@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Governor-facing target candidate pool",
+  "type": "object",
+  "required": ["target", "candidate_pool", "candidate_count", "pool_hash"],
+  "properties": {
+    "target": {
+      "type": "object",
+      "required": ["target_id", "repository", "target_created_at", "base_commit", "problem_statement"],
+      "properties": {
+        "target_id": {"type": "string"},
+        "repository": {"type": "string"},
+        "target_created_at": {"type": ["string", "null"]},
+        "base_commit": {"type": ["string", "null"]},
+        "environment_setup_commit": {"type": ["string", "null"]},
+        "problem_statement": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "candidate_pool": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["memory", "entry_reasons", "public_similarity"],
+        "properties": {
+          "memory": {"$ref": "memory_candidate.schema.json"},
+          "entry_reasons": {"type": "array", "items": {"type": "string"}},
+          "public_similarity": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidate_count": {"type": "integer", "minimum": 0},
+    "pool_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "additionalProperties": false
+}

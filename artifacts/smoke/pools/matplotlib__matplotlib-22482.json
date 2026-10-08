@@ -1,0 +1,1377 @@
+{
+  "candidate_count": 23,
+  "candidate_pool": [
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Add easily comparable version info to toplevel <!-- Welcome! Thanks for thinking of a way to improve Matplotlib. Before creating a new feature request please search the issues for relevant feature requests. --> ### Problem Currently matplotlib only exposes `__version__`. For quick version checks, exposing either a…. Its reference change touched: lib/matplotlib/__init__.py.",
+        "created_at": "2020-11-01T23:18:42Z",
+        "evidence": [
+          "Add easily comparable version info to toplevel <!-- Welcome! Thanks for thinking of a way to improve Matplotlib. Before creating a new feature request please search the issues for relevant feature requests. --> ### Problem Currently matplotlib only exposes `__version__`. For quick version checks, exposing either a…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/__init__.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/__init__.py"
+        ],
+        "generality": null,
+        "memory_id": "af26b11a3b15d7ad22226473",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "84603a9f4e379df7439868c4f887912d5c4b7153df73e27d7cb2d2e35844c2ca",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/__init__.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-18869",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "like",
+          "properly",
+          "proposed",
+          "solution",
+          "way"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "Problem",
+          "Proposed"
+        ],
+        "temporal_distance_days": 1326.678
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: cannot give init value for RangeSlider widget ### Bug summary I think `xy[4] = .25, val[0]` should be commented in /matplotlib/widgets. py\", line 915, in set_val as it prevents to initialized value for RangeSlider ### Code for reproduction ```python import numpy as np import matplotlib.pyplot as plt from…. Its reference change touched: lib/matplotlib/widgets.py.",
+        "created_at": "2022-03-27T00:34:37Z",
+        "evidence": [
+          "[Bug]: cannot give init value for RangeSlider widget ### Bug summary I think `xy[4] = .25, val[0]` should be commented in /matplotlib/widgets. py\", line 915, in set_val as it prevents to initialized value for RangeSlider ### Code for reproduction ```python import numpy as np import matplotlib.pyplot as plt from…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/widgets.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/widgets.py"
+        ],
+        "generality": null,
+        "memory_id": "9a50b637d21ee91f9076e308",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "b678d8bb4bbfde25a29d6961e6c50a2a061174b3bbac1180d44225d91fb2c454",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/widgets.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-22711",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "_no",
+          "axs",
+          "cannot",
+          "def",
+          "fig",
+          "figure",
+          "generate",
+          "import",
+          "like",
+          "module",
+          "numpy"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__",
+          "on_changed",
+          "response_",
+          "set_title"
+        ],
+        "temporal_distance_days": 816.625
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: scalar mappable format_cursor_data crashes on BoundarNorm ### Bug summary In 3.5.0 if you do: ```python import matplotlib.pyplot as plt import numpy as np import matplotlib as mpl fig, ax = plt.subplots() norm = mpl.colors.BoundaryNorm(np.linspace(-4, 4, 5), 256) X = np.random.randn(10, 10) pc = ax.imshow(X,…. Its reference change touched: lib/matplotlib/artist.py.",
+        "created_at": "2022-04-12T23:13:58Z",
+        "evidence": [
+          "[Bug]: scalar mappable format_cursor_data crashes on BoundarNorm ### Bug summary In 3.5.0 if you do: ```python import matplotlib.pyplot as plt import numpy as np import matplotlib as mpl fig, ax = plt.subplots() norm = mpl.colors.BoundaryNorm(np.linspace(-4, 4, 5), 256) X = np.random.randn(10, 10) pc = ax.imshow(X,…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/artist.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/artist.py"
+        ],
+        "generality": null,
+        "memory_id": "5ea26f1c5df5f50de785e388",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "285ee6830037ec21a7feeb86d7edd264f3bc3393a8cdab10281a6bbc1da93ba1",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/artist.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-22835",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "fig",
+          "import",
+          "linspace",
+          "numpy",
+          "plt",
+          "pyplot",
+          "subplots"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 799.681
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: get_backend() clears figures from Gcf.figs if they were created under rc_context ### Bug summary calling `matplotlib.get_backend()` removes all figures from `Gcf` if the *first* figure in `Gcf.figs` was created in an `rc_context`. ### Code for reproduction ```python import matplotlib.pyplot as plt from…. Its reference change touched: lib/matplotlib/__init__.py.",
+        "created_at": "2022-06-18T01:34:39Z",
+        "evidence": [
+          "[Bug]: get_backend() clears figures from Gcf.figs if they were created under rc_context ### Bug summary calling `matplotlib.get_backend()` removes all figures from `Gcf` if the *first* figure in `Gcf.figs` was created in an `rc_context`. ### Code for reproduction ```python import matplotlib.pyplot as plt from…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/__init__.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/__init__.py"
+        ],
+        "generality": null,
+        "memory_id": "6cfe8f010dae6bcb7eec91c6",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "70c8ea774555c544039b3da76b356873e49cd7d79f4c64c786e71c3b06a694ee",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/__init__.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23299",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "figure",
+          "import",
+          "pyplot",
+          "recent",
+          "response_",
+          "traceback"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 733.583
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: set_visible() not working for 3d projection ### Bug summary in the subplot projection=\"3d\" the set_visible function doesn't work even if the value is set to False ### Code for reproduction ```python import matplotlib.pyplot as plt from matplotlib.gridspec import GridSpec fig, (ax1, ax2) = plt.subplots(1, 2,…. Its reference change touched: lib/mpl_toolkits/mplot3d/axes3d.py.",
+        "created_at": "2022-06-21T02:41:34Z",
+        "evidence": [
+          "[Bug]: set_visible() not working for 3d projection ### Bug summary in the subplot projection=\"3d\" the set_visible function doesn't work even if the value is set to False ### Code for reproduction ```python import matplotlib.pyplot as plt from matplotlib.gridspec import GridSpec fig, (ax1, ax2) = plt.subplots(1, 2,…"
+        ],
+        "evidence_locations": [
+          "lib/mpl_toolkits/mplot3d/axes3d.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/mpl_toolkits/mplot3d/axes3d.py"
+        ],
+        "generality": null,
+        "memory_id": "95bade53719278e4a88a5f27",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "0b54d8e20cdfe3d1897f9c172d3ff43d413513bac299f869019029cbd0c157f4",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/mpl_toolkits/mplot3d/axes3d.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23314",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "false",
+          "fig",
+          "import",
+          "plt",
+          "pyplot",
+          "response_",
+          "subplots"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 730.537
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: DPI of a figure is doubled after unpickling on M1 Mac ### Bug summary When a figure is unpickled, it's dpi is doubled. This behaviour happens every time and if done in a loop it can cause an `OverflowError`. ### Code for reproduction ```python import numpy as np import matplotlib import matplotlib.pyplot as…. Its reference change touched: lib/matplotlib/figure.py.",
+        "created_at": "2022-07-22T18:58:22Z",
+        "evidence": [
+          "[Bug]: DPI of a figure is doubled after unpickling on M1 Mac ### Bug summary When a figure is unpickled, it's dpi is doubled. This behaviour happens every time and if done in a loop it can cause an `OverflowError`. ### Code for reproduction ```python import numpy as np import matplotlib import matplotlib.pyplot as…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/figure.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/figure.py"
+        ],
+        "generality": null,
+        "memory_id": "0922912339244644d4a02bb6",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "1ed7bc643ac0fd0becd241eae50d9ab2f1b537693f2185e3b91e2759b096950c",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/figure.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23476",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "_no",
+          "def",
+          "dump",
+          "fig",
+          "figure",
+          "import",
+          "linspace",
+          "module",
+          "numpy",
+          "open",
+          "pickle"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__",
+          "response_"
+        ],
+        "temporal_distance_days": 698.858
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: 'Poly3DCollection' object has no attribute '_facecolors2d' The following minimal example demonstrates the issue: ``` import numpy as np import matplotlib.tri as mtri import matplotlib.pyplot as plt from mpl_toolkits.mplot3d import Axes3D y,x = np.ogrid[1:10:100j, 1:10:100j] z2 = np.cos(x)**3 - np.sin(y)**2 fig =…. Its reference change touched: lib/mpl_toolkits/mplot3d/art3d.py.",
+        "created_at": "2022-08-05T13:44:06Z",
+        "evidence": [
+          "'Poly3DCollection' object has no attribute '_facecolors2d' The following minimal example demonstrates the issue: ``` import numpy as np import matplotlib.tri as mtri import matplotlib.pyplot as plt from mpl_toolkits.mplot3d import Axes3D y,x = np.ogrid[1:10:100j, 1:10:100j] z2 = np.cos(x)**3 - np.sin(y)**2 fig =…"
+        ],
+        "evidence_locations": [
+          "lib/mpl_toolkits/mplot3d/art3d.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/mpl_toolkits/mplot3d/art3d.py"
+        ],
+        "generality": null,
+        "memory_id": "50c36ca3e3a8b2b86ef44ac8",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "04d8916fb7954b5a997ba151ccd3bc884323182066f986ccf94b4c89d1ae1499",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/mpl_toolkits/mplot3d/art3d.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23562",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "def",
+          "fails",
+          "fig",
+          "figure",
+          "import",
+          "module",
+          "numpy",
+          "plt",
+          "pyplot",
+          "recent",
+          "traceback"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 685.077
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: 'Line3D' object has no attribute '_verts3d' ### Bug summary I use matplotlib 3D to visualize some lines in 3D. When I first run the following code, the code can run right. But, if I give `x_s_0[n]` a numpy array, it will report the error 'input operand has more dimensions than allowed by the axis remapping'.…. Its reference change touched: lib/mpl_toolkits/mplot3d/art3d.py.",
+        "created_at": "2022-08-05T15:52:55Z",
+        "evidence": [
+          "[Bug]: 'Line3D' object has no attribute '_verts3d' ### Bug summary I use matplotlib 3D to visualize some lines in 3D. When I first run the following code, the code can run right. But, if I give `x_s_0[n]` a numpy array, it will report the error 'input operand has more dimensions than allowed by the axis remapping'.…"
+        ],
+        "evidence_locations": [
+          "lib/mpl_toolkits/mplot3d/art3d.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/mpl_toolkits/mplot3d/art3d.py"
+        ],
+        "generality": null,
+        "memory_id": "1ae6a6a235fe06b8484ffbb6",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "017f6904b08d78329d521b3c12f5c03df407242aaf882df667e40b2cd9afd487",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/mpl_toolkits/mplot3d/art3d.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23563",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "fig",
+          "figure",
+          "know",
+          "module",
+          "numpy",
+          "plot",
+          "plt",
+          "pyplot",
+          "recent",
+          "response_",
+          "run"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 684.987
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: legend draggable as keyword <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Feature request **There is not keyword to make legend draggable at creation** <!--A short 1-2 sentences that…. Its reference change touched: lib/matplotlib/legend.py.",
+        "created_at": "2022-09-16T21:51:24Z",
+        "evidence": [
+          "legend draggable as keyword <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Feature request **There is not keyword to make legend draggable at creation** <!--A short 1-2 sentences that…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/legend.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/legend.py"
+        ],
+        "generality": null,
+        "memory_id": "c56a69cc44d400218da73318",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "7b33a99812d84ff5e95df1a9b0a04f87e9e2967a9b9275f276d321d82d1b5535",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/legend.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23913",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "having",
+          "true"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__"
+        ],
+        "temporal_distance_days": 642.738
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Text label with empty line causes a \"TypeError: cannot unpack non-iterable NoneType object\" in PostScript backend ### Bug summary When saving a figure with the PostScript backend, a > TypeError: cannot unpack non-iterable NoneType object happens if the figure contains a multi-line text label with an empty line…. Its reference change touched: lib/matplotlib/backends/backend_ps.py.",
+        "created_at": "2022-09-20T13:49:19Z",
+        "evidence": [
+          "[Bug]: Text label with empty line causes a \"TypeError: cannot unpack non-iterable NoneType object\" in PostScript backend ### Bug summary When saving a figure with the PostScript backend, a > TypeError: cannot unpack non-iterable NoneType object happens if the figure contains a multi-line text label with an empty line…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/backends/backend_ps.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/backends/backend_ps.py"
+        ],
+        "generality": null,
+        "memory_id": "d16175d8f9d3462ffd6989f5",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "3154fa706de9b547261df32b46b6348d2988d3d5d0f16d07f25daa70157d228e",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/backends/backend_ps.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23964",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "cannot",
+          "contains",
+          "import",
+          "label",
+          "module",
+          "recent",
+          "response_",
+          "set_title",
+          "traceback",
+          "typeerror"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_",
+          "set_title"
+        ],
+        "temporal_distance_days": 639.073
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Constrained layout UserWarning even when False ### Bug summary When using layout settings such as `plt.subplots_adjust` or `bbox_inches='tight`, a UserWarning is produced due to incompatibility with constrained_layout, even if constrained_layout = False. This was not the case in previous versions. ### Code for…. Its reference change touched: lib/matplotlib/figure.py.",
+        "created_at": "2022-09-22T21:39:02Z",
+        "evidence": [
+          "[Bug]: Constrained layout UserWarning even when False ### Bug summary When using layout settings such as `plt.subplots_adjust` or `bbox_inches='tight`, a UserWarning is produced due to incompatibility with constrained_layout, even if constrained_layout = False. This was not the case in previous versions. ### Code for…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/figure.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/figure.py"
+        ],
+        "generality": null,
+        "memory_id": "1d5536636c4794485f872255",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "1e2ba549a4aa427dd0ef643597e269562f98c2576f87b996dd4516416dd59791",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/figure.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-23987",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "false",
+          "fig",
+          "figure",
+          "import",
+          "linspace",
+          "numpy",
+          "plot",
+          "plt",
+          "pyplot",
+          "response_",
+          "subplots"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 636.747
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: ax.bar raises for all-nan data on matplotlib 3.6.1 ### Bug summary `ax.bar` raises an exception in 3.6.1 when passed only nan data. This irrevocably breaks seaborn's histogram function (which draws and then removes a \"phantom\" bar to trip the color cycle). ### Code for reproduction ```python import numpy as np…. Its reference change touched: lib/matplotlib/axes/_axes.py.",
+        "created_at": "2022-10-12T22:00:54Z",
+        "evidence": [
+          "[Bug]: ax.bar raises for all-nan data on matplotlib 3.6.1 ### Bug summary `ax.bar` raises an exception in 3.6.1 when passed only nan data. This irrevocably breaks seaborn's histogram function (which draws and then removes a \"phantom\" bar to trip the color cycle). ### Code for reproduction ```python import numpy as np…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/axes/_axes.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/axes/_axes.py"
+        ],
+        "generality": null,
+        "memory_id": "d17074154b83ef506c49f658",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "94cff382fadd6d7dd6e2677866a460b0068f0c881388ffc1d6c5d97359123b70",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/axes/_axes.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-24149",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "_no",
+          "def",
+          "having",
+          "import",
+          "know",
+          "like",
+          "numpy",
+          "plt",
+          "pyplot",
+          "recent",
+          "response_"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__",
+          "response_"
+        ],
+        "temporal_distance_days": 616.732
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Setting matplotlib.pyplot.style.library['seaborn-colorblind'] result in key error on matplotlib v3.6.1 ### Bug summary I have code that executes: ``` import matplotlib.pyplot as plt the_rc = plt.style.library[\"seaborn-colorblind\"] ``` Using version 3.4.3 of matplotlib, this works fine. I recently installed my…. Its reference change touched: lib/matplotlib/style/core.py.",
+        "created_at": "2022-10-25T02:03:19Z",
+        "evidence": [
+          "[Bug]: Setting matplotlib.pyplot.style.library['seaborn-colorblind'] result in key error on matplotlib v3.6.1 ### Bug summary I have code that executes: ``` import matplotlib.pyplot as plt the_rc = plt.style.library[\"seaborn-colorblind\"] ``` Using version 3.4.3 of matplotlib, this works fine. I recently installed my…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/style/core.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/style/core.py"
+        ],
+        "generality": null,
+        "memory_id": "3e86d8037c90cc91b85c4e34",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "37dd89ea874c47bbe40efcebc466eaea856d83f6694c3e4c3c62fc38b1e21795",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/style/core.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-24265",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "import",
+          "plt",
+          "pyplot",
+          "recent",
+          "response_",
+          "traceback"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 604.563
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [ENH]: Axes.set_xticks/Axis.set_ticks only validates kwargs if ticklabels are set, but they should ### Problem Per the doc of `Axis.set_ticks`: ``` **kwargs `.Text` properties for the labels. These take effect only if you pass *labels*. In other cases, please use `~.Axes.tick_params`. ``` This means that in e.g.…. Its reference change touched: lib/matplotlib/axis.py.",
+        "created_at": "2022-11-01T18:11:43Z",
+        "evidence": [
+          "[ENH]: Axes.set_xticks/Axis.set_ticks only validates kwargs if ticklabels are set, but they should ### Problem Per the doc of `Axis.set_ticks`: ``` **kwargs `.Text` properties for the labels. These take effect only if you pass *labels*. In other cases, please use `~.Axes.tick_params`. ``` This means that in e.g.…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/axis.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/axis.py"
+        ],
+        "generality": null,
+        "memory_id": "2b1fbcdb4eb2e612c8605240",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "e08f0f9cddbf6eb18d9b84a0e319052d24b5bcf262976e655a8104b484fa3953",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/axis.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-24334",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "consider",
+          "enh",
+          "proposed",
+          "solution"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "Problem",
+          "Proposed"
+        ],
+        "temporal_distance_days": 596.891
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: NumPy 1.24 deprecation warnings ### Bug summary Starting NumPy 1.24 I observe several deprecation warnings. ### Code for reproduction ```python import matplotlib.pyplot as plt import numpy as np plt.get_cmap()(np.empty((0, ), dtype=np.uint8)) ``` ### Actual outcome ```…. Its reference change touched: lib/matplotlib/colors.py.",
+        "created_at": "2023-01-13T14:23:39Z",
+        "evidence": [
+          "[Bug]: NumPy 1.24 deprecation warnings ### Bug summary Starting NumPy 1.24 I observe several deprecation warnings. ### Code for reproduction ```python import matplotlib.pyplot as plt import numpy as np plt.get_cmap()(np.empty((0, ), dtype=np.uint8)) ``` ### Actual outcome ```…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/colors.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/colors.py"
+        ],
+        "generality": null,
+        "memory_id": "bbad975d4ad7934a7cb43469",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "07a8702a8468cb33e3020f697aa36afd84034d7db44d405bf398644fd835b066",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/colors.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-24970",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "import",
+          "numpy",
+          "plt",
+          "pyplot",
+          "response_"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 524.049
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Setting norm with existing colorbar fails with 3.6.3 ### Bug summary Setting the norm to a `LogNorm` after the colorbar has been created (e.g. in interactive code) fails with an `Invalid vmin` value in matplotlib 3.6.3. The same code worked in previous matplotlib versions. Not that vmin and vmax are explicitly…. Its reference change touched: lib/matplotlib/colors.py.",
+        "created_at": "2023-01-25T15:24:44Z",
+        "evidence": [
+          "[Bug]: Setting norm with existing colorbar fails with 3.6.3 ### Bug summary Setting the norm to a `LogNorm` after the colorbar has been created (e.g. in interactive code) fails with an `Invalid vmin` value in matplotlib 3.6.3. The same code worked in previous matplotlib versions. Not that vmin and vmax are explicitly…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/colors.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/colors.py"
+        ],
+        "generality": null,
+        "memory_id": "fb05afadf01fd889a1190566",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "3c3614e4c359003d9def70aa347caf57eecc5e7b49a01bf2c33c253e2bd30235",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/colors.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25079",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "fails",
+          "fig",
+          "figure",
+          "import",
+          "numpy",
+          "plot",
+          "plt",
+          "pyplot",
+          "recent",
+          "response_",
+          "subplots"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 512.007
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Unable to pickle figure with draggable legend ### Bug summary I am unable to pickle figure with draggable legend. Same error comes for draggable annotations. ### Code for reproduction ```python import matplotlib.pyplot as plt import pickle fig = plt.figure() ax = fig.add_subplot(111) time=[0,1,2,3,4]…. Its reference change touched: lib/matplotlib/offsetbox.py.",
+        "created_at": "2023-02-23T21:04:12Z",
+        "evidence": [
+          "[Bug]: Unable to pickle figure with draggable legend ### Bug summary I am unable to pickle figure with draggable legend. Same error comes for draggable annotations. ### Code for reproduction ```python import matplotlib.pyplot as plt import pickle fig = plt.figure() ax = fig.add_subplot(111) time=[0,1,2,3,4]…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/offsetbox.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/offsetbox.py"
+        ],
+        "generality": null,
+        "memory_id": "af9465e959a9305b308ba050",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "30463bca1614f71c120bc2a73da58c536860865325f96d0eb22345b0e006a558",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/offsetbox.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25311",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "cannot",
+          "fig",
+          "figure",
+          "figurecanvasqtagg",
+          "import",
+          "label",
+          "pickle",
+          "plot",
+          "plt",
+          "pyplot",
+          "response_"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "FigureCanvasQTAgg",
+          "response_"
+        ],
+        "temporal_distance_days": 482.771
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Unable to pickle figure with aligned labels ### Bug summary Unable to pickle figure after calling `align_labels()` ### Code for reproduction ```python import matplotlib.pyplot as plt import pickle fig = plt.figure() ax1 = fig.add_subplot(211) ax2 = fig.add_subplot(212) time=[0,1,2,3,4]…. Its reference change touched: lib/matplotlib/cbook.py.",
+        "created_at": "2023-02-26T11:18:40Z",
+        "evidence": [
+          "[Bug]: Unable to pickle figure with aligned labels ### Bug summary Unable to pickle figure after calling `align_labels()` ### Code for reproduction ```python import matplotlib.pyplot as plt import pickle fig = plt.figure() ax1 = fig.add_subplot(211) ax2 = fig.add_subplot(212) time=[0,1,2,3,4]…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/cbook.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/cbook.py"
+        ],
+        "generality": null,
+        "memory_id": "44af172c7240fef2d6aa1c3e",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "6e9d21efe26230c2ae8fb174cadbcc59683e1d1c653d93df46539056bdb52c82",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/cbook.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25332",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "cannot",
+          "fig",
+          "figure",
+          "import",
+          "pickle",
+          "plot",
+          "plt",
+          "pyplot",
+          "response_",
+          "typeerror"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "response_"
+        ],
+        "temporal_distance_days": 480.178
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: using clf and pyplot.draw in range slider on_changed callback blocks input to widgets ### Bug summary When using clear figure, adding new widgets and then redrawing the current figure in the on_changed callback of a range slider the inputs to all the widgets in the figure are blocked. When doing the same in…. Its reference change touched: lib/matplotlib/figure.py.",
+        "created_at": "2023-03-11T08:36:32Z",
+        "evidence": [
+          "[Bug]: using clf and pyplot.draw in range slider on_changed callback blocks input to widgets ### Bug summary When using clear figure, adding new widgets and then redrawing the current figure in the on_changed callback of a range slider the inputs to all the widgets in the figure are blocked. When doing the same in…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/figure.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/figure.py"
+        ],
+        "generality": null,
+        "memory_id": "5b7073e6b658e492a573c769",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "ad4bdd9eb940e35c761749818eaba13a5012ef21965c3146ea0261801c67b63b",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/figure.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25433",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "_no",
+          "def",
+          "figure",
+          "import",
+          "on_changed",
+          "response_",
+          "slider",
+          "valinit",
+          "valmax",
+          "valmin",
+          "widgets"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "Slider",
+          "on_changed",
+          "response_"
+        ],
+        "temporal_distance_days": 467.29
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: [Bug]: Attribute Error combining matplotlib 3.7.1 and mplcursor on data selection ### Bug summary If you combine mplcursor and matplotlib 3.7.1, you'll get an `AttributeError: 'NoneType' object has no attribute 'canvas'` after clicking a few data points. Henceforth, selecting a new data point will trigger the same…. Its reference change touched: lib/matplotlib/offsetbox.py.",
+        "created_at": "2023-03-12T21:58:08Z",
+        "evidence": [
+          "[Bug]: Attribute Error combining matplotlib 3.7.1 and mplcursor on data selection ### Bug summary If you combine mplcursor and matplotlib 3.7.1, you'll get an `AttributeError: 'NoneType' object has no attribute 'canvas'` after clicking a few data points. Henceforth, selecting a new data point will trigger the same…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/offsetbox.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/offsetbox.py"
+        ],
+        "generality": null,
+        "memory_id": "764084b1b24160a8c9df90ef",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "74cc15649f4f0d8b3893bff5b04ba397193bfe53b9f18ac4201bfa30859d6f77",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/offsetbox.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25442",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "_no",
+          "figure",
+          "import",
+          "numpy",
+          "plt",
+          "pyplot",
+          "recent",
+          "response_",
+          "traceback"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__",
+          "response_"
+        ],
+        "temporal_distance_days": 465.734
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Update colorbar after changing mappable.norm How can I update a colorbar, after I changed the norm instance of the colorbar? `colorbar.update_normal(mappable)` has now effect and `colorbar.update_bruteforce(mappable)` throws a `ZeroDivsionError`-Exception. Consider this example: ``` python import matplotlib.pyplot as…. Its reference change touched: lib/matplotlib/colorbar.py.",
+        "created_at": "2023-03-18T17:01:11Z",
+        "evidence": [
+          "Update colorbar after changing mappable.norm How can I update a colorbar, after I changed the norm instance of the colorbar? `colorbar.update_normal(mappable)` has now effect and `colorbar.update_bruteforce(mappable)` throws a `ZeroDivsionError`-Exception. Consider this example: ``` python import matplotlib.pyplot as…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/colorbar.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/colorbar.py"
+        ],
+        "generality": null,
+        "memory_id": "30c4fe0a71e88ea63d509ba8",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "070d42a44c969e7cd98ceba67362fb27c1f3f259c3d56bc1df05449bff63b828",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/colorbar.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-25498",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "consider",
+          "fig",
+          "import",
+          "module",
+          "numpy",
+          "plot",
+          "plt",
+          "pyplot",
+          "recent",
+          "subplots",
+          "traceback",
+          "update"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 459.94
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: xlim_changed not emitted on shared axis <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Bug report **Bug summary** When an axis is shared with another its registered \"xlim_changed\"…. Its reference change touched: lib/matplotlib/axis.py.",
+        "created_at": "2023-05-30T13:45:49Z",
+        "evidence": [
+          "xlim_changed not emitted on shared axis <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Bug report **Bug summary** When an axis is shared with another its registered \"xlim_changed\"…"
+        ],
+        "evidence_locations": [
+          "lib/matplotlib/axis.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/matplotlib/axis.py"
+        ],
+        "generality": null,
+        "memory_id": "a2edd886b480a938c47a8744",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "f495fc17a7fc2e1615fcbba4a5d6be3ac444c618b727910c7ab370cbcd3f5b0b",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/matplotlib/axis.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-26011",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "def",
+          "false",
+          "like",
+          "true"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [],
+        "temporal_distance_days": 387.075
+      }
+    },
+    {
+      "entry_reasons": [
+        "ALL_STRICTLY_EARLIER_SAME_REPOSITORY_HISTORY",
+        "ISSUE_TEXT_OVERLAP",
+        "ISSUE_SYMBOL_MATCH"
+      ],
+      "memory": {
+        "claim": "Earlier task experience concerned: Error creating AxisGrid with non-default axis class <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Bug report **Bug summary** Creating `AxesGrid` using cartopy `GeoAxes` as `axis_class`…. Its reference change touched: lib/mpl_toolkits/axes_grid1/axes_grid.py.",
+        "created_at": "2023-05-31T21:36:23Z",
+        "evidence": [
+          "Error creating AxisGrid with non-default axis class <!--To help us understand and resolve your issue, please fill out the form to the best of your ability.--> <!--You can feel free to delete the sections that do not apply.--> ### Bug report **Bug summary** Creating `AxesGrid` using cartopy `GeoAxes` as `axis_class`…"
+        ],
+        "evidence_locations": [
+          "lib/mpl_toolkits/axes_grid1/axes_grid.py"
+        ],
+        "extractor_version": "provided-experience-metadata-v1",
+        "files_or_symbols": [
+          "lib/mpl_toolkits/axes_grid1/axes_grid.py"
+        ],
+        "generality": null,
+        "memory_id": "ce239e9760e21c2a350c5bcd",
+        "memory_type": "EPISODIC_EXAMPLE",
+        "negative_transfer_risk": null,
+        "preconditions": "Inspect the current target code and tests; this is a prior task example, not a prescription.",
+        "provenance_hash": "9899b93b6e9cb29de21026f7b8d3320fe1d6b7d8154136178c388fdef7dc5567",
+        "repository": "matplotlib/matplotlib",
+        "scope": {
+          "paths": [
+            "lib/mpl_toolkits/axes_grid1/axes_grid.py"
+          ],
+          "repository": "matplotlib/matplotlib"
+        },
+        "source_mode": "PROVIDED_EXPERIENCE_SMOKE",
+        "source_outcome": {
+          "evidence_status": "reference_patch_available_not_agent_outcome",
+          "status": "unknown"
+        },
+        "source_task_id": "matplotlib__matplotlib-26020",
+        "source_worker_id": null
+      },
+      "public_similarity": {
+        "shared_issue_terms": [
+          "__init__",
+          "false",
+          "fig",
+          "figure",
+          "import",
+          "label",
+          "like",
+          "module",
+          "numpy",
+          "plt",
+          "pyplot",
+          "recent"
+        ],
+        "shared_paths_in_issue_text": [],
+        "shared_symbols_in_issue_text": [
+          "__init__"
+        ],
+        "temporal_distance_days": 385.749
+      }
+    }
+  ],
+  "pool_hash": "f7c062d9becedcc2d1737dce56662a7437672abfacc7254135e0f206648434a5",
+  "target": {
+    "base_commit": "d347c3227f8de8a99aa327390fee619310452a96",
+    "environment_setup_commit": "d347c3227f8de8a99aa327390fee619310452a96",
+    "problem_statement": "[ENH]: pickle (or save) matplotlib figure with insteractive slider\n### Problem\n\nI'd like to save/pickle a matplotlib figure containing a `matplotlib.widgets.Widget` object to send it to a colleague without him having to run the code I use to generate it.\r\n\r\nI know since matplotlib version 1.2 `matplotlib.figure.Figure` are pickable. However, when the figure contains a `matplotlib.widgets.Widget`, pickle fails to save it.\r\n\r\nFor example consider this class:\r\n\r\n```\r\nimport matplotlib.pyplot as plt\r\nimport matplotlib.widgets as widgets\r\n\r\nimport numpy as np\r\n\r\nimport pickle as pkl\r\n\r\nclass interactive_plot():\r\n\r\n    def __init__(self, add_slider):\r\n\r\n        self.fig, self.axs = plt.subplots(2,1, gridspec_kw={'height_ratios':[10,1]})\r\n\r\n        self.x_plot = np.linspace(0,10,1000)\r\n        self.line = self.axs[0].plot(self.x_plot, self.x_plot*0)[0]\r\n        self.axs[0].set_ylim((0,10))\r\n        self.axs[0].grid()\r\n        self.axs[0].set_title(r'$y = x^\\alpha$')\r\n\r\n        if add_slider:\r\n            self.slider= widgets.Slider(\r\n                self.axs[1],\r\n                label   = r'$\\alpha$',\r\n                valmin  = 0,\r\n                valmax  = 5,\r\n                valinit = 0,\r\n                valstep = .01\r\n                )\r\n            self.slider.on_changed(self.update)\r\n\r\n    def update(self, val):\r\n        self.line.set_ydata(self.x_plot**val)\r\n```\r\n\r\nIf I run\r\n\r\n```\r\nh = interactive_plot(add_slider=False)\r\nwith open('test.pkl','wb') as f: pkl.dump(h, f)\r\n```\r\nall works properly. However\r\n```\r\nh = interactive_plot(add_slider=True)\r\nwith open('test.pkl','wb') as f: pkl.dump(h, f)\r\n```\r\nreturns\r\n```\r\nTraceback (most recent call last):\r\n\r\n  File \"C:\\Users\\user\\Desktop\\test.py\", line 47, in <module>\r\n    with open('test.pkl','wb') as f: pkl.dump(h, f)\r\n\r\nTypeError: cannot pickle 'FigureCanvasQTAgg' object\r\n```\r\n\r\nIs there a way to workaround this?\r\n\r\nDISCLAIMER: The same question was posted here https://stackoverflow.com/questions/71145817/pickle-or-save-matplotlib-figure-with-insteractive-slider\n\n### Proposed solution\n\n_No response_\n",
+    "repository": "matplotlib/matplotlib",
+    "target_created_at": "2024-06-20T15:34:29Z",
+    "target_id": "matplotlib__matplotlib-22482"
+  }
+}

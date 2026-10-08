@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Target benchmark manifest row",
+  "type": "object",
+  "required": ["target_id", "repository", "target_created_at", "base_commit", "canonical_evaluator", "candidate_pool_size", "fail_to_pass_count", "pass_to_pass_count", "environment_validation_status", "candidate_pool_hash"],
+  "properties": {
+    "target_id": {"type": "string"},
+    "repository": {"type": "string"},
+    "target_created_at": {"type": ["string", "null"]},
+    "base_commit": {"type": ["string", "null"]},
+    "environment_setup_commit": {"type": ["string", "null"]},
+    "problem_statement": {"type": "string"},
+    "canonical_evaluator": {"type": "string"},
+    "canonical_evaluator_commit": {"type": "string"},
+    "evaluator_task_id": {"type": "string"},
+    "fail_to_pass_count": {"type": "integer"},
+    "pass_to_pass_count": {"type": "integer"},
+    "candidate_pool_path": {"type": "string"},
+    "candidate_pool_hash": {"type": "string"},
+    "candidate_pool_size": {"type": "integer"},
+    "source_count_for_target": {"type": "integer"},
+    "environment_metadata_valid": {"type": "boolean"},
+    "environment_valid": {"type": ["boolean", "null"]},
+    "environment_validation_status": {"enum": ["NOT_RUN", "PASS", "FAIL"]},
+    "track": {"enum": ["NATURAL_TRANSFER", "GOVERNANCE_STRESS"]}
+  },
+  "additionalProperties": false
+}

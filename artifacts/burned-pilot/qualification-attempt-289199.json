@@ -1,0 +1,205 @@
+{
+  "evaluator_controls_sha256": "08dec62d5f24e7bd3fecf3fd4b8088f32ca2d708c72ce863a38e70b2d38cb8c2",
+  "grader_preflight": {
+    "apptainer_version": "apptainer version 1.5.2-1.el8",
+    "job_tmp_filesystem": {
+      "filesystem_type": "xfs",
+      "mountpoint": "/",
+      "source": "/dev/mapper/centos-root"
+    },
+    "target_sif_count": 3
+  },
+  "mini_python_preflight": {
+    "executable": "/home/csgrad/vbork001/.cache/fleet-mem-contextbench/worker-venv/bin/python",
+    "litellm_version": "1.102.1",
+    "mini_entry_points": [
+      {
+        "name": "mini",
+        "value": "minisweagent.run.mini:app"
+      }
+    ],
+    "mini_swe_agent_version": "2.4.6",
+    "module_origin": "/home/csgrad/vbork001/.cache/fleet-mem-contextbench/worker-venv/lib/python3.13/site-packages/minisweagent/__init__.py",
+    "prefix": "/home/csgrad/vbork001/.cache/fleet-mem-contextbench/worker-venv",
+    "wrapper": "/tmp/fmc-289199/mini",
+    "wrapper_sha256": "4eb5aac998e3fc794d42891598e3ecca888d2136dc586c14db3bb03738306a0a"
+  },
+  "nonempty_patch_count": 0,
+  "plan_sha256": "4bc0091d04b69f0c8b7f804425e38f8b88d5bdc81040f03054f5c7b90d09b927",
+  "records": [
+    {
+      "arm_id": "QUALIFICATION_NO_MEMORY",
+      "canonical_result_sha256": null,
+      "exposed_memory_ids": [],
+      "grade": {
+        "canonical_grade_available": false,
+        "fail_to_pass_passed": null,
+        "fail_to_pass_total": null,
+        "latency_seconds": null,
+        "pass_to_pass_passed": null,
+        "pass_to_pass_total": null,
+        "reason": "worker did not submit a nonempty patch; no synthetic patch was graded",
+        "resolved": null
+      },
+      "memory_count": 0,
+      "target_id": "sympy__sympy-21309",
+      "worker": {
+        "agent_steps": 1,
+        "context_tokens_per_call": [],
+        "context_window_tokens": 16384,
+        "max_generation_tokens_per_call": 1024,
+        "max_steps": 12,
+        "mini_exit_status": "Submitted",
+        "model": "qwen2.5-coder:32b",
+        "model_stats": {
+          "api_calls": 2,
+          "instance_cost": 0.0
+        },
+        "ollama_calls_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-21309/worker/ollama_calls.jsonl",
+        "ollama_http_request_count": 3,
+        "ollama_model_call_count": 0,
+        "patch_bytes": 0,
+        "patch_path": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-21309/worker/prediction.patch",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "prompt_id": "contextbench-worker-memory-injection-v2",
+        "prompt_sha256": "accf88769ec6c96108495712ef1a6b3983aba9260177e3bb9de447a2071791b4",
+        "returncode": 0,
+        "runtime": "Ollama 0.34.4 local; cloud disabled",
+        "seed": 42,
+        "stderr_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-21309/worker/mini.stderr.log",
+        "stdout_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-21309/worker/mini.stdout.log",
+        "target_and_memory_input_sha256": "720fba81687644b6608ec16fde1c666f569b8a4a7d466545d3d60fb3834afd03",
+        "task_id": "sympy__sympy-21309",
+        "temperature": 0.0,
+        "timeout": false,
+        "tool_calls": 1,
+        "trajectory": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-21309/worker/trajectory.json",
+        "wall_seconds": 149.8603685600683,
+        "wall_time_limit_seconds": 900,
+        "worker": "mini-swe-agent 2.4.6",
+        "worker_input_tokens": null,
+        "worker_output_tokens": null
+      }
+    },
+    {
+      "arm_id": "QUALIFICATION_NO_MEMORY",
+      "canonical_result_sha256": null,
+      "exposed_memory_ids": [],
+      "grade": {
+        "canonical_grade_available": false,
+        "fail_to_pass_passed": null,
+        "fail_to_pass_total": null,
+        "latency_seconds": null,
+        "pass_to_pass_passed": null,
+        "pass_to_pass_total": null,
+        "reason": "worker did not submit a nonempty patch; no synthetic patch was graded",
+        "resolved": null
+      },
+      "memory_count": 0,
+      "target_id": "django__django-34176",
+      "worker": {
+        "agent_steps": 1,
+        "context_tokens_per_call": [],
+        "context_window_tokens": 16384,
+        "max_generation_tokens_per_call": 1024,
+        "max_steps": 12,
+        "mini_exit_status": "Submitted",
+        "model": "qwen2.5-coder:32b",
+        "model_stats": {
+          "api_calls": 2,
+          "instance_cost": 0.0
+        },
+        "ollama_calls_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/django__django-34176/worker/ollama_calls.jsonl",
+        "ollama_http_request_count": 3,
+        "ollama_model_call_count": 0,
+        "patch_bytes": 0,
+        "patch_path": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/django__django-34176/worker/prediction.patch",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "prompt_id": "contextbench-worker-memory-injection-v2",
+        "prompt_sha256": "cb99b11cd74133af3784ebfc2c8c15e2304fe754be62582aca5300ea6f94a49d",
+        "returncode": 0,
+        "runtime": "Ollama 0.34.4 local; cloud disabled",
+        "seed": 42,
+        "stderr_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/django__django-34176/worker/mini.stderr.log",
+        "stdout_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/django__django-34176/worker/mini.stdout.log",
+        "target_and_memory_input_sha256": "bbc82a214157c84bb027476a04ed0c37bf28234d9894cce01e061e9a080e9dd3",
+        "task_id": "django__django-34176",
+        "temperature": 0.0,
+        "timeout": false,
+        "tool_calls": 1,
+        "trajectory": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/django__django-34176/worker/trajectory.json",
+        "wall_seconds": 43.55950562795624,
+        "wall_time_limit_seconds": 900,
+        "worker": "mini-swe-agent 2.4.6",
+        "worker_input_tokens": null,
+        "worker_output_tokens": null
+      }
+    },
+    {
+      "arm_id": "QUALIFICATION_NO_MEMORY",
+      "canonical_result_sha256": null,
+      "exposed_memory_ids": [],
+      "grade": {
+        "canonical_grade_available": false,
+        "fail_to_pass_passed": null,
+        "fail_to_pass_total": null,
+        "latency_seconds": null,
+        "pass_to_pass_passed": null,
+        "pass_to_pass_total": null,
+        "reason": "worker did not submit a nonempty patch; no synthetic patch was graded",
+        "resolved": null
+      },
+      "memory_count": 0,
+      "target_id": "sympy__sympy-16953",
+      "worker": {
+        "agent_steps": 1,
+        "context_tokens_per_call": [],
+        "context_window_tokens": 16384,
+        "max_generation_tokens_per_call": 1024,
+        "max_steps": 12,
+        "mini_exit_status": "Submitted",
+        "model": "qwen2.5-coder:32b",
+        "model_stats": {
+          "api_calls": 2,
+          "instance_cost": 0.0
+        },
+        "ollama_calls_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-16953/worker/ollama_calls.jsonl",
+        "ollama_http_request_count": 3,
+        "ollama_model_call_count": 0,
+        "patch_bytes": 0,
+        "patch_path": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-16953/worker/prediction.patch",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "prompt_id": "contextbench-worker-memory-injection-v2",
+        "prompt_sha256": "2740e440555066242af3172515d7c3f3f2b46cf973b7c413d07a14980af9c543",
+        "returncode": 0,
+        "runtime": "Ollama 0.34.4 local; cloud disabled",
+        "seed": 42,
+        "stderr_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-16953/worker/mini.stderr.log",
+        "stdout_log": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-16953/worker/mini.stdout.log",
+        "target_and_memory_input_sha256": "1da6849b665e9fc421d7e8aae1474d7197c6752edfddfc047dd7d3751961e380",
+        "task_id": "sympy__sympy-16953",
+        "temperature": 0.0,
+        "timeout": false,
+        "tool_calls": 1,
+        "trajectory": "/home/csgrad/vbork001/fleet-mem-contextbench/results/burned-pilot/qualification/sympy__sympy-16953/worker/trajectory.json",
+        "wall_seconds": 40.49100233986974,
+        "wall_time_limit_seconds": 900,
+        "worker": "mini-swe-agent 2.4.6",
+        "worker_input_tokens": null,
+        "worker_output_tokens": null
+      }
+    }
+  ],
+  "resolved_count": 0,
+  "schema_version": 1,
+  "slurm_job_id": "289199",
+  "stage": "BURNED_WORKER_QUALIFICATION",
+  "status": "STOP_WORKER_QUALIFICATION_FAILED",
+  "worker_preflight": {
+    "cloud_disabled": true,
+    "model": "qwen2.5-coder:32b",
+    "model_manifest_sha256": "b92d6a0bd47ee79114298de0177bf920c05a706d12633950b3936778492bef41",
+    "model_size_bytes": 19851349898,
+    "ollama_version": "0.34.4"
+  }
+}
