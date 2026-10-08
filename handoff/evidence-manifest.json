@@ -1,0 +1,76 @@
+{
+  "active_slurm_job_id": 289898,
+  "artifacts": [
+    {
+      "filename": "luna_oracle_signal_289648_test_filtered_regrade.json",
+      "role": "frozen_signal_summary",
+      "sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
+      "size_bytes": 17223,
+      "source_path": "artifacts/development/luna_oracle_signal_289648_test_filtered_regrade.json",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "luna_oracle_signal_289648.json",
+      "role": "raw_signal_summary",
+      "sha256": "47a29fac548d1cc7fccd0aaa1158907f085e7bf741dd5792ff96178995b88ae5",
+      "size_bytes": 138326,
+      "source_path": "artifacts/development/luna_oracle_signal_289648.json",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "jev_write_decisions.jsonl",
+      "role": "jev_write_decisions",
+      "sha256": "14e9d2b438c379e60e40fbbfb6830e27898331344a705694ae563b033d6b6325",
+      "size_bytes": 74112,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/jev_write_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "random_matched_write_decisions.jsonl",
+      "role": "random_write_decisions",
+      "sha256": "8f3247192872beef84a2ede15f65f7ceadd6af75fcfc01fceba68c10c467dee4",
+      "size_bytes": 58226,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/random_matched_write_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "jev_read_decisions.jsonl",
+      "role": "jev_read_decisions",
+      "sha256": "0a023637d01ca72bd16e8ff3f3a51dd186ec8d343fa3983d4309cc71b60ff785",
+      "size_bytes": 4718,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/jev_read_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "exposure_write_gate.json",
+      "role": "write_exposure_gate",
+      "sha256": "ceabd66172acceeb9aabddbe8efbb669cdc0f558777184760808b705b752381f",
+      "size_bytes": 6636,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/gates/exposure_write_gate.json",
+      "status": "FROZEN"
+    }
+  ],
+  "branch": "handoff/aamas-2027-evidence",
+  "core_arms": [
+    "A_NO_MEMORY",
+    "B_SHARE_ALL",
+    "C_RANDOM_MATCHED",
+    "D_JEV_WRITE",
+    "E_JEV_WRITE_READ",
+    "F_ORACLE_RELATED_CEILING"
+  ],
+  "drive_folder_url": "https://drive.google.com/drive/folders/1EC9nyE5bNdtqBgem6H9YDlk1Ti6ZY_kF",
+  "evidence_archive": null,
+  "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
+  "frozen_baseline_oracle_grades": 20,
+  "outside_core_unrun_arm": "G_LLM_WRITE",
+  "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
+  "ready_comment_posted": false,
+  "repository": "https://github.com/Vedant2100/agent-fleet-memory-governance",
+  "required_primary_targets": 10,
+  "required_treatment_grades": 40,
+  "schema_version": 1,
+  "snapshot_utc": "2026-10-08 20:54:00 UTC",
+  "status": "PROVISIONAL",
+  "treatment_grades_at_snapshot": 23
+}
