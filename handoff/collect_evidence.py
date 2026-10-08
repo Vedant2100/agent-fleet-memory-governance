@@ -435,7 +435,13 @@ def collect(source: Path, repo: Path, output: Path, job_id: int, code_sha: str,
                                         treatment_rows, treatment_snapshot))
     snapshot["status"] = "COLLECTED_COMPLETE" if not snapshot["issues"] else "PARTIAL"
     snapshot["provisional"] = snapshot["status"] != "COLLECTED_COMPLETE"
-    fingerprint = hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
+    fingerprint_input = dict(snapshot)
+    accounting = snapshot["slurm_accounting"]
+    fingerprint_input["slurm_accounting"] = {
+        "return_code": accounting["return_code"],
+        "failed_steps": accounting["failed_steps"],
+    }
+    fingerprint = hashlib.sha256(json.dumps(fingerprint_input, sort_keys=True).encode()).hexdigest()
     version, duplicate = next_version(output, fingerprint)
     if duplicate:
         print(json.dumps({"status": "ALREADY_COLLECTED", "version_dir": str(version)}))
