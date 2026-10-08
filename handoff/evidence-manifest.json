@@ -3,17 +3,18 @@
     "luna_paper_treatments_289898"
   ],
   "archive": {
-    "drive_file_id": "1wsXIOWIXDwK6SOmuKKvgtMl1NiHc_mzI",
-    "drive_sha256_verified": true,
-    "drive_size_bytes": 3946026,
-    "drive_url": "https://drive.google.com/file/d/1wsXIOWIXDwK6SOmuKKvgtMl1NiHc_mzI/view?usp=drivesdk",
-    "filename": "fleet-mem-aamas-2027-v1-1199076fdeab.zip",
-    "github_blob_sha1": "ee75c97cb77b942a5621ea30e35a1a63f5892d99",
-    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v1-1199076fdeab.zip",
-    "md5": "55029a3d36f2e4d9fc2bc7e281d39277",
+    "drive_checksum_status": "PENDING_REMOTE_READBACK",
+    "drive_file_id": "1TO0N19nXh-KhJc25DuoEriG82plGn20r",
+    "drive_sha256_verified": false,
+    "drive_size_bytes": 4001688,
+    "drive_size_verified": true,
+    "drive_url": "https://drive.google.com/file/d/1TO0N19nXh-KhJc25DuoEriG82plGn20r/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v3-cf255b3d9666.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v3-cf255b3d9666.zip",
+    "md5": "44a1ea5e6e566ca2c3b395f604f5ab81",
     "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-    "sha256": "cbaf5e24c4bff990e7e331750305a18a4ca7928376a46454b038c847ee14c228",
-    "size_bytes": 3946026
+    "sha256": "d6323acb92b1648c4faaedbdbbb35a6d8ae632dc4b79e40906ed82cdebb0b200",
+    "size_bytes": 4001688
   },
   "arm_counts": {
     "B_SHARE_ALL": {
@@ -22,8 +23,8 @@
       "resolved": 1
     },
     "C_RANDOM_MATCHED": {
-      "applied": 7,
-      "graded": 7,
+      "applied": 8,
+      "graded": 8,
       "resolved": 1
     },
     "D_JEV_WRITE": {
@@ -89,20 +90,20 @@
   ],
   "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "bundle_commit": "09fa460947d5f0a245bba3e8829dc96508d5af96",
   "drive_manifest": {
-    "file_id": "1O_R3yubsms8CpiXWkyqDJ5hn5rGXl8zJ",
-    "filename": "evidence-manifest-v1-1199076fdeab.json",
-    "remote_sha256_verified": true,
+    "checksum_status": "PENDING_REMOTE_READBACK",
+    "file_id": "1wPD49hPiM-tuZMIStycBp7-KAEnmtAI8",
+    "filename": "evidence-manifest-v3-cf255b3d9666.json",
+    "remote_sha256_verified": false,
     "remote_size_verified": true,
-    "sha256": "560a993e48ad320f5350bac4e13484a6afab728df56845c761bec0e5cf36ccd7",
-    "size_bytes": 2562,
-    "url": "https://drive.google.com/file/d/1O_R3yubsms8CpiXWkyqDJ5hn5rGXl8zJ/view?usp=drivesdk"
+    "sha256": "d03f61e6bcbc41efd1a082fec146c6c9cf39d13291c7c23a958ee47165843ae9",
+    "size_bytes": 7234,
+    "url": "https://drive.google.com/file/d/1wPD49hPiM-tuZMIStycBp7-KAEnmtAI8/view?usp=drivesdk"
   },
-  "drive_manifest_url": null,
+  "drive_manifest_url": "https://drive.google.com/file/d/1wPD49hPiM-tuZMIStycBp7-KAEnmtAI8/view?usp=drivesdk",
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
   "issues": [
-    "missing 12 treatment grades",
+    "missing 11 treatment grades",
     "final treatment summary is absent or not COMPLETE with 40 grades",
     "six-arm paper table is absent",
     "Slurm job state is RUNNING"
@@ -127,10 +128,6 @@
     [
       "sympy__sympy-16953",
       "B_SHARE_ALL"
-    ],
-    [
-      "sympy__sympy-16953",
-      "C_RANDOM_MATCHED"
     ],
     [
       "sympy__sympy-16953",
@@ -159,15 +156,216 @@
   ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
   "provisional": true,
-  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
   "schema_version": 1,
+  "slurm_accounting": {
+    "command": [
+      "sacct",
+      "-j",
+      "289898",
+      "-n",
+      "-P",
+      "--format=JobIDRaw,JobName,State,ExitCode,Elapsed,MaxRSS"
+    ],
+    "failed_steps": [
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      }
+    ],
+    "records": [
+      {
+        "elapsed": "07:31:27",
+        "exit_code": "0:0",
+        "job_id": "289898",
+        "job_name": "fmc-luna-treatments",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "07:31:27",
+        "exit_code": "0:0",
+        "job_id": "289898.batch",
+        "job_name": "batch",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "07:31:27",
+        "exit_code": "0:0",
+        "job_id": "289898.extern",
+        "job_name": "extern",
+        "max_rss": "",
+        "state": "RUNNING"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.0",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.1",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:18",
+        "exit_code": "0:0",
+        "job_id": "289898.2",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.3",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.4",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.6",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.7",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.8",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.9",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.10",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.12",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.13",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.14",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.15",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.16",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.17",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      }
+    ],
+    "return_code": 0,
+    "stderr": ""
+  },
   "slurm_job_id": 289898,
   "slurm_state": "RUNNING",
-  "snapshot_utc": "2026-10-08T21:26:17.402647+00:00",
+  "snapshot_utc": "2026-10-08T22:31:26.322575+00:00",
   "status": "PARTIAL",
-  "treatment_grades": 28,
-  "treatment_results_sha256": "63ba54d38033bbb64e4c8592c5abe1cfac068ddfdded41fa8c9c794269b9d028"
+  "treatment_grades": 29,
+  "treatment_results_sha256": "464ee1bd12a5f7cb4a1058b79a476aeeaf1e656da626e8700027813e8acc5ef9"
 }
