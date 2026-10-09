@@ -7,7 +7,7 @@
 \affiliation{\institution{Anonymous}}
 \begin{document}
 \begin{abstract}
-A coding agent may benefit from an earlier issue in the same repository, but a decision to retain that issue is made before the later task is known. We examine this distinction using historical issue records from SWE-ContextBench, fixed recency-based retrieval, and a custom binary selector that decides which records to retain and subsequently show to a worker. Among ten target tasks, a benchmark-annotated related record enters the retrieval set in eight, survives admission in two of those eight, and is exposed in one. On all ten matched targets, No Memory resolves two tasks, while unrestricted sharing, random admission, selective admission, and selective admission with a read filter each resolve one. Most records contain truncated issue descriptions and reference-change paths rather than verified lessons from earlier agents. Independent worker runs also disagree despite identical prompts. The study identifies where related records are excluded, but does not establish whether those exclusions help or harm task resolution.
+We examine a source-only decision to retain historical coding-task records without access to the later target. We examine this distinction using historical issue records from SWE-ContextBench, fixed recency-based retrieval, and a custom binary selector that decides which records to retain and subsequently show to a worker. Among ten target tasks, a benchmark-annotated related record enters the retrieval set in eight, survives admission in two of those eight, and is exposed in one. On all ten matched target IDs, the separately run and test-path-filtered No-Memory condition resolves two tasks, while each tested memory condition resolves one; one No-Memory success depends on a sanitized-patch regrade. Most records contain truncated issue descriptions and reference-change paths rather than verified lessons from earlier agents. Independent worker runs also disagree despite identical prompts. The study traces removal of annotated related records, not the usefulness of those records or the causal effects of exclusion.
 \end{abstract}
 \keywords{coding agents, shared memory, historical task records, context selection, software engineering}
 \maketitle
@@ -85,32 +85,30 @@ Custom Jev-based & D & E\\
 \begin{minipage}[t]{0.48\textwidth}
 \fbox{\begin{minipage}{0.94\linewidth}\small
 \textbf{Django: related record retained}\\[3pt]
-Earlier issue \texttt{django-16910}: \texttt{only()} with \texttt{select\_related()} on a reverse \texttt{OneToOneField} selects too many fields. The stored description is truncated; the reference path is \texttt{django/db/models/sql/query.py}.
+Source \texttt{django-16910} (stored excerpt): \emph{On Django 4.2 calling only() with select\_related() ... All the fields from the related model are still included in the ...} [truncated]. Reference path: \texttt{django/db/models/sql/query.py}.
 \begin{center}
-114 earlier records\\[-1pt]
-$\downarrow$ three most recent\\[-1pt]
-related source: SHARE\\[-1pt]
-$\downarrow$ task-aware selector: EXPOSE\\[-1pt]
-later task \texttt{django-35356}\\[-1pt]
-$\downarrow$ worker: unresolved (0/1 F2P)
+source $\rightarrow$ top-three retrieval\\[-1pt]
+$\downarrow$ admission: SHARE\\[-1pt]
+$\downarrow$ exposure: EXPOSE\\[-1pt]
+$\downarrow$ target \texttt{django-35356}\\[-1pt]
+worker: unresolved (0/1 F2P)
 \end{center}
 \end{minipage}}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.48\textwidth}
 \fbox{\begin{minipage}{0.94\linewidth}\small
 \textbf{SymPy: related record rejected}\\[3pt]
-Earlier issue \texttt{sympy-16988}: duplicate arguments to \texttt{Intersection} yield inconsistent results. The annotated later task \texttt{sympy-16946} concerns \texttt{is\_EmptySet} and \texttt{is\_empty}.
+Source \texttt{sympy-16988} (stored excerpt): \emph{Intersection should remove duplicates ... The routine should give the same answer if duplicates are present ...} [truncated]. Reference path: \texttt{sympy/sets/sets.py}.
 \begin{center}
-39 earlier records\\[-1pt]
-$\downarrow$ three most recent\\[-1pt]
-related source: DO\_NOT\_SHARE\\[-1pt]
-$\downarrow$ two other records admitted\\[-1pt]
-read selector WITHHOLDs both\\[-1pt]
-$\downarrow$ worker sees no record under E
+source $\rightarrow$ top-three retrieval\\[-1pt]
+$\downarrow$ admission: DO\_NOT\_SHARE\\[-1pt]
+$\downarrow$ source excluded\\[-1pt]
+two other records: WITHHOLD\\[-1pt]
+target \texttt{sympy-16946}: E sees no card
 \end{center}
 \end{minipage}}
 \end{minipage}
-\caption{Two observed selection paths. The benchmark annotates the earlier issues as related to their targets, but this does not establish that either record improves a repair. The SymPy exclusion is one source decision reused across three later targets.}
+\caption{Two observed selection paths. The benchmark annotates the earlier issues as related to their targets, but this does not establish that either record improves a repair. The SymPy exclusion is one source decision reused across three later targets. Two other related records are excluded by top-three retrieval itself.}
 \label{fig:paths}
 \end{figure*}
 
@@ -174,10 +172,35 @@ sympy-9384 (2) & 0 & 0 & 0 & 0 & 0 & 0\\
 
 The known-related diagnostic F resolves one of ten tasks, versus two of ten for the sanitized/regraded A condition. Three A/F target pairs have different executable grades, including regressions. This is evidence of behavioral sensitivity, not evidence that related records improve repairs.
 
+\begin{table}[t]
+\caption{Number of historical records exposed to each target. Counts are not budget-matched across conditions.}
+\label{tab:exposure}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Target & B & C & D & E\\
+\midrule
+django-34176 & 3 & 2 & 1 & 0\\
+django-35356 & 3 & 2 & 2 & 1\\
+scikit-learn-13771 & 3 & 1 & 3 & 0\\
+sympy-16342 & 3 & 1 & 2 & 0\\
+sympy-16946 & 3 & 1 & 2 & 0\\
+sympy-16953 & 3 & 1 & 2 & 0\\
+sympy-19235 & 3 & 3 & 0 & 0\\
+sympy-21203 & 3 & 3 & 1 & 0\\
+sympy-21309 & 3 & 3 & 1 & 0\\
+sympy-9384 & 3 & 3 & 1 & 0\\
+\midrule
+Total & 30 & 20 & 15 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Run variability and context quantity}
 E exposes no records on nine of ten targets. On all nine, its saved task prompt is byte-for-byte identical to the corresponding A prompt. Nevertheless A resolves \texttt{sympy-21203} and E does not, and E loses 120 P2P tests on \texttt{sympy-21309} that A preserves. These are independent worker runs without controlled repeats. The discrepancies cannot be attributed to memory exposure, and differences among other policies are descriptive rather than causal effect estimates. The outcome-changing A regrade further prevents a causal interpretation of the one-task resolution gap.
 
-Over ten targets, B exposes 30 records, C exposes 20, D exposes 15, and E exposes one. Their estimated memory-context token totals are 9,408, 6,267, 4,752, and 315, calculated from character counts divided by four rather than tokenizer measurements. Matching global admission counts does not match target-level exposure budgets. The evidence does not support a reliable monetary cost comparison.
+Table~\ref{tab:exposure} shows that E exposes a record only on the unresolved Django target; its one resolved SymPy target receives none. Over ten targets, B exposes 30 records, C exposes 20, D exposes 15, and E exposes one. Their estimated memory-context token totals are 9,408, 6,267, 4,752, and 315, calculated from character counts divided by four rather than tokenizer measurements. Matching global admission counts does not match target-level exposure budgets. The evidence does not support a reliable monetary cost comparison.
 
 \section{Discussion and Limitations}
 Under fixed top-three retrieval, source-only admission removes six target-level occurrences of annotated related records, representing only two distinct source decisions. In this pilot the read filter reduces exposure to a single record. The same source decisions affect several later targets, illustrating a consequence of choosing what to store without knowing future tasks. This is an observation about access to records, not evidence that excluded records would have improved a repair.
