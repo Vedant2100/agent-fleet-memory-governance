@@ -3,19 +3,20 @@
     "luna_paper_treatments_289898"
   ],
   "archive": {
-    "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
-    "drive_file_id": "1MPsQyO1-8lCjJGMPrBdoR4IhYYiYTm2G",
+    "drive_file_id": "1yHAlOHJSMUvFWKAejrmIPB84oljdZ0sS",
+    "drive_sha256": "260db688e040671dc9f2c7a095573992dc6ceda3b271ebe1852a2e90d19b4586",
     "drive_sha256_verified": true,
-    "drive_size_bytes": 4496142,
+    "drive_size_bytes": 4571951,
+    "drive_size_bytes_verified": 4571951,
     "drive_size_verified": true,
-    "drive_url": "https://drive.google.com/file/d/1MPsQyO1-8lCjJGMPrBdoR4IhYYiYTm2G/view?usp=drivesdk",
-    "filename": "fleet-mem-aamas-2027-v14-4b0af188dd98.zip",
-    "github_blob_sha1": "9ed5df712505202e180e1340a47b36d6e789c235",
-    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v14-4b0af188dd98.zip",
-    "md5": "0df657f0bd868134aa3daa2095014e58",
+    "drive_url": "https://drive.google.com/file/d/1yHAlOHJSMUvFWKAejrmIPB84oljdZ0sS/view?usp=drivesdk",
+    "drive_verified": true,
+    "filename": "fleet-mem-aamas-2027-v15-15703d8ecbb6.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v15-15703d8ecbb6.zip",
+    "md5": "6444b985f73cc4c8ac955c458d01d037",
     "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-    "sha256": "4bf0d00359739a1805e8ff771fc51cc1d7ccc58477a39aebb09bfbdf417b8b3b",
-    "size_bytes": 4496142
+    "sha256": "260db688e040671dc9f2c7a095573992dc6ceda3b271ebe1852a2e90d19b4586",
+    "size_bytes": 4571951
   },
   "arm_counts": {
     "B_SHARE_ALL": {
@@ -24,8 +25,8 @@
       "resolved": 1
     },
     "C_RANDOM_MATCHED": {
-      "applied": 9,
-      "graded": 9,
+      "applied": 10,
+      "graded": 10,
       "resolved": 1
     },
     "D_JEV_WRITE": {
@@ -91,46 +92,26 @@
   ],
   "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "bundle_commit": "e1bd62cb567d7eea100f498a7c69cedaa5103c37",
-  "drive_archive_verification": {
-    "method": "Google Drive raw-file readback; SHA-256 matched the local versioned archive; byte count matched.",
-    "remote_sha256_verified": true,
-    "remote_size_verified": true,
-    "verified_at": "2026-10-09T00:37:13.744479+00:00"
-  },
   "drive_manifest": {
-    "checksum_status": "VERIFIED_REMOTE_READBACK",
-    "file_id": "1I9bDbxhkj3hVUjyPFe9ryaQpDOen8J5_",
-    "filename": "evidence-manifest-v14-4b0af188dd98.json",
+    "file_id": "1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd",
+    "filename": "evidence-manifest-v15-15703d8ecbb6.json",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "sha256": "550afc1b59af300d8ef94ff720667fa0d9c4f4e7aedc913656d5f74ca15d6b70",
-    "size_bytes": 7482,
-    "url": "https://drive.google.com/file/d/1I9bDbxhkj3hVUjyPFe9ryaQpDOen8J5_/view?usp=drivesdk"
+    "size_bytes": 7391,
+    "url": "https://drive.google.com/file/d/1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd/view?usp=drivesdk"
   },
-  "drive_manifest_url": "https://drive.google.com/file/d/1I9bDbxhkj3hVUjyPFe9ryaQpDOen8J5_/view?usp=drivesdk",
+  "drive_manifest_url": "https://drive.google.com/file/d/1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd/view?usp=drivesdk",
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
-  "handoff_code_commit": "47538ea7c8402ab49b01cef68ea462ce864c64fe",
-  "issues": [
-    "missing 1 treatment grades",
-    "final treatment summary is absent or not COMPLETE with 40 grades",
-    "six-arm paper table is absent",
-    "Slurm job state is RUNNING"
-  ],
-  "missing_target_arms": [
-    [
-      "sympy__sympy-9384",
-      "C_RANDOM_MATCHED"
-    ]
-  ],
+  "issues": [],
+  "missing_target_arms": [],
   "newly_completed_grades": [
     {
-      "arm_id": "E_JEV_WRITE_READ",
+      "arm_id": "C_RANDOM_MATCHED",
       "canonical_grade_available": true,
-      "canonical_result_sha256": "6544a6ad7546ba9e6ac849bd230b5460b56644edcfe483153bb1e8f95babaebb",
+      "canonical_result_sha256": "904b51e996dc0d268cb7439fd8297dc546f16d0fe48cba82fa20c49e04093b9f",
       "fail_to_pass_passed": 0,
       "fail_to_pass_total": 2,
-      "latency_seconds": 491.7966621450614,
+      "latency_seconds": 487.92641271906905,
       "pass_to_pass_passed": 320,
       "pass_to_pass_total": 320,
       "patch_applied": true,
@@ -139,10 +120,10 @@
     }
   ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
-  "previous_evidence_commit": "138cfc6cb2cfd87dba20786bc5e7ff612099fdbc",
-  "previous_treatment_grade_count": 38,
-  "provisional": true,
-  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "previous_evidence_commit": "e1bd62cb567d7eea100f498a7c69cedaa5103c37",
+  "previous_treatment_grade_count": 39,
+  "provisional": false,
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
@@ -176,28 +157,28 @@
     ],
     "records": [
       {
-        "elapsed": "09:52:50",
+        "elapsed": "10:03:57",
         "exit_code": "0:0",
         "job_id": "289898",
         "job_name": "fmc-luna-treatments",
         "max_rss": "",
-        "state": "RUNNING"
+        "state": "COMPLETED"
       },
       {
-        "elapsed": "09:52:50",
+        "elapsed": "10:03:57",
         "exit_code": "0:0",
         "job_id": "289898.batch",
         "job_name": "batch",
-        "max_rss": "",
-        "state": "RUNNING"
+        "max_rss": "50557900K",
+        "state": "COMPLETED"
       },
       {
-        "elapsed": "09:52:50",
+        "elapsed": "10:03:57",
         "exit_code": "0:0",
         "job_id": "289898.extern",
         "job_name": "extern",
-        "max_rss": "",
-        "state": "RUNNING"
+        "max_rss": "80K",
+        "state": "COMPLETED"
       },
       {
         "elapsed": "00:00:03",
@@ -348,9 +329,9 @@
     "stderr": ""
   },
   "slurm_job_id": 289898,
-  "slurm_state": "RUNNING",
-  "snapshot_utc": "2026-10-09T00:38:02.282167+00:00",
-  "status": "PARTIAL",
-  "treatment_grades": 39,
-  "treatment_results_sha256": "4d1750c9712a476fe7afbddd5f08ce9debe3a5e992f6d527827a20e0e9601af4"
+  "slurm_state": "COMPLETED",
+  "snapshot_utc": "2026-10-09T00:53:04.245307+00:00",
+  "status": "COLLECTED_COMPLETE",
+  "treatment_grades": 40,
+  "treatment_results_sha256": "e44e1cc68f4735a0f3561565c41a71fc930394a1cb453fa5145dbfec83c2beba"
 }
