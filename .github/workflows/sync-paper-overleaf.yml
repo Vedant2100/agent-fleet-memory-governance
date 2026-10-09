@@ -1,0 +1,173 @@
+name: Sync latest ready AAMAS paper round to Overleaf
+
+on:
+  push:
+    branches:
+      - handoff/aamas-2027-evidence
+    paths:
+      - 'paper/round-*/**'
+      - 'paper/AGENTS.md'
+      - '.github/workflows/sync-paper-overleaf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aamas-overleaf-paper
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout paper branch
+        uses: actions/checkout@v4
+
+      - name: Find highest completed round
+        id: latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest=-1
+          selected=''
+          for dir in "$GITHUB_WORKSPACE"/paper/round-*; do
+            [[ -d "$dir" ]] || continue
+            name="${dir##*/}"
+            [[ "$name" =~ ^round-([0-9]+)$ ]] || continue
+            [[ -f "$dir/.overleaf-ready" ]] || continue
+            [[ -f "$dir/main.tex" && -f "$dir/references.bib" ]] || {
+              echo "::error::$name was marked ready but is missing main.tex or references.bib"
+              exit 1
+            }
+            id="$((10#${BASH_REMATCH[1]}))"
+            if (( id > latest )); then
+              latest="$id"
+              selected="$dir"
+            fi
+          done
+          if (( latest < 0 )); then
+            echo "No ready round yet; do not publish an unfinished draft."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Selected ${selected##*/} for Overleaf preview."
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "round_path=$selected" >> "$GITHUB_OUTPUT"
+            echo "round_name=${selected##*/}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish selected round and official AAMAS template to Overleaf
+        if: steps.latest.outputs.ready == 'true'
+        shell: bash
+        env:
+          OVERLEAF_PROJECT_ID: ${{ secrets.OVERLEAF_PROJECT_ID }}
+          OVERLEAF_GIT_TOKEN: ${{ secrets.OVERLEAF_GIT_TOKEN }}
+          PAPER_SRC: ${{ steps.latest.outputs.round_path }}
+          PAPER_ROUND: ${{ steps.latest.outputs.round_name }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$OVERLEAF_PROJECT_ID" || -z "$OVERLEAF_GIT_TOKEN" ]]; then
+            echo "::error::Configure OVERLEAF_PROJECT_ID and OVERLEAF_GIT_TOKEN in Actions secrets, then rerun this workflow."
+            exit 1
+          fi
+          if [[ ! "$OVERLEAF_PROJECT_ID" =~ ^[A-Za-z0-9]+$ ]]; then
+            echo "::error::Invalid OVERLEAF_PROJECT_ID."
+            exit 1
+          fi
+
+          askpass="$RUNNER_TEMP/overleaf-askpass"
+          cat > "$askpass" <<'ASKPASS'
+          #!/usr/bin/env bash
+          case "$1" in
+            *Username*) printf '%s\n' git ;;
+            *Password*) printf '%s\n' "$OVERLEAF_GIT_TOKEN" ;;
+            *) exit 1 ;;
+          esac
+          ASKPASS
+          chmod 700 "$askpass"
+          export GIT_ASKPASS="$askpass"
+          export GIT_TERMINAL_PROMPT=0
+
+          dest="$RUNNER_TEMP/overleaf-paper"
+          git -c credential.helper= clone --quiet "https://git.overleaf.com/$OVERLEAF_PROJECT_ID" "$dest"
+          cd "$dest"
+          # Overleaf usually exposes master, but do not assume a branch name.
+          if git show-ref --verify --quiet refs/remotes/origin/master; then
+            target_branch=master
+          elif git show-ref --verify --quiet refs/remotes/origin/main; then
+            target_branch=main
+          else
+            echo "::error::Overleaf Git remote exposed neither master nor main. Verify that OVERLEAF_PROJECT_ID points to the existing project with Git integration. No files were changed."
+            git branch -r
+            exit 1
+          fi
+          git checkout -q -B "$target_branch" "origin/$target_branch"
+          echo "Using Overleaf remote branch: $target_branch"
+
+          # Clean only previously managed paper assets, not Overleaf's template.
+          manifest="$dest/.github-overleaf-synced-files"
+          if [[ -f "$manifest" ]]; then
+            while IFS= read -r old_file; do
+              if [[ "$old_file" =~ ^[a-zA-Z0-9_./-]+$ && "$old_file" != /* && "$old_file" != ../* && "$old_file" != *"/../"* && "$old_file" != ".git"* ]]; then
+                rm -f -- "$dest/$old_file"
+              fi
+            done < "$manifest"
+          fi
+          : > "$manifest"
+
+          # Overleaf contains only the selected round's LaTeX sources and figures.
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              *.tex|*.bib|*.sty|*.cls|*.bst|*.png|*.jpg|*.jpeg|*.pdf|*.eps|*/latexmkrc)
+                relative="${file#"$PAPER_SRC"/}"
+                mkdir -p "$dest/$(dirname "$relative")"
+                cp -- "$file" "$dest/$relative"
+                printf '%s\n' "$relative" >> "$manifest"
+                ;;
+            esac
+          done < <(find "$PAPER_SRC" -type f -print0)
+
+          # Install the official AAMAS 2027 style files on EVERY round sync.
+          # They live at the Overleaf project root, not in each paper/round-N/.
+          template_zip="$RUNNER_TEMP/aamas_2027_template.zip"
+          curl --fail --location --silent --show-error --retry 3 --connect-timeout 20 \
+            --output "$template_zip" \
+            "https://warwick.ac.uk/fac/sci/dcs/aamas2027/aamas_2027_template.zip"
+          python3 - "$template_zip" "$dest" "$manifest" <<'PY'
+          import pathlib, sys, zipfile, shutil
+          archive_path, destination, manifest_path = sys.argv[1:]
+          root = pathlib.Path(destination)
+          with zipfile.ZipFile(archive_path) as archive:
+              styles = {}
+              for entry in archive.infolist():
+                  if entry.is_dir():
+                      continue
+                  name = pathlib.PurePosixPath(entry.filename).name
+                  if not name.endswith((".cls", ".sty", ".bst")):
+                      continue
+                  data = archive.read(entry)
+                  if name in styles and styles[name] != data:
+                      raise RuntimeError("Multiple different official template files named " + name)
+                  styles[name] = data
+              if "aamas.cls" not in styles:
+                  raise RuntimeError("Official AAMAS 2027 ZIP did not contain aamas.cls")
+              if "ACM-Reference-Format.bst" not in styles:
+                  raise RuntimeError("Official AAMAS 2027 ZIP did not contain ACM-Reference-Format.bst")
+              with open(manifest_path, "a", encoding="utf-8") as manifest:
+                  for name, data in sorted(styles.items()):
+                      (root / name).write_bytes(data)
+                      manifest.write(name + "\n")
+              print("Installed official AAMAS 2027 styles: " + ", ".join(sorted(styles)))
+          PY
+
+          cd "$dest"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Overleaf already matches $PAPER_ROUND."
+            exit 0
+          fi
+          git commit -m "Sync AAMAS $PAPER_ROUND from GitHub $GITHUB_SHA"
+          git -c credential.helper= push origin "HEAD:$target_branch"
+          echo "Published $PAPER_ROUND to Overleaf."

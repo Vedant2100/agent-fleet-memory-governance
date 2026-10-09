@@ -1,0 +1,339 @@
+{
+  "affected_experiments": [
+    "luna_paper_treatments_289898"
+  ],
+  "archive": {
+    "drive_file_id": "1yHAlOHJSMUvFWKAejrmIPB84oljdZ0sS",
+    "drive_sha256": "260db688e040671dc9f2c7a095573992dc6ceda3b271ebe1852a2e90d19b4586",
+    "drive_sha256_verified": true,
+    "drive_size_bytes": 4571951,
+    "drive_size_bytes_verified": 4571951,
+    "drive_size_verified": true,
+    "drive_url": "https://drive.google.com/file/d/1yHAlOHJSMUvFWKAejrmIPB84oljdZ0sS/view?usp=drivesdk",
+    "drive_verified": true,
+    "filename": "fleet-mem-aamas-2027-v15-15703d8ecbb6.zip",
+    "github_blob_sha1": "ab2e19b52df72f1c677d31d4d065f30facc18948",
+    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v15-15703d8ecbb6.zip",
+    "md5": "6444b985f73cc4c8ac955c458d01d037",
+    "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
+    "sha256": "260db688e040671dc9f2c7a095573992dc6ceda3b271ebe1852a2e90d19b4586",
+    "size_bytes": 4571951
+  },
+  "arm_counts": {
+    "B_SHARE_ALL": {
+      "applied": 10,
+      "graded": 10,
+      "resolved": 1
+    },
+    "C_RANDOM_MATCHED": {
+      "applied": 10,
+      "graded": 10,
+      "resolved": 1
+    },
+    "D_JEV_WRITE": {
+      "applied": 10,
+      "graded": 10,
+      "resolved": 1
+    },
+    "E_JEV_WRITE_READ": {
+      "applied": 10,
+      "graded": 10,
+      "resolved": 1
+    }
+  },
+  "artifacts": [
+    {
+      "filename": "luna_oracle_signal_289648_test_filtered_regrade.json",
+      "role": "frozen_signal_summary",
+      "sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
+      "size_bytes": 17223,
+      "source_path": "artifacts/development/luna_oracle_signal_289648_test_filtered_regrade.json",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "luna_oracle_signal_289648.json",
+      "role": "raw_signal_summary",
+      "sha256": "47a29fac548d1cc7fccd0aaa1158907f085e7bf741dd5792ff96178995b88ae5",
+      "size_bytes": 138326,
+      "source_path": "artifacts/development/luna_oracle_signal_289648.json",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "jev_write_decisions.jsonl",
+      "role": "jev_write_decisions",
+      "sha256": "14e9d2b438c379e60e40fbbfb6830e27898331344a705694ae563b033d6b6325",
+      "size_bytes": 74112,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/jev_write_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "random_matched_write_decisions.jsonl",
+      "role": "random_write_decisions",
+      "sha256": "8f3247192872beef84a2ede15f65f7ceadd6af75fcfc01fceba68c10c467dee4",
+      "size_bytes": 58226,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/random_matched_write_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "jev_read_decisions.jsonl",
+      "role": "jev_read_decisions",
+      "sha256": "0a023637d01ca72bd16e8ff3f3a51dd186ec8d343fa3983d4309cc71b60ff785",
+      "size_bytes": 4718,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/governors/jev_read_decisions.jsonl",
+      "status": "FROZEN"
+    },
+    {
+      "filename": "exposure_write_gate.json",
+      "role": "write_exposure_gate",
+      "sha256": "ceabd66172acceeb9aabddbe8efbb669cdc0f558777184760808b705b752381f",
+      "size_bytes": 6636,
+      "source_path": "results/development/paper-treatments-luna/attempt-0002/gates/exposure_write_gate.json",
+      "status": "FROZEN"
+    }
+  ],
+  "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
+  "branch": "handoff/aamas-2027-evidence",
+  "bundle_commit": "c3e2437f595fb521144c79748b598282ec38f127",
+  "drive_manifest": {
+    "file_id": "1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd",
+    "filename": "evidence-manifest-v15-15703d8ecbb6.json",
+    "remote_sha256_verified": true,
+    "remote_size_verified": true,
+    "size_bytes": 7391,
+    "url": "https://drive.google.com/file/d/1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd/view?usp=drivesdk"
+  },
+  "drive_manifest_url": "https://drive.google.com/file/d/1PhkVWi1qe3bYcUeq-tTjeD6yZ--D4VBd/view?usp=drivesdk",
+  "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
+  "issues": [],
+  "missing_target_arms": [],
+  "newly_completed_grades": [
+    {
+      "arm_id": "C_RANDOM_MATCHED",
+      "canonical_grade_available": true,
+      "canonical_result_sha256": "904b51e996dc0d268cb7439fd8297dc546f16d0fe48cba82fa20c49e04093b9f",
+      "fail_to_pass_passed": 0,
+      "fail_to_pass_total": 2,
+      "latency_seconds": 487.92641271906905,
+      "pass_to_pass_passed": 320,
+      "pass_to_pass_total": 320,
+      "patch_applied": true,
+      "resolved": false,
+      "target_id": "sympy__sympy-9384"
+    }
+  ],
+  "outside_core_unrun_arm": "G_LLM_WRITE",
+  "previous_evidence_commit": "e1bd62cb567d7eea100f498a7c69cedaa5103c37",
+  "previous_treatment_grade_count": 39,
+  "provisional": false,
+  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
+  "repository": "Vedant2100/agent-fleet-memory-governance",
+  "required_treatment_grades": 40,
+  "schema_version": 1,
+  "slurm_accounting": {
+    "command": [
+      "sacct",
+      "-j",
+      "289898",
+      "-n",
+      "-P",
+      "--format=JobIDRaw,JobName,State,ExitCode,Elapsed,MaxRSS"
+    ],
+    "failed_steps": [
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      }
+    ],
+    "records": [
+      {
+        "elapsed": "10:03:57",
+        "exit_code": "0:0",
+        "job_id": "289898",
+        "job_name": "fmc-luna-treatments",
+        "max_rss": "",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "10:03:57",
+        "exit_code": "0:0",
+        "job_id": "289898.batch",
+        "job_name": "batch",
+        "max_rss": "50557900K",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "10:03:57",
+        "exit_code": "0:0",
+        "job_id": "289898.extern",
+        "job_name": "extern",
+        "max_rss": "80K",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.0",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.1",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:18",
+        "exit_code": "0:0",
+        "job_id": "289898.2",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.3",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.4",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.5",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.6",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.7",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.8",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:03",
+        "exit_code": "0:0",
+        "job_id": "289898.9",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.10",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "1:0",
+        "job_id": "289898.11",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "FAILED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.12",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.13",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.14",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.15",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.16",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      },
+      {
+        "elapsed": "00:00:02",
+        "exit_code": "0:0",
+        "job_id": "289898.17",
+        "job_name": "bash",
+        "max_rss": "0",
+        "state": "COMPLETED"
+      }
+    ],
+    "return_code": 0,
+    "stderr": ""
+  },
+  "slurm_job_id": 289898,
+  "slurm_state": "COMPLETED",
+  "snapshot_utc": "2026-10-09T00:53:04.245307+00:00",
+  "status": "COLLECTED_COMPLETE",
+  "treatment_grades": 40,
+  "treatment_results_sha256": "e44e1cc68f4735a0f3561565c41a71fc930394a1cb453fa5145dbfec83c2beba"
+}
