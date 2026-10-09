@@ -1,0 +1,161 @@
+% AAMAS 2027 author-side Round 2. Exploratory; not submission-ready.
+% Frozen v15 evidence: 40/40 treatment grades, SHA-256 260db688e040671dc9f2c7a095573992dc6ceda3b271ebe1852a2e90d19b4586
+\documentclass[sigconf,anonymous]{aamas}
+\usepackage{booktabs}
+\title{Selecting Earlier Task Records for Coding Agents: An Exploratory Study}
+\author{Anonymous Author(s)}
+\affiliation{\institution{Anonymous}}
+\begin{document}
+\begin{abstract}
+A coding agent may benefit from an earlier issue in the same repository, but a decision to retain that issue is made before the later task is known. We examine this distinction using historical issue records from SWE-ContextBench, fixed recency-based retrieval, and a custom binary selector that decides which records to retain and subsequently show to a worker. Among ten target tasks, a benchmark-annotated related record enters the retrieval set in eight, survives admission in two of those eight, and is exposed in one. On all ten matched targets, No Memory resolves two tasks, while unrestricted sharing, random admission, selective admission, and selective admission with a read filter each resolve one. Most records contain truncated issue descriptions and reference-change paths rather than verified lessons from earlier agents. Independent worker runs also disagree despite identical prompts. The study identifies where related records are excluded, but does not establish whether those exclusions help or harm task resolution.
+\end{abstract}
+\keywords{coding agents, shared memory, historical task records, context selection, software engineering}
+\maketitle
+
+\section{Introduction}
+An earlier Django issue reports that combining \texttt{QuerySet.only()} with \texttt{select\_related()} on a reverse \texttt{OneToOneField} includes fields that should have been deferred. A later issue describes a related query over a recursive \texttt{OneToOneField}: using these methods together raises a \texttt{FieldError}. The earlier report mentions \texttt{django/db/models/sql/query.py}, a plausible place for an agent to investigate. It does not contain a verified repair procedure. Our stored record is a shortened issue description with a reference-change path, not a trace of how an earlier agent fixed the issue.
+
+The later Django task has 114 earlier same-repository records. Fixed retrieval selects the three most recent; the related earlier issue is among them. A source-only selector retains it, and a task-aware selector exposes it to the worker. The worker does not resolve the later issue. This case distinguishes whether a record is available, whether it is delivered, and whether it is useful.
+
+We study how a storage decision made without a future target constrains the information available to a later coding agent. A subsequent selection decision has more context but cannot recover a discarded record. The setting resembles information sharing across agents, although the evaluation uses independently reset coding-agent runs rather than a deployed team or a continuously updated memory service.
+
+We compare No Memory, unrestricted sharing, random admission, custom binary admission, and that admission followed by a read filter. A diagnostic condition supplies a benchmark-annotated related record. The primary finding is a selection trace: early admission rejects six target-level occurrences of annotated related records, corresponding to only two distinct source decisions, and the read filter withholds almost all remaining records. None of the memory policies improves full task resolution in this pilot. Run-to-run variation limits causal interpretation.
+
+\section{Related Work}
+SWE-ContextBench studies reuse of context across related coding tasks, including previous trajectories, summaries, and retrieval methods \cite{zhu2026swecontext}. We use its Lite-derived task relationships but construct much simpler issue-based records, so its trajectory-based results are not replicated here. ReasoningBank derives reusable lessons from agent interactions \cite{ouyang2025reasoningbank}; our records have no observed source-agent outcome. MemGuard retains verifier signals to manage memory across its lifecycle \cite{wang2026memguard}; we do not evaluate verification, revision, or revocation.
+
+Jev-Mem combines a System-One controller with structured memory construction and adaptive retrieval \cite{jiang2026jevmem}. We do \emph{not} run the published Jev-Mem system. We instead use the Jev System-One API to answer custom binary questions about storing and exposing issue records. These results must not be interpreted as an evaluation of Jev-Mem's graph memory or retrieval algorithm. ChainSWE evaluates linked repairs while retaining repository state \cite{jin2026chainswe}. We reset each worker to the prescribed repository state, separating explicit context delivery from changes accumulated in code.
+
+Our narrower question is what happens when one source-only admission decision is reused across multiple later tasks. This permits analysis of early information exclusion, not a claim of a new memory architecture or superiority over earlier systems.
+
+\section{Experimental Setting}
+\subsection{Targets and records}
+We use a frozen SWE-ContextBench Lite-derived release. Eligibility required at least one strictly earlier, different-pull-request source relation, at least five historical candidates, and at least two additional non-linked candidates with issue, path, or symbol overlap. Eleven eligible histories were selected by a deterministic SHA-256 ordering with seed 42. A Matplotlib target was excluded before the main treatments after a semantic no-op control passed its designated failing test. The remaining ten targets span Django, SymPy, and scikit-learn, with 13--114 earlier same-repository candidates per target. This is an eligibility-filtered pilot rather than a representative sample of software tasks.
+
+The eleven histories contain 211 distinct records; the union of the ten retained histories contains 188. Admission was applied once to all 211, including 23 records associated with the excluded Matplotlib history. Each record contains up to 320 characters of an earlier issue description, its issue-creation timestamp, and up to eight paths touched by the source reference patch. Direct inspection finds that \textbf{197 of 211} issue descriptions end in a truncation marker. All 211 have unknown source-agent outcomes, a generic precondition, and no verified repair lesson or source-agent trajectory. These are historical task records, not evidence of successful earlier agent behavior.
+
+We require the source issue's released creation timestamp to precede the target timestamp and exclude the target's own reference change. This does not prove the source patch had been completed or observed by an agent at that time. The reference-change paths may have become available only after the source issue was opened, so the nominal temporal information boundary is imperfect.
+
+Ten target IDs correspond to eight distinct resolving pull requests. \texttt{sympy-16342} and \texttt{sympy-16953} share SymPy PR 17526; \texttt{sympy-21309} and \texttt{sympy-9384} share PR 21309. The ten targets therefore do not represent ten independent repairs.
+
+\subsection{Selection policies}
+\emph{Admission} is a decision to retain an earlier record in a shared store. We use a custom binary selector built with the TypeSafe SDK (version 0.7.2) and Jev System-One API model \texttt{jev-1.13.0}. It receives a source record without any later target and chooses SHARE or DO\_NOT\_SHARE. The SHARE criterion asks for useful, bounded, evidence-backed information with clear scope; the alternative covers weak support, specificity, staleness, redundancy, or possible negative transfer. This is a custom categorical prompt, not the Jev-Mem memory architecture. A decision is made once per source and reused wherever that source appears.
+
+For each target, the fixed retrieval rule takes the three most recent earlier records \emph{before} applying admission decisions. Rejected records leave vacant slots; older records are not substituted. An optional \emph{exposure} selector then receives the current target issue, repository, and base commit together with each admitted retrieved record. It chooses EXPOSE or WITHHOLD using custom criteria concerning evidence match, relevance, redundancy, and possible negative transfer. All recorded decision rationales are empty; their specific reasons cannot be reconstructed from the output.
+
+The conditions are A: No Memory; B: Share-All with fixed retrieval; C: random global admission; D: custom Jev-based admission; and E: that admission followed by custom Jev-based exposure. C retains the same number of records globally as D, not the same count or length for each target. F supplies the benchmark-annotated related record as a diagnostic; it is not a performance upper bound. A proposed deliberative LLM admission condition (G) was not run. The design omits Share-All followed by the read selector, so it cannot isolate the independent read-filter effect under unrestricted admission or the admission-by-exposure interaction.
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\fbox{\begin{minipage}{0.94\linewidth}\small
+\textbf{Django: related record retained}\\[3pt]
+Earlier issue \texttt{django-16910}: \texttt{only()} with \texttt{select\_related()} on a reverse \texttt{OneToOneField} selects too many fields. The stored description is truncated; the reference path is \texttt{django/db/models/sql/query.py}.
+\begin{center}
+114 earlier records\\[-1pt]
+$\downarrow$ three most recent\\[-1pt]
+related source: SHARE\\[-1pt]
+$\downarrow$ task-aware selector: EXPOSE\\[-1pt]
+later task \texttt{django-35356}\\[-1pt]
+$\downarrow$ worker: unresolved (0/1 F2P)
+\end{center}
+\end{minipage}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\fbox{\begin{minipage}{0.94\linewidth}\small
+\textbf{SymPy: related record rejected}\\[3pt]
+Earlier issue \texttt{sympy-16988}: duplicate arguments to \texttt{Intersection} yield inconsistent results. The annotated later task \texttt{sympy-16946} concerns \texttt{is\_EmptySet} and \texttt{is\_empty}.
+\begin{center}
+39 earlier records\\[-1pt]
+$\downarrow$ three most recent\\[-1pt]
+related source: DO\_NOT\_SHARE\\[-1pt]
+$\downarrow$ two other records admitted\\[-1pt]
+read selector WITHHOLDs both\\[-1pt]
+$\downarrow$ worker sees no record under E
+\end{center}
+\end{minipage}}
+\end{minipage}
+\caption{Two observed selection paths. The benchmark annotates the earlier issues as related to their targets, but this does not establish that either record improves a repair. The SymPy exclusion is one source decision reused across three later targets.}
+\label{fig:paths}
+\end{figure*}
+
+\subsection{Worker and grading}
+Each target starts from its prescribed repository state. B--E use the SWE-Edit baseline worker at scaffold revision \texttt{60ca673}, requested model alias \texttt{gpt-6-luna} with \texttt{xhigh} reasoning effort, at most 100 iterations, and a 1,800-second timeout. An immutable model checkpoint is not available in the recorded API metadata. The frozen SWE-ContextBench executable evaluator runs through an Apptainer adapter.
+
+We report resolved tasks, the number of previously failing tests that pass (F2P), and the number of previously passing tests that remain passing (P2P). Partial F2P success is not full resolution. A and F were run earlier; some patches were regraded after excluding test-file modifications. B--E were executed separately. All 40 archived B--E submitted prediction patches contain no test-file changes, although some working trees do. Different execution and regrading histories remain a comparability limitation.
+
+\section{Results}
+\subsection{Where related records are excluded}
+The admission selector retains 123 of 211 source records and rejects 88. Among the 188 distinct records in the ten retained histories, it retains 111; random admission retains 108. The read selector receives 15 admitted-and-retrieved records, exposes one, and withholds 14.
+
+The benchmark-annotated related record appears in the fixed three-record retrieval set for eight of ten targets. It survives admission for two of those eight and exposure for one. On \texttt{django-34176} and \texttt{sympy-19235}, the related source is absent from the top three, so neither selector can expose it. The six target-level admission exclusions are only two distinct decisions: source \texttt{sympy-16988} is rejected for three targets, and source \texttt{sympy-21055} for three others. These are not six independent policy mistakes. The saved decisions for these sources have confidence 0.28 and 0.21 respectively, but no rationales. The data show where exclusion occurred, not why; a relationship annotation does not establish that a record would help.
+
+\subsection{Executable outcomes}
+All 40 planned B--E grades are present in the frozen archive. Every B--E policy is evaluated on the same ten targets, and A and F each have ten separately executed canonical grades. Table~\ref{tab:aggregate} reports the complete matched comparison.
+
+\begin{table}[t]
+\caption{Outcomes on all ten targets. F2P and P2P are aggregated test counts, not independent task trials. A and F were executed separately.}
+\label{tab:aggregate}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+Condition & Resolved & F2P & P2P \\
+\midrule
+A: No Memory & 2/10 & 9/48 & 2145/2145\\
+B: Share-All & 1/10 & 7/48 & 2025/2145\\
+C: Random admission & 1/10 & 8/48 & 2025/2145\\
+D: Jev-based admission & 1/10 & 13/48 & 2025/2145\\
+E: Admission+read & 1/10 & 7/48 & 2025/2145\\
+F: Known-related & 1/10 & 8/48 & 2025/2145\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four B--E policies resolve \texttt{sympy-19235}, which A also resolves. D and E expose no records on that target, so the shared success is not evidence of useful memory. A additionally resolves \texttt{sympy-21203}; none of B--E does. D passes 13 of 48 F2P tests versus A's nine, largely because it passes four of six failing tests on \texttt{sympy-16946}, where A passes none. That target remains unresolved. D also passes two instead of one F2P tests on \texttt{django-34176}. These are partial test differences, not additional successful repairs.
+
+\begin{table}[t]
+\caption{F2P tests passed by target, with the number of designated failing tests in parentheses. On \texttt{sympy-21309}, B--E and F each lose 120 of 320 P2P tests, whereas A preserves all 320. Some target IDs share an underlying resolving pull request.}
+\label{tab:targets}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+Target (F2P total) & A & B & C & D & E & F\\
+\midrule
+django-34176 (6) & 1 & 1 & 1 & 2 & 1 & 1\\
+django-35356 (1) & 0 & 0 & 0 & 0 & 0 & 0\\
+scikit-learn-13771 (5) & 2 & 2 & 2 & 2 & 2 & 2\\
+sympy-16342 (11) & 1 & 1 & 1 & 1 & 1 & 2\\
+sympy-16946 (6) & 0 & 0 & 0 & 4 & 0 & 0\\
+sympy-16953 (11) & 0 & 0 & 0 & 0 & 0 & 0\\
+sympy-19235 (1) & 1 & 1 & 1 & 1 & 1 & 1\\
+sympy-21203 (3) & 3 & 1 & 2 & 2 & 1 & 1\\
+sympy-21309 (2) & 1 & 1 & 1 & 1 & 1 & 1\\
+sympy-9384 (2) & 0 & 0 & 0 & 0 & 0 & 0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The known-related diagnostic F resolves one of ten tasks, versus two of ten for A. Three A/F target pairs have different executable grades, including regressions. This is evidence of behavioral sensitivity, not evidence that related records improve repairs.
+
+\subsection{Run variability and context quantity}
+E exposes no records on nine of ten targets. On all nine, its saved task prompt is byte-for-byte identical to the corresponding A prompt. Nevertheless A resolves \texttt{sympy-21203} and E does not, and E loses 120 P2P tests on \texttt{sympy-21309} that A preserves. These are independent worker runs without controlled repeats. The discrepancies cannot be attributed to memory exposure, and differences among other policies are descriptive rather than causal effect estimates.
+
+Over ten targets, B exposes 30 records, C exposes 20, D exposes 15, and E exposes one. Their estimated memory-context token totals are 9,408, 6,267, 4,752, and 315, calculated from character counts divided by four rather than tokenizer measurements. Matching global admission counts does not match target-level exposure budgets. The evidence does not support a reliable monetary cost comparison.
+
+\section{Discussion and Limitations}
+The selection trace shows that an early source-only decision can exclude a record that a later benchmark identifies as related. In this pilot the read filter reduces exposure to a single record. The same source decisions affect several later targets, illustrating a consequence of choosing what to store without knowing future tasks. This is an observation about access to records, not evidence that excluded records would have improved a repair.
+
+Most issue descriptions are truncated, source-agent outcomes are unknown, and the records do not contain validated repair lessons. We cannot separate selection quality from the usefulness of the information selected. The published Jev-Mem system was not evaluated; custom criteria may have encouraged withholding, but empty rationales prevent attributing specific decisions to those criteria. These negative outcomes do not generalize to agent memory or memory governance as a whole.
+
+The design lacks Share-All with task-aware read selection, so it cannot estimate independent read-filter effects under unrestricted admission. Top-three recency excludes two annotated related records before admission; random admission is not matched for exposed content or length. Ten target IDs cover eight underlying repairs and three repositories. A and F were run separately from B--E, and identical A/E prompts sometimes yield different grades. Controlled repeated runs and a common grading boundary are necessary before claiming policy effects.
+
+A stronger study would first establish a positive control using a verified source-agent trajectory or independently checked lesson that reproducibly helps a later worker. It would then compare relevance-based retrieval and exposure-matched selection, add the missing admission-by-exposure condition, and repeat worker runs. The present study does not simulate memory revision, revocation, or continuing organizational learning.
+
+\section{Conclusion}
+We evaluated early retention and later exposure of historical issue records across ten coding-agent tasks. A related record reaches the worker in only one of eight cases where fixed retrieval makes it available. No tested memory policy improves full task resolution over the separately executed No-Memory baseline. The experiment locates information loss in the selection process, but cannot determine whether excluded records were useful or whether the policies caused the observed outcome differences.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+\end{document}
