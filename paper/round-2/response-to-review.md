@@ -1,0 +1,13 @@
+# Response to independent Round 1 scientific critique
+
+**Verdict acknowledged:** major revision; not submission-ready. This is a response to the internal critic, not an official conference rebuttal.
+
+1. **Jev-Mem attribution corrected.** The manuscript now states that the study uses custom TypeSafe/Jev System-One binary Choice prompts for SHARE/DO_NOT_SHARE and EXPOSE/WITHHOLD, not the published Jev-Mem architecture or its adaptive retrieval. Jev-Mem remains related work rather than a tested baseline.
+2. **Memory representation disclosed.** The paper now describes the 320-character issue-description limit, reference-change paths, unknown source-agent outcomes, and absence of validated source trajectories or lessons. Independent v15 inspection found **197/211** cards with a truncation marker, correcting the prior critique's **198/211** count.
+3. **Complete evidence integrated.** All 40/40 B–E grades are available. The paper now uses all ten matched targets, with A 2/10 and B–F 1/10 resolved; F2P/P2P and target-level tables are updated. All 40 treatment result digests were independently checked.
+4. **Selection trace and example strengthened.** The paper distinguishes retrieval, source-only admission, target-aware exposure, and observed worker outcomes. A two-path figure shows a retained Django record and rejected SymPy record; the 8→2→1 counts include the two-source dependence caveat. No reason for individual rejections is invented because saved rationales are empty.
+5. **Sampling and temporal boundary clarified.** Eligibility criteria, deterministic target selection, Matplotlib exclusion, ten target IDs versus eight underlying PRs, and the uncertain availability of reference-change paths at source issue creation are disclosed.
+6. **Causal interpretation narrowed.** The paper explains that E has nine prompts identical to A despite discordant outcomes, random admission is not target-exposure matched, and the Share-All+read cell is missing. No general causal effect is claimed.
+7. **Writing edited.** The title remains descriptive, introduction uses an actual source/target example, and the abstract, section headings, captions, and conclusion avoid inflated claims about fleets, learned experience, or organizational memory.
+
+**Still unresolved:** a positive control using useful verified lessons, matched repeated worker runs, exposure-matched/relevance-based baselines, and the missing factorial read-only condition. These require new experiments and cannot be repaired by prose. Official AAMAS class compilation, page-limit validation, and author disclosure review are also pending.
