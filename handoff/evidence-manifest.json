@@ -4,18 +4,17 @@
   ],
   "archive": {
     "drive_checksum_status": "VERIFIED_REMOTE_READBACK",
-    "drive_file_id": "1EKufM4P0gZsy2HT_RNOI3Up0Wbx2_NWF",
+    "drive_file_id": "1QxoOFyLM0ptwoj1hAB-pV7eTPSWVJB_9",
     "drive_sha256_verified": true,
-    "drive_size_bytes": 4334028,
+    "drive_size_bytes": 4390249,
     "drive_size_verified": true,
-    "drive_url": "https://drive.google.com/file/d/1EKufM4P0gZsy2HT_RNOI3Up0Wbx2_NWF/view?usp=drivesdk",
-    "filename": "fleet-mem-aamas-2027-v11-620bc4ed924f.zip",
-    "github_blob_sha1": "fb1c1862b55f1d98fe1baa14252c2c549949fff9",
-    "github_url": "https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v11-620bc4ed924f.zip",
-    "md5": "7834d0bdc6287fe3a462b36037c5fe5d",
+    "drive_url": "https://drive.google.com/file/d/1QxoOFyLM0ptwoj1hAB-pV7eTPSWVJB_9/view?usp=drivesdk",
+    "filename": "fleet-mem-aamas-2027-v12-42bedd5dbe50.zip",
+    "github_url": "https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v12-42bedd5dbe50.zip",
+    "md5": "f5dfc444389a2a243c792edd0adf6f69",
     "publication_route": "GOOGLE_DRIVE_AND_GITHUB",
-    "sha256": "a4aad4bb5e7a64fa07f091bee466b90062dc2730c55f76740eb960e0e16820c9",
-    "size_bytes": 4334028
+    "sha256": "cf6ce6fd8fa0048883f6a22095b0985947372fd3bc567499d68fb552b5763e8f",
+    "size_bytes": 4390249
   },
   "arm_counts": {
     "B_SHARE_ALL": {
@@ -29,8 +28,8 @@
       "resolved": 1
     },
     "D_JEV_WRITE": {
-      "applied": 9,
-      "graded": 9,
+      "applied": 10,
+      "graded": 10,
       "resolved": 1
     },
     "E_JEV_WRITE_READ": {
@@ -91,28 +90,28 @@
   ],
   "baseline_signal_sha256": "a669016930d68a85738a65828a469f519cd14ff521a5a1fcda95c164716cd7c1",
   "branch": "handoff/aamas-2027-evidence",
-  "bundle_commit": "df8f6d5ce66e311257e2c74d2859dad2b239403c",
   "drive_archive_verification": {
     "method": "Google Drive raw-file readback; SHA-256 matched the local versioned archive; byte count matched.",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "verified_at": "2026-10-09T00:01:09.997866+00:00"
+    "verified_at": "2026-10-09T00:12:24.218519+00:00"
   },
   "drive_manifest": {
     "checksum_status": "VERIFIED_REMOTE_READBACK",
-    "file_id": "1j1-kv13etcXd3Yb3CToCap3h1w0a9NCy",
-    "filename": "evidence-manifest-v11-620bc4ed924f.json",
+    "file_id": "1KLKVdcGma-fQEdRXt6yCQnN-5CcF8CrT",
+    "filename": "evidence-manifest-v12-42bedd5dbe50.json",
     "remote_sha256_verified": true,
     "remote_size_verified": true,
-    "sha256": "d101d342f1726b536cedc43c8d323ffbb67721f4c1ed7654073c5b22c61a1d82",
-    "size_bytes": 7675,
-    "url": "https://drive.google.com/file/d/1j1-kv13etcXd3Yb3CToCap3h1w0a9NCy/view?usp=drivesdk"
+    "sha256": "d846fc01d7fe0e545d008d0c988e5506b5720b0336c7f64f86d255347483c487",
+    "size_bytes": 7667,
+    "url": "https://drive.google.com/file/d/1KLKVdcGma-fQEdRXt6yCQnN-5CcF8CrT/view?usp=drivesdk"
   },
-  "drive_manifest_url": "https://drive.google.com/file/d/1j1-kv13etcXd3Yb3CToCap3h1w0a9NCy/view?usp=drivesdk",
+  "drive_manifest_url": "https://drive.google.com/file/d/1KLKVdcGma-fQEdRXt6yCQnN-5CcF8CrT/view?usp=drivesdk",
   "experiment_commit": "1cedbc0035cb867cfebde398019e313c2a5b02cb",
   "handoff_code_commit": "47538ea7c8402ab49b01cef68ea462ce864c64fe",
   "issues": [
-    "missing 4 treatment grades",
+    "missing 3 treatment grades",
+    "sympy__sympy-9384/D_JEV_WRITE: canonical result file missing",
     "final treatment summary is absent or not COMPLETE with 40 grades",
     "six-arm paper table is absent",
     "Slurm job state is RUNNING"
@@ -128,33 +127,29 @@
     ],
     [
       "sympy__sympy-9384",
-      "D_JEV_WRITE"
-    ],
-    [
-      "sympy__sympy-9384",
       "E_JEV_WRITE_READ"
     ]
   ],
   "newly_completed_grades": [
     {
-      "arm_id": "C_RANDOM_MATCHED",
+      "arm_id": "D_JEV_WRITE",
       "canonical_grade_available": true,
-      "canonical_result_sha256": "6eed0fff54b64024f15f8399c4681c466fb4bad9ca735f0a0d8b38f435dc8d52",
-      "fail_to_pass_passed": 2,
-      "fail_to_pass_total": 5,
-      "latency_seconds": 333.58484296198003,
-      "pass_to_pass_passed": 18,
-      "pass_to_pass_total": 18,
+      "canonical_result_sha256": "71fab2f15ce9fab31b98bbd61cea30c632d47fd8e7c0a803d42ab943411f1e5a",
+      "fail_to_pass_passed": 0,
+      "fail_to_pass_total": 2,
+      "latency_seconds": 490.53204820584506,
+      "pass_to_pass_passed": 320,
+      "pass_to_pass_total": 320,
       "patch_applied": true,
       "resolved": false,
-      "target_id": "scikit-learn__scikit-learn-13771"
+      "target_id": "sympy__sympy-9384"
     }
   ],
   "outside_core_unrun_arm": "G_LLM_WRITE",
-  "previous_evidence_commit": "fa56afdb262c32484d6ed76a0732754630a2b898",
-  "previous_treatment_grade_count": 35,
+  "previous_evidence_commit": "df8f6d5ce66e311257e2c74d2859dad2b239403c",
+  "previous_treatment_grade_count": 36,
   "provisional": true,
-  "publication_status": "DUAL_DESTINATIONS_VERIFIED",
+  "publication_status": "GITHUB_FALLBACK_PENDING_VERIFICATION",
   "pull_request": "https://github.com/Vedant2100/agent-fleet-memory-governance/pull/1",
   "repository": "Vedant2100/agent-fleet-memory-governance",
   "required_treatment_grades": 40,
@@ -188,7 +183,7 @@
     ],
     "records": [
       {
-        "elapsed": "09:16:51",
+        "elapsed": "09:27:26",
         "exit_code": "0:0",
         "job_id": "289898",
         "job_name": "fmc-luna-treatments",
@@ -196,7 +191,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "09:16:51",
+        "elapsed": "09:27:26",
         "exit_code": "0:0",
         "job_id": "289898.batch",
         "job_name": "batch",
@@ -204,7 +199,7 @@
         "state": "RUNNING"
       },
       {
-        "elapsed": "09:16:51",
+        "elapsed": "09:27:26",
         "exit_code": "0:0",
         "job_id": "289898.extern",
         "job_name": "extern",
@@ -361,8 +356,8 @@
   },
   "slurm_job_id": 289898,
   "slurm_state": "RUNNING",
-  "snapshot_utc": "2026-10-09T00:01:51.224383+00:00",
+  "snapshot_utc": "2026-10-09T00:13:09.869902+00:00",
   "status": "PARTIAL",
-  "treatment_grades": 36,
-  "treatment_results_sha256": "c2b244643510b221cd2d71de1a9571a73d54d20fb94c3b1b593cb727c0543972"
+  "treatment_grades": 37,
+  "treatment_results_sha256": "4ec5e41988d72d0287247669385b5c05922685ff68fcaa00d643773b6d5d8740"
 }

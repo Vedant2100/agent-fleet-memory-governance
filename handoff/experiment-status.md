@@ -1,13 +1,13 @@
 # Fleet-Mem AAMAS 2027 evidence status
 
-**PROVISIONAL — PARTIAL**, collected 2026-10-09T00:00:22.881737+00:00.
+**PROVISIONAL — PARTIAL**, collected 2026-10-09T00:10:57.373114+00:00.
 
 Experiment code commit: `1cedbc0035cb867cfebde398019e313c2a5b02cb`.
-Evidence bundle: [fleet-mem-aamas-2027-v11-620bc4ed924f.zip](https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v11-620bc4ed924f.zip).
-Google Drive ZIP: https://drive.google.com/file/d/1EKufM4P0gZsy2HT_RNOI3Up0Wbx2_NWF/view?usp=drivesdk
-GitHub ZIP: https://raw.githubusercontent.com/Vedant2100/agent-fleet-memory-governance/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v11-620bc4ed924f.zip
-Drive evidence manifest: https://drive.google.com/file/d/1j1-kv13etcXd3Yb3CToCap3h1w0a9NCy/view?usp=drivesdk
-Bundle SHA-256: `a4aad4bb5e7a64fa07f091bee466b90062dc2730c55f76740eb960e0e16820c9`; size: 4334028 bytes.
+Evidence bundle: [fleet-mem-aamas-2027-v12-42bedd5dbe50.zip](https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v12-42bedd5dbe50.zip).
+Google Drive ZIP: https://drive.google.com/file/d/1QxoOFyLM0ptwoj1hAB-pV7eTPSWVJB_9/view?usp=drivesdk
+GitHub ZIP: https://github.com/Vedant2100/agent-fleet-memory-governance/raw/refs/heads/handoff/aamas-2027-evidence/handoff/bundles/fleet-mem-aamas-2027-v12-42bedd5dbe50.zip
+Drive evidence manifest: https://drive.google.com/file/d/1KLKVdcGma-fQEdRXt6yCQnN-5CcF8CrT/view?usp=drivesdk
+Bundle SHA-256: `cf6ce6fd8fa0048883f6a22095b0985947372fd3bc567499d68fb552b5763e8f`; size: 4390249 bytes.
 Drive size verified: True; Drive SHA-256 verified: True.
 Slurm job 289898: `RUNNING`.
 
@@ -16,7 +16,7 @@ Slurm job 289898: `RUNNING`.
 | A_NO_MEMORY | 10 | 10 | 2 |
 | B_SHARE_ALL | 9 | 9 | 1 |
 | C_RANDOM_MATCHED | 9 | 9 | 1 |
-| D_JEV_WRITE | 9 | 9 | 1 |
+| D_JEV_WRITE | 10 | 10 | 1 |
 | E_JEV_WRITE_READ | 9 | 9 | 1 |
 | F_ORACLE_RELATED_CEILING | 10 | 10 | 1 |
 | G_LLM_WRITE | 0 | 0 | 0; outside amended A–F core |
@@ -25,13 +25,14 @@ This is a development pilot, not a confirmatory effect estimate. The frozen A/F 
 
 ## Latest evidence update
 
-Treatment coverage increased from 35 to 36/40 grades.
+Treatment coverage increased from 36 to 37/40 grades.
 
-- `scikit-learn__scikit-learn-13771 / C_RANDOM_MATCHED`: patch applied=True, resolved=False, F2P 2/5, P2P 18/18.
+- `sympy__sympy-9384 / D_JEV_WRITE`: patch applied=True, resolved=False, F2P 0/2, P2P 320/320.
 
 ## Validation issues
 
-- missing 4 treatment grades
+- missing 3 treatment grades
+- sympy__sympy-9384/D_JEV_WRITE: canonical result file missing
 - final treatment summary is absent or not COMPLETE with 40 grades
 - six-arm paper table is absent
 - Slurm job state is RUNNING
